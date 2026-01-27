@@ -321,7 +321,7 @@ And safety`},
     }
   ],
 
-  September = [
+  September: [
   {
     title: "Coaching Session",
     date: "03/09/2025",
