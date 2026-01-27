@@ -158,7 +158,7 @@ const data = {
       date: "05/03/2025",
       sections: [
         {
-          content: "Created a building using Blender to redesign a training ground. However, when it came to learning how models are put into the VBS system it became evident this was not going to be usable easily. My mentor suggested learning the process of converting the buildings so they can be built with that process in mind, making it easier in the long run. I started again with a basic test model, which succeeded in VBS. I now have a better understanding of the process, although texturing remains an issue. Meanwhile, I started on smaller models such as train tracks and fences."
+          content: "Created a building using Blender to redesign a training ground. However, when it came to learning how models are put into the VBS system it became evident this was not going to be usable easily. My mentor suggested learning the process of converting the buildings so they can be built with that process in mind, making it easier in the long run. I started again with a basic test model, which succeeded in VBS. I now have a better understanding of the process, although texturing remains an issue. Meanwhile, I started on smaller models such as train tracks and fences.",
           youtube: "https://youtu.be/0FQ8kL2uKUY"
         },
         {
@@ -170,7 +170,7 @@ const data = {
     "https://amanchanda1102-bit.github.io/learning-journal/images/pinkhouse.png",
     "https://amanchanda1102-bit.github.io/learning-journal/images/test.png"
   ],
-  content: "These are the untextured 3D models..."
+  content: "These are the untextured 3D models. Although I followed a guide on texturing, I couldn't get part a section and so emailed the company (the simulation software company) for assistance. In the mean while, Since I have the model creation part down, I start on smaller models such as train tracks and fences that will be on the training ground. Rather than waiting for an answer and then doing the whole model from scratch I will now have base models that 1. can be shown for demonstration purposes and 2. only need texturing as a last step. This will speed up my ability to achieve the outcomes."
 }
 ,
         {
@@ -239,12 +239,16 @@ const data = {
       sections: [
         {
           content: "I provided examples of where I have behaved in accordance with the values of Babcock."
-        },{content: "Behaving in accordance with the values of the organisation:\nOur values at babcock are:\nBe kind, courageous, think:outcome, own & deliver, curious 
-And safety "},
+        },{content: `Behaving in accordance with the values of the organisation:
+Our values at babcock are:
+Be kind, courageous, think:outcome, own & deliver, curious 
+And safety`},
+
         {content: "Collaboration: collaborating with the different teams to be able to complete my apprenticeship tasks. The apprenticeship tasks are not fully inline with what we do here, so making an effort to meet the different teams and understand fully what they do. And to apply that to the apprenticeship tasks and see what things we'd have to find other methods for.  "
         },
-        {content:"Safety:  I  regularly raise safety concerns or faults to my mentor. The heater, lights etc. Other more important ones, like whether there are fire indicators for the deaf. Or a rule that's not being followed well.), 
-        {content:Innovation/curious:  I regularly ask questions: why do we do it like this, why can't we do this. Suggesting improvements or different methods if I have any. E.g. suggesting short videos instead of text on some ppt slides for independent learning or preemptively loading trainees in as to weed out problems early and prevent human error. I was curious about blender, so my mentor gave me a tutorial to follow, which eventually led me to successfully learning how to create models that can be converted into VBS assets. }
+{content: `Safety: I regularly raise safety concerns or faults to my mentor. The heater, lights, etc. Other more important ones, like whether there are fire indicators for the deaf, or rules not being followed well.`},
+{content: `Innovation/curious: I regularly ask questions: why do we do it like this, why can't we do this. Suggesting improvements or different methods if I have any. E.g., suggesting short videos instead of text on some PPT slides for independent learning or preemptively loading trainees in to weed out problems early and prevent human error. I was curious about Blender, so my mentor gave me a tutorial to follow, which eventually led me to successfully learning how to create models that can be converted into VBS assets.`},
+
         {
           heading: "Linked KSBs",
           content: "B5"
