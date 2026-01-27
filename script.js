@@ -140,7 +140,8 @@ const data = {
       jobType: "off-job",
       sections: [
         {
-          content: "I analysed the effectiveness of technology used by my company, including other technology that could be used, the pros and cons, and what it would add to the business. Also taking into consideration less typical learning technology such as AI."
+          content: "I analysed the effectiveness of technology used by my company, including other technology that could be used, the pros and cons, and what it would add to the business. Also taking into consideration less typical learning technology such as AI.",
+          pdf: "https://amanchanda1102-bit.github.io/learning-journal/technology.pdf"
         },
         {
           heading: "Linked KSBs",
@@ -162,7 +163,9 @@ const data = {
         {
           content: "I started again, with a basic test model. The goal was to get this into VBS. Which succeeded. As suggested in the feedback from my mentor I need to be more confident in my abilities, starting with a simpler model, building up from the basics will give me a better knowledge foundation helping me feel more confident in my modelling skills. It meant I now knew the process better and could start with the actual models needed. The only issue was the texturing. However since there was going to be a call to review progress, buildings with no texture were good even just to show the possibilities."
         },
-        {
+        {image: "https://amanchanda1102-bit.github.io/learning-journal/images/cube.jpg",
+          image: "https://amanchanda1102-bit.github.io/learning-journal/images/pinkhouse.png",
+          image: "https://amanchanda1102-bit.github.io/learning-journal/images/test.png",
           content: "These are the untextured 3D models. Although I followed a guide on texturing, I couldn’t get part a section and so emailed the company (the simulation software company) for assistance. In the meantime, since I have the model creation part down, I start on smaller models such as train tracks and fences that will be on the training ground. Rather than waiting for an answer and then doing the whole model from scratch I will now have base models that 1. can be shown for demonstration purposes and 2. only need texturing as a last step. This will speed up my ability to achieve the outcomes."
         },
         {
