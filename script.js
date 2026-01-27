@@ -364,8 +364,6 @@ And safety`},
         {
           heading: "Linked KSBs",
           content: "B1, B2"
-        }
-      ]
     }
   ],
 
