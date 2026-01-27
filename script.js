@@ -515,13 +515,6 @@ d.appendChild(document.createElement("br"));
 
 
       });
-    } else if(e.content){
-      d.innerHTML += `<p>${e.content}</p>`;
-    }
-
-    if(e.image){
-      d.innerHTML += `<img src="${e.image}" alt="Journal image">`;
-    }
 
     entries.appendChild(d);
   });
