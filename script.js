@@ -265,7 +265,8 @@ successfully learning how to create models that can be converted into VBS assets
       jobType: "on-job",
       sections: [
         {
-          content: "I created a case study highlighting where I have delivered the outcomes of my work through collaboration, with a willingness to question and challenge as appropriate. Includes a witness statement."
+          content: "I created a case study highlighting where I have delivered the outcomes of my work through collaboration, with a willingness to question and challenge as appropriate. Includes a witness statement.",
+          pdf: "https://amanchanda1102-bit.github.io/learning-journal/caseStudy.pdf"
         },
         {
           heading: "Linked KSBs",
@@ -282,13 +283,18 @@ successfully learning how to create models that can be converted into VBS assets
       date: "23/07/2025",
       sections: [
         {
-          content: "Around here there was a second meeting about the models. There was word about seeing if other people on different sites would be interested in also making custom models for specific training needs. I decided to make a guide. Not only for myself as a reminder on how to do things but also for possible internal company use. As I’m sure I’m not the only one that will find the provided guides absolutely useless."
+           image: "https://amanchanda1102-bit.github.io/learning-journal/images/guide.png",
+          content: "Around here there was a second meeting about the models. There was word about seeing if other people on different sites would be interested in also making custom models for specific training needs. I decided to make a guide. Not only for myself as a reminder on how to do things but also for possible internal company use. As I’m sure I’m not the only one that will find the provided guides absolutely useless.",
+        image: "https://amanchanda1102-bit.github.io/learning-journal/images/text.png"
         },
         {
-          content: "In the guide there are two types of shaders.I realised since these are simple objects I may be able to use the simple shader. It also didnt seem to work for me. As shown below."
+          content: "In the guide there are two types of shaders.I realised since these are simple objects I may be able to use the simple shader. It also didnt seem to work for me. As shown below.",
+        image: "https://amanchanda1102-bit.github.io/learning-journal/images/pinkfence.png"
         },
         {
-          content: "I then tried to see if I could reverse engineer an example folder/item provided by the company. I recreated their streetlight example for my fence. using a yt tutorial on ‘baking’ creatng images of the texture to slap on the objects. This worked! The only caviate being the baking process must be redone if adjustments are made to the model in blender."
+          content: "I then tried to see if I could reverse engineer an example folder/item provided by the company. I recreated their streetlight example for my fence. using a yt tutorial on ‘baking’ creatng images of the texture to slap on the objects. This worked! The only caviate being the baking process must be redone if adjustments are made to the model in blender.",
+          image: "https://amanchanda1102-bit.github.io/learning-journal/images/group4.png",
+          image: "https://amanchanda1102-bit.github.io/learning-journal/images/group2.png"
         },
         {
           heading: "Linked KSBs",
