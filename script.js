@@ -124,7 +124,7 @@ const data = {
       sections: [
         {
           content: "I sent out a feedback form to my mentor. Based on the feedback I received from him, I created an analysis document in which I identified areas of development. I proceeded to use this analysis to create a PDP, Personal Development Plan.",
-        pdf: "https://amanchanda1102-bit.github.io/learning-journal/PDP.pdf"},
+          pdf: "https://amanchanda1102-bit.github.io/learning-journal/PDP.pdf"},
         {
           heading: "Linked KSBs",
           content: "B2"
