@@ -159,6 +159,7 @@ const data = {
       sections: [
         {
           content: "Created a building using Blender to redesign a training ground. However, when it came to learning how models are put into the VBS system it became evident this was not going to be usable easily. My mentor suggested learning the process of converting the buildings so they can be built with that process in mind, making it easier in the long run. I started again with a basic test model, which succeeded in VBS. I now have a better understanding of the process, although texturing remains an issue. Meanwhile, I started on smaller models such as train tracks and fences."
+          youtube: "https://youtu.be/0FQ8kL2uKUY"
         },
         {
           content: "I started again, with a basic test model. The goal was to get this into VBS. Which succeeded. As suggested in the feedback from my mentor I need to be more confident in my abilities, starting with a simpler model, building up from the basics will give me a better knowledge foundation helping me feel more confident in my modelling skills. It meant I now knew the process better and could start with the actual models needed. The only issue was the texturing. However since there was going to be a call to review progress, buildings with no texture were good even just to show the possibilities."
