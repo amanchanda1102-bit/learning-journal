@@ -496,6 +496,13 @@ if(sec.pdf){
   d.appendChild(iframe);
 }
 
+        if (sec.image) {
+  const img = document.createElement("img");
+  img.src = sec.image;
+  img.style.maxWidth = "100%";
+  img.style.marginTop = "10px";
+  d.appendChild(img);
+}
 
 
       });
