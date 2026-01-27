@@ -297,8 +297,8 @@ successfully learning how to create models that can be converted into VBS assets
         },
         {
           content: "I then tried to see if I could reverse engineer an example folder/item provided by the company. I recreated their streetlight example for my fence. using a yt tutorial on ‘baking’ creatng images of the texture to slap on the objects. This worked! The only caviate being the baking process must be redone if adjustments are made to the model in blender.",
-          image: "https://amanchanda1102-bit.github.io/learning-journal/images/group4.png",
-          image: "https://amanchanda1102-bit.github.io/learning-journal/images/group2.png"
+          image: [ "https://amanchanda1102-bit.github.io/learning-journal/images/group4.png",
+                    "https://amanchanda1102-bit.github.io/learning-journal/images/group2.png"]
         },
         {
           heading: "Linked KSBs",
