@@ -170,7 +170,7 @@ const data = {
       "https://amanchanda1102-bit.github.io/learning-journal/images/pinkhouse.png",
       "https://amanchanda1102-bit.github.io/learning-journal/images/test.png"
       ],
-      content: "These are the untextured 3D models. Although I followed a guide on texturing, I couldn't get part a section and so emailed the company (the simulation software company) for assistance. In the mean while, Since I have the model creation part down, I start on smaller models such as train tracks and fences that will be on the training ground. Rather than waiting for an answer and then doing the whole model from scratch I will now have base models that 1. can be shown for demonstration purposes and 2. only need texturing as a last step. This will speed up my ability to achieve the outcomes."
+        {content: "These are the untextured 3D models. Although I followed a guide on texturing, I couldn't get part a section and so emailed the company (the simulation software company) for assistance. In the mean while, Since I have the model creation part down, I start on smaller models such as train tracks and fences that will be on the training ground. Rather than waiting for an answer and then doing the whole model from scratch I will now have base models that 1. can be shown for demonstration purposes and 2. only need texturing as a last step. This will speed up my ability to achieve the outcomes."
       }
 ,
         {
