@@ -19,6 +19,8 @@
   <button onclick="goHome()">🏠 Home Page</button>
   <button onclick="openHeatmap()">🔥 Heatmap</button>
   <button onclick="openAllEntries()">📖 View All Entries</button>
+  <button onclick="openApply()">✏️ Apply Learning</button>
+
 </div>
 </aside>
 
@@ -45,6 +47,14 @@
   <div class="month-header">
     <h2>KSB Heatmap</h2>
   </div>
+<!-- Apply Learning Page -->
+<section class="month-page" id="applyPage" style="display:none;">
+  <div class="month-header">
+    <h2>Apply Learning</h2>
+  </div>
+  <div id="applyEntries"></div>
+  <button class="back-btn" onclick="goHome()">← Back</button>
+</section>
 
   <div id="heatmapGrid"></div>
 
@@ -58,6 +68,7 @@
 
 </body>
 </html>
+
 
 
 
