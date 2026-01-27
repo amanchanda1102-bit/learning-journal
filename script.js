@@ -464,66 +464,70 @@ Object.keys(data).forEach(m=>{
 
 /* ---------- FUNCTIONS ---------- */
 function openMonth(m){
+
   highlightCurrentMonth(m);
-  grid.style.display="none";
-  page.style.display="block";
-  title.textContent=m;
-  entries.innerHTML="";
 
-  data[m].forEach(e=>{
-    const d=document.createElement("div");
-    d.className="entry";
+  grid.style.display = "none";
+  page.style.display = "block";
+  title.textContent = m;
+  entries.innerHTML = "";
 
-    const h=document.createElement("h3");
-    h.textContent=`${e.title} — ${e.date}`;
+  data[m].forEach(e => {
+
+    const d = document.createElement("div");
+    d.className = "entry";
+
+    const h = document.createElement("h3");
+    h.textContent = `${e.title} — ${e.date}`;
     d.appendChild(h);
 
-    if(e.sections){
-      e.sections.forEach(sec=>{
-if (sec.heading) {
-  const strong = document.createElement("strong");
-  strong.textContent = sec.heading + ":";
-  d.appendChild(strong);
-  d.appendChild(document.createElement("br"));
-}
+    if (e.sections) {
+      e.sections.forEach(sec => {
 
-if (sec.content) {
-  const p = document.createElement("p");
-  p.textContent = sec.content;
-  d.appendChild(p);
-}
+        if (sec.heading) {
+          const strong = document.createElement("strong");
+          strong.textContent = sec.heading + ":";
+          d.appendChild(strong);
+          d.appendChild(document.createElement("br"));
+        }
 
-if (sec.image) {
-  const img = document.createElement("img");
-  img.src = sec.image;
-  img.style.maxWidth = "100%";
-  img.style.margin = "10px 0";
-  d.appendChild(img);
-}
+        if (sec.content) {
+          const p = document.createElement("p");
+          p.textContent = sec.content;
+          d.appendChild(p);
+        }
 
-if (sec.pdf) {
-  const iframe = document.createElement("iframe");
-  iframe.src = sec.pdf;
-  iframe.width = "100%";
-  iframe.height = "600";
-  iframe.style.border = "1px solid #ccc";
-  iframe.style.margin = "10px 0";
-  d.appendChild(iframe);
-}
+        if (sec.image) {
+          const img = document.createElement("img");
+          img.src = sec.image;
+          img.style.maxWidth = "100%";
+          img.style.margin = "10px 0";
+          d.appendChild(img);
+        }
 
-d.appendChild(document.createElement("br"));
+        if (sec.pdf) {
+          const iframe = document.createElement("iframe");
+          iframe.src = sec.pdf;
+          iframe.width = "100%";
+          iframe.height = "600";
+          iframe.style.border = "1px solid #ccc";
+          iframe.style.margin = "10px 0";
+          d.appendChild(iframe);
+        }
 
-
+        d.appendChild(document.createElement("br"));
       });
+    }
 
     entries.appendChild(d);
   });
 
   attachKSBTooltips();
 
-  if(!completed.includes(m)) completed.push(m);
+  if (!completed.includes(m)) completed.push(m);
   updateProgress();
 }
+
 
 function backToMonths(){ page.style.display="none"; grid.style.display="grid"; }
 
