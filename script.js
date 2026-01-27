@@ -239,24 +239,12 @@ const data = {
       sections: [
         {
           content: "I provided examples of where I have behaved in accordance with the values of Babcock."
-        },{content:"Behaving in accordance with the values of the organisation: 
-Our values at babcock are: 
-Be kind, courageous, think:outcome, own & deliver, curious 
-And safety 
-Collaboration: collaborating with the different teams to be able to complete my apprenticeship tasks. 
-The apprenticeship tasks are not fully inline with what we do here, so making an effort to meet the 
-different teams and understand fully what they do. And to apply that to the apprenticeship tasks and 
-see what things we'd have to find other methods for.  
-Safety:  
-I  regularly raise safety concerns or faults to my mentor. The heater, lights etc. Other more important 
-ones, like whether there are fire indicators for the deaf. Or a rule that's not being followed well. 
-Innovation/curious:  
-I regularly ask questions: why do we do it like this, why can't we do this. Suggesting improvements or 
-different methods if I have any. E.g. suggesting short videos instead of text on some ppt slides for 
-independent learning or preemptively loading trainees in as to weed out problems early and prevent 
-human error. 
-I was curious about blender, so my mentor gave me a tutorial to follow, which eventually led me to 
-successfully learning how to create models that can be converted into VBS assets." },
+        },{content: "Behaving in accordance with the values of the organisation:\nOur values at babcock are:\nBe kind, courageous, think:outcome, own & deliver, curious 
+And safety "},
+        {content: "Collaboration: collaborating with the different teams to be able to complete my apprenticeship tasks. The apprenticeship tasks are not fully inline with what we do here, so making an effort to meet the different teams and understand fully what they do. And to apply that to the apprenticeship tasks and see what things we'd have to find other methods for.  "
+        },
+        {content:"Safety:  I  regularly raise safety concerns or faults to my mentor. The heater, lights etc. Other more important ones, like whether there are fire indicators for the deaf. Or a rule that's not being followed well.), 
+        {content:Innovation/curious:  I regularly ask questions: why do we do it like this, why can't we do this. Suggesting improvements or different methods if I have any. E.g. suggesting short videos instead of text on some ppt slides for independent learning or preemptively loading trainees in as to weed out problems early and prevent human error. I was curious about blender, so my mentor gave me a tutorial to follow, which eventually led me to successfully learning how to create models that can be converted into VBS assets. }
         {
           heading: "Linked KSBs",
           content: "B5"
