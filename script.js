@@ -452,6 +452,13 @@ const overlay = document.getElementById("contentsOverlay");
 
 let completed = JSON.parse(localStorage.getItem("ljCompleted")) || [];
 
+
+/* ---------- SHOW MONTH GRID ON LOAD ---------- */
+grid.style.display = "grid";
+page.style.display = "none";
+document.getElementById("heatmapPage").style.display = "none";
+
+
 /* ---------- MONTH BUTTONS ---------- */
 Object.keys(data).forEach(m=>{
   const btn = document.createElement("button");
@@ -462,56 +469,57 @@ Object.keys(data).forEach(m=>{
   grid.appendChild(btn);
 });
 
-/* ---------- FUNCTIONS ---------- */
+
+/* ---------- OPEN MONTH ---------- */
 function openMonth(m){
 
   highlightCurrentMonth(m);
 
-  grid.style.display = "none";
-  page.style.display = "block";
-  title.textContent = m;
-  entries.innerHTML = "";
+  grid.style.display="none";
+  page.style.display="block";
+  title.textContent=m;
+  entries.innerHTML="";
 
-  data[m].forEach(e => {
+  data[m].forEach(e=>{
 
-    const d = document.createElement("div");
-    d.className = "entry";
+    const d=document.createElement("div");
+    d.className="entry";
 
-    const h = document.createElement("h3");
-    h.textContent = `${e.title} — ${e.date}`;
+    const h=document.createElement("h3");
+    h.textContent=`${e.title} — ${e.date}`;
     d.appendChild(h);
 
-    if (e.sections) {
-      e.sections.forEach(sec => {
+    if(e.sections){
+      e.sections.forEach(sec=>{
 
-        if (sec.heading) {
-          const strong = document.createElement("strong");
-          strong.textContent = sec.heading + ":";
+        if(sec.heading){
+          const strong=document.createElement("strong");
+          strong.textContent=sec.heading+":";
           d.appendChild(strong);
           d.appendChild(document.createElement("br"));
         }
 
-        if (sec.content) {
-          const p = document.createElement("p");
-          p.textContent = sec.content;
+        if(sec.content){
+          const p=document.createElement("p");
+          p.textContent=sec.content;
           d.appendChild(p);
         }
 
-        if (sec.image) {
-          const img = document.createElement("img");
-          img.src = sec.image;
-          img.style.maxWidth = "100%";
-          img.style.margin = "10px 0";
+        if(sec.image){
+          const img=document.createElement("img");
+          img.src=sec.image;
+          img.style.maxWidth="100%";
+          img.style.margin="10px 0";
           d.appendChild(img);
         }
 
-        if (sec.pdf) {
-          const iframe = document.createElement("iframe");
-          iframe.src = sec.pdf;
-          iframe.width = "100%";
-          iframe.height = "600";
-          iframe.style.border = "1px solid #ccc";
-          iframe.style.margin = "10px 0";
+        if(sec.pdf){
+          const iframe=document.createElement("iframe");
+          iframe.src=sec.pdf;
+          iframe.width="100%";
+          iframe.height="600";
+          iframe.style.border="1px solid #ccc";
+          iframe.style.margin="10px 0";
           d.appendChild(iframe);
         }
 
@@ -522,24 +530,34 @@ function openMonth(m){
     entries.appendChild(d);
   });
 
-  attachKSBTooltips();
-
-  if (!completed.includes(m)) completed.push(m);
+  if(!completed.includes(m)) completed.push(m);
   updateProgress();
 }
 
 
-function backToMonths(){ page.style.display="none"; grid.style.display="grid"; }
-
-function goHome(){
-  page.style.display="none"; grid.style.display="grid";
-  panel.classList.remove("open"); overlay.style.display="none";
+/* ---------- NAV ---------- */
+function backToMonths(){
+  page.style.display="none";
+  grid.style.display="grid";
 }
 
+function goHome(){
+  page.style.display="none";
+  document.getElementById("heatmapPage").style.display="none";
+  grid.style.display="grid";
+  panel.classList.remove("open");
+  overlay.style.display="none";
+}
+
+
+/* ---------- PROGRESS ---------- */
 function updateProgress(){
   const pct=Math.round((completed.length/Object.keys(data).length)*100);
-  fill.style.width=pct+"%"; label.textContent=pct+"% complete";
+  fill.style.width=pct+"%";
+  label.textContent=pct+"% complete";
+
   localStorage.setItem("ljCompleted",JSON.stringify(completed));
+
   document.querySelectorAll(".month").forEach(b=>{
     b.classList.toggle("completed",completed.includes(b.textContent));
   });
@@ -547,162 +565,72 @@ function updateProgress(){
 
 function resetProgress(){
   if(confirm("Reset all progress?")){
-    completed=[]; localStorage.removeItem("ljCompleted"); updateProgress();
+    completed=[];
+    localStorage.removeItem("ljCompleted");
+    updateProgress();
   }
 }
 
-function attachKSBTooltips(){
-  document.querySelectorAll(".ksb").forEach(el=>{
-    if(el.querySelector(".ksb-tooltip")) return;
-    const tip=document.createElement("div");
-    tip.className="ksb-tooltip";
-    tip.innerHTML=`<strong>${el.dataset.ksb}</strong><br>${KSB_DICTIONARY[el.dataset.ksb]}`;
-    el.appendChild(tip);
-  });
-}
 
 /* ---------- CONTENTS PANEL ---------- */
 document.getElementById("contentsToggle").onclick=()=>{
-  panel.classList.add("open"); overlay.style.display="block";
+  panel.classList.add("open");
+  overlay.style.display="block";
 };
-overlay.onclick=()=>{ panel.classList.remove("open"); overlay.style.display="none"; }
+
+overlay.onclick=()=>{
+  panel.classList.remove("open");
+  overlay.style.display="none";
+};
 
 const contentsList=document.getElementById("contentsList");
+
 Object.entries(data).forEach(([m,es])=>{
   const d=document.createElement("div");
   d.className="contents-month";
+
   const b=document.createElement("button");
-  b.textContent=m; b.onclick=()=>openMonth(m); d.appendChild(b);
+  b.textContent=m;
+  b.onclick=()=>openMonth(m);
+  d.appendChild(b);
 
   es.forEach((e,i)=>{
     const c=document.createElement("div");
-    c.className="contents-entry"; c.textContent=`${e.date} — ${e.title}`;
+    c.className="contents-entry";
+    c.textContent=`${e.date} — ${e.title}`;
+
     c.onclick=()=>{
       openMonth(m);
-      document.querySelectorAll(".contents-entry").forEach(e=>e.classList.remove("active"));
-      c.classList.add("active");
-      setTimeout(()=>{ document.querySelectorAll(".entry")[i]?.scrollIntoView({behavior:"smooth"}); },150);
+      setTimeout(()=>{
+        document.querySelectorAll(".entry")[i]?.scrollIntoView({behavior:"smooth"});
+      },150);
     };
+
     d.appendChild(c);
   });
+
   contentsList.appendChild(d);
 });
 
-/* ---------- ALL ENTRIES PAGE ---------- */
-function openAllEntries(){
-  grid.style.display="none"; page.style.display="block"; title.textContent="All Entries"; entries.innerHTML="";
-
-  const filterBar = document.createElement("div");
-  filterBar.style.marginBottom="20px"; filterBar.style.display="flex"; filterBar.style.flexWrap="wrap"; filterBar.style.gap="10px";
-
-  const ksbSelect = document.createElement("select");
-  ksbSelect.innerHTML = `<option value="all">All KSBs</option>` + Object.keys(KSB_DICTIONARY).map(k=>`<option value="${k}">${k}</option>`).join("");
-  ksbSelect.style.padding="6px 10px"; ksbSelect.style.borderRadius="6px"; ksbSelect.style.border="1px solid var(--border)";
-  filterBar.appendChild(ksbSelect);
-
-  const typeSelect = document.createElement("select");
-  typeSelect.innerHTML=`<option value="all">All Job Types</option><option value="on-job">On-Job</option><option value="off-job">Off-Job</option>`;
-  typeSelect.style.padding="6px 10px"; typeSelect.style.borderRadius="6px"; typeSelect.style.border="1px solid var(--border)";
-  filterBar.appendChild(typeSelect);
-
-  entries.appendChild(filterBar);
-  const allEntriesContainer = document.createElement("div"); entries.appendChild(allEntriesContainer);
-
-  function renderEntries(){
-    allEntriesContainer.innerHTML="";
-    const selectedKSB = ksbSelect.value;
-    const selectedType = typeSelect.value;
-
-    Object.entries(data).forEach(([month, monthEntries])=>{
-      const filtered = monthEntries.filter(e=>{
-        if(selectedType!=="all" && e.jobType!==selectedType) return false;
-        if(selectedKSB==="all") return true;
-        if(!e.sections) return false;
-        return e.sections.some(sec=>{
-          const contentIncludes = sec.content && (sec.content.includes(selectedKSB) || sec.content.split(", ").includes(selectedKSB));
-          const headingIncludes = sec.heading && sec.heading.includes(selectedKSB);
-          return contentIncludes || headingIncludes;
-        });
-      });
-      if(filtered.length===0) return;
-
-      const monthHeading = document.createElement("h3"); monthHeading.textContent=month;
-      allEntriesContainer.appendChild(monthHeading);
-
-      filtered.forEach(e=>{
-        const d=document.createElement("div"); d.className="entry";
-        const h=document.createElement("h3"); h.textContent=`${e.title} — ${e.date}`; d.appendChild(h);
-if (e.sections) {
-  e.sections.forEach(sec => {
-
-    if (sec.heading) {
-      const strong = document.createElement("strong");
-      strong.textContent = sec.heading + ":";
-      d.appendChild(strong);
-      d.appendChild(document.createElement("br"));
-    }
-
-    if (sec.content) {
-      const p = document.createElement("p");
-      p.textContent = sec.content;
-      d.appendChild(p);
-    }
-
-    if (sec.image) {
-      const img = document.createElement("img");
-      img.src = sec.image;
-      img.style.maxWidth = "100%";
-      img.style.margin = "10px 0";
-      d.appendChild(img);
-    }
-
-    if (sec.pdf) {
-      const iframe = document.createElement("iframe");
-      iframe.src = sec.pdf;
-      iframe.width = "100%";
-      iframe.height = "600";
-      iframe.style.border = "1px solid #ccc";
-      iframe.style.margin = "10px 0";
-      d.appendChild(iframe);
-    }
-
-    d.appendChild(document.createElement("br"));
-  });
-}
- else if(e.content){ d.innerHTML += `<p>${e.content}</p>`; }
-        allEntriesContainer.appendChild(d);
-      });
-    });
-    attachKSBTooltips();
-  }
-
-  renderEntries();
-  ksbSelect.onchange=renderEntries; typeSelect.onchange=renderEntries;
-}
 
 /* ---------- HEATMAP ---------- */
 function openHeatmap(){
 
-  document.querySelectorAll(".month-page").forEach(p=>{
-    p.style.display="none";
-  });
+  grid.style.display="none";
+  page.style.display="none";
 
-  // hide months grid instead
-  grid.style.display = "none";
-
-  const heatPage = document.getElementById("heatmapPage");
+  const heatPage=document.getElementById("heatmapPage");
   heatPage.style.display="block";
 
   buildHeatmap();
 }
 
-
 function buildHeatmap(){
 
-  const heatGrid = document.getElementById("heatmapGrid");
-  heatGrid.innerHTML = "";
+  const heatGrid=document.getElementById("heatmapGrid");
+  heatGrid.innerHTML="";
 
-  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
   heatGrid.appendChild(makeCell("KSB","header"));
 
@@ -710,49 +638,49 @@ function buildHeatmap(){
     heatGrid.appendChild(makeCell(m,"header"));
   });
 
-  Object.entries(LIP_KSB_MONTHS).forEach(([ksb, values])=>{
+  Object.entries(LIP_KSB_MONTHS).forEach(([ksb,vals])=>{
 
-    const label = makeCell(ksb,"ksb-label");
-    heatGrid.appendChild(label);
+    heatGrid.appendChild(makeCell(ksb,"ksb-label"));
 
-    values.forEach(val=>{
-      const cell = document.createElement("div");
-      cell.className = `heat-cell ${ratingClass(val)}`;
-      cell.textContent = val;
+    vals.forEach(v=>{
+      const cell=document.createElement("div");
+      cell.className=`heat-cell ${ratingClass(v)}`;
+      cell.textContent=v;
       heatGrid.appendChild(cell);
     });
-
   });
 }
 
-
 function makeCell(text,type){
-  const div = document.createElement("div");
-  div.textContent = text;
-  div.classList.add("heat-cell");
+  const div=document.createElement("div");
+  div.textContent=text;
+  div.className="heat-cell";
 
-  if(type === "header") div.classList.add("header");
-  if(type === "ksb-label") div.classList.add("ksb-label");
+  if(type==="header") div.classList.add("header");
+  if(type==="ksb-label") div.classList.add("ksb-label");
 
   return div;
 }
 
-function ratingClass(val){
-  if(val === "Poor") return "heat-poor";
-  if(val === "Average") return "heat-average";
-  if(val === "Good") return "heat-good";
-  if(val === "Very Good") return "heat-verygood";
+function ratingClass(v){
+  if(v==="Poor") return "heat-poor";
+  if(v==="Average") return "heat-average";
+  if(v==="Good") return "heat-good";
+  if(v==="Very Good") return "heat-verygood";
   return "";
 }
 
 
-
+/* ---------- HIGHLIGHT ---------- */
 function highlightCurrentMonth(month){
   document.querySelectorAll(".contents-month").forEach(m=>m.classList.remove("active"));
-  document.querySelectorAll(".contents-entry").forEach(e=>e.classList.remove("active"));
   document.querySelectorAll(".contents-month").forEach(m=>{
-    if(m.querySelector("button").textContent===month){ m.classList.add("active"); }
+    if(m.querySelector("button").textContent===month){
+      m.classList.add("active");
+    }
   });
 }
 
+
+/* ---------- INIT ---------- */
 updateProgress();
