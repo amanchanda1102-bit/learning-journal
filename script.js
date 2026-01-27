@@ -235,7 +235,7 @@ const data = {
       sections: [
         {
           content: "I provided examples of where I have behaved in accordance with the values of Babcock."
-        },{content:Behaving in accordance with the values of the organisation: 
+        },{content:"Behaving in accordance with the values of the organisation: 
 Our values at babcock are: 
 Be kind, courageous, think:outcome, own & deliver, curious 
 And safety 
@@ -252,7 +252,7 @@ different methods if I have any. E.g. suggesting short videos instead of text on
 independent learning or preemptively loading trainees in as to weed out problems early and prevent 
 human error. 
 I was curious about blender, so my mentor gave me a tutorial to follow, which eventually led me to 
-successfully learning how to create models that can be converted into VBS assets. },
+successfully learning how to create models that can be converted into VBS assets." },
         {
           heading: "Linked KSBs",
           content: "B5"
