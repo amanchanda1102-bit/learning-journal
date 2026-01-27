@@ -624,11 +624,17 @@ function openMonth(m){
 
     if(e.sections){
       e.sections.forEach(sec=>{
-        if(sec.heading){
-          d.innerHTML += `<strong>${sec.heading}:</strong><br>${sec.content}<br><br>`;
-        } else {
-          d.innerHTML += `<p>${sec.content}</p>`;
-        }
+       if(sec.heading){
+  d.innerHTML += `<strong>${sec.heading}:</strong><br>${sec.content || ""}<br><br>`;
+} else if(sec.content){
+  d.innerHTML += `<p>${sec.content}</p>`;
+}
+
+// Embed PDF if available
+if(sec.pdf){
+  d.innerHTML += `<iframe src="${sec.pdf}" width="100%" height="600px" style="border:1px solid #ccc; margin-top:10px;"></iframe>`;
+}
+
       });
     } else if(e.content){
       d.innerHTML += `<p>${e.content}</p>`;
@@ -844,6 +850,7 @@ updateProgress();
 
 </body>
 </html>
+
 
 
 
