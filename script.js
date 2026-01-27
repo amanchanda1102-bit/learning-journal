@@ -351,7 +351,6 @@ And safety`},
           heading: "Linked KSBs",
           content: "S13, B1"
         }
-      ]
     ,
     {
       title: "PDP Updates",
@@ -365,7 +364,8 @@ And safety`},
           heading: "Linked KSBs",
           content: "B1, B2"
     }
-  ],
+  ]},
+      }]
 
   October: [
     {
