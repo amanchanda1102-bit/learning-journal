@@ -281,31 +281,31 @@ successfully learning how to create models that can be converted into VBS assets
   ],
 
   July: [
+{
+  title: "Model Guide & Shader Testing",
+  jobType: "off-job",
+  date: "23/07/2025",
+  sections: [
     {
-      title: "Model Guide & Shader Testing",
-      jobType: "off-job",
-      date: "23/07/2025",
-      sections: [
-        {
-           image: "https://amanchanda1102-bit.github.io/learning-journal/images/guide.png",
-          content: "Around here there was a second meeting about the models. There was word about seeing if other people on different sites would be interested in also making custom models for specific training needs. I decided to make a guide. Not only for myself as a reminder on how to do things but also for possible internal company use. As I’m sure I’m not the only one that will find the provided guides absolutely useless.",
-        image: "https://amanchanda1102-bit.github.io/learning-journal/images/text.png"
-        },
-        {
-          content: "In the guide there are two types of shaders.I realised since these are simple objects I may be able to use the simple shader. It also didnt seem to work for me. As shown below.",
-        image: "https://amanchanda1102-bit.github.io/learning-journal/images/pinkfence.png"
-        },
-        {
-          content: "I then tried to see if I could reverse engineer an example folder/item provided by the company. I recreated their streetlight example for my fence. using a yt tutorial on ‘baking’ creatng images of the texture to slap on the objects. This worked! The only caviate being the baking process must be redone if adjustments are made to the model in blender.",
-          image: [ "https://amanchanda1102-bit.github.io/learning-journal/images/group4.png",
-                    "https://amanchanda1102-bit.github.io/learning-journal/images/group2.png"]
-        },
-        {
-          heading: "Linked KSBs",
-          content: "B2, B3"
-        }
-      ]
+      images: ["https://amanchanda1102-bit.github.io/learning-journal/images/guide.png",
+               "https://amanchanda1102-bit.github.io/learning-journal/images/text.png"],
+      content: "Around here there was a second meeting about the models. There was word about seeing if other people on different sites would be interested in also making custom models for specific training needs. I decided to make a guide. Not only for myself as a reminder on how to do things but also for possible internal company use. As I’m sure I’m not the only one that will find the provided guides absolutely useless."
+    },
+    {
+      images: ["https://amanchanda1102-bit.github.io/learning-journal/images/pinkfence.png"],
+      content: "In the guide there are two types of shaders. I realised since these are simple objects I may be able to use the simple shader. It also didn’t seem to work for me. As shown below."
+    },
+    {
+      images: ["https://amanchanda1102-bit.github.io/learning-journal/images/group4.png",
+               "https://amanchanda1102-bit.github.io/learning-journal/images/group2.png"],
+      content: "I then tried to see if I could reverse engineer an example folder/item provided by the company. I recreated their streetlight example for my fence using a YouTube tutorial on ‘baking’ – creating images of the texture to slap on the objects. This worked! The only caveat being the baking process must be redone if adjustments are made to the model in Blender."
+    },
+    {
+      heading: "Linked KSBs",
+      content: "B2, B3"
     }
+  ]
+}
   ],
 
   August: [
