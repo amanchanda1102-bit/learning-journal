@@ -552,6 +552,29 @@ function openMonth(m){
           d.appendChild(iframe);
         }
 
+        if(sec.youtube){
+  const iframe = document.createElement("iframe");
+  
+  // Convert normal YouTube links to embed format if needed
+  let ytURL = sec.youtube;
+  if(ytURL.includes("watch?v=")){
+    const videoId = ytURL.split("watch?v=")[1].split("&")[0];
+    ytURL = `https://www.youtube.com/embed/${videoId}`;
+  } else if(ytURL.includes("youtu.be/")){
+    const videoId = ytURL.split("youtu.be/")[1].split("?")[0];
+    ytURL = `https://www.youtube.com/embed/${videoId}`;
+  }
+
+  iframe.src = ytURL;
+  iframe.width = "100%";
+  iframe.height = "400";
+  iframe.style.border = "1px solid #ccc";
+  iframe.style.margin = "10px 0";
+  iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+  iframe.allowFullscreen = true;
+  d.appendChild(iframe);
+}
+
         d.appendChild(document.createElement("br"));
       });
     }
