@@ -1,6 +1,4 @@
 /* ---------- KSB DICTIONARY ---------- */
-console.log("JS loaded");
-
 const KSB_DICTIONARY = {
   K2:"How different learning delivery channels (face-to-face, blended or digital) contribute to effective learning",
   K4:"The latest learning practice",
