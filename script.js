@@ -321,51 +321,55 @@ And safety`},
     }
   ],
 
-  September: [
-    {
-      title: "Coaching Session",
-      date: "03/09/2025",
-      jobType: "off-job",
-      sections: [
-        {
-          heading:"concrete experience", 
-          content: "We had a session on coaching as part of the apprenticeship course"
-        },
-        {
-          heading:"Reflective observation", 
-          content: "we learnt about the qualities of a good coach, there was emphasis on the importance of active listening. we were taught about the GROW model – Goal, Reality, Options, Way forward."
-        }, 
-        {
-          heading:"Active experimentation", 
-          content: " I practiced what was learnt in the session that week by coaching my colleague. I used the GROW method to ask questions. We found that she wanted to do more learning, For the what now it was decided she would find an area to develop a skill or a topic to learn more about. I contacted her about blender and model making asking if that would be something she would like. she asked if there was a short intro she could try to see if it was for her. I suggested the donut tutorial I started out with."
-        }, 
-        {
-          heading:"Abstract conceptualization", 
-          content: "Using the sheet I found from my previous course made it much easier as I had questions I could rattle off. It also meant I could focus more on listening to what she had to say. I do think I still struggled with active listening slightly. I believe this is just because of a lack of practice and thinking too much. So, if I was to do this again, I will have to practice the skill of active listening first."
-        },
-        {
-          heading:"Witness testimonial", 
-          content: "Colleague – I had a coaching session with Angel as part of her apprenticeship work and found it helpful and well structured. She explained the session clearly and used the GROW model to guide the conversation, which made it easy to follow. She asked thoughtful questions and created a comfortable space for me to speak openly. Angel was encouraging and supportive throughout and helped me think about my goals and next steps in a practical way. At times she seemed to be thinking ahead about her next question, but she was aware of this and reflected on it afterwards, showing a genuine desire to improve. Overall, it was a positive experience and I can see her developing into a confident and effective coach with more practice."
-        }, 
-        {
-          heading: "Linked KSBs",
-          content: "S13, B1"
-        }
-    ,
-    {
-      title: "PDP Updates",
-      date: "03/09/2025",
-      jobType: "off-job",
-      sections: [
-        { 
-          content: "In my progress review with the help of my coach I realised I was not updating my pdp enough, which meant I was not keeping up with tasks properly. From that progress review onwards, I updated it monthly. I found I was keeping up with tasks much easier and when I was asked where I was or what I had to do left I had a better picture."
-        },
-        {
-          heading: "Linked KSBs",
-          content: "B1, B2"
-    }
-  ]},
-      }]
+const September = [
+  {
+    title: "Coaching Session",
+    date: "03/09/2025",
+    jobType: "off-job",
+    sections: [
+      {
+        heading: "Concrete Experience",
+        content: "We had a session on coaching as part of the apprenticeship course"
+      },
+      {
+        heading: "Reflective Observation",
+        content: "We learnt about the qualities of a good coach, there was emphasis on the importance of active listening. We were taught about the GROW model – Goal, Reality, Options, Way forward."
+      },
+      {
+        heading: "Active Experimentation",
+        content: "I practiced what was learnt in the session that week by coaching my colleague. I used the GROW method to ask questions. We found that she wanted to do more learning. For the 'what now', it was decided she would find an area to develop a skill or a topic to learn more about. I contacted her about Blender and model making, asking if that would be something she would like. She asked if there was a short intro she could try to see if it was for her. I suggested the donut tutorial I started out with."
+      },
+      {
+        heading: "Abstract Conceptualization",
+        content: "Using the sheet I found from my previous course made it much easier as I had questions I could rattle off. It also meant I could focus more on listening to what she had to say. I do think I still struggled with active listening slightly. I believe this is just because of a lack of practice and thinking too much. So, if I was to do this again, I will have to practice the skill of active listening first."
+      },
+      {
+        heading: "Witness Testimonial",
+        content: "Colleague – I had a coaching session with Angel as part of her apprenticeship work and found it helpful and well structured. She explained the session clearly and used the GROW model to guide the conversation, which made it easy to follow. She asked thoughtful questions and created a comfortable space for me to speak openly. Angel was encouraging and supportive throughout and helped me think about my goals and next steps in a practical way. At times she seemed to be thinking ahead about her next question, but she was aware of this and reflected on it afterwards, showing a genuine desire to improve. Overall, it was a positive experience and I can see her developing into a confident and effective coach with more practice."
+      },
+      {
+        heading: "Linked KSBs",
+        content: "S13, B1"
+      }
+    ]
+  },
+  {
+    title: "PDP Updates",
+    date: "03/09/2025",
+    jobType: "off-job",
+    sections: [
+      {
+        heading: "Progress Reflection",
+        content: "In my progress review with the help of my coach I realised I was not updating my PDP enough, which meant I was not keeping up with tasks properly. From that progress review onwards, I updated it monthly. I found I was keeping up with tasks much easier and when I was asked where I was or what I had left to do, I had a better picture."
+      },
+      {
+        heading: "Linked KSBs",
+        content: "B1, B2"
+      }
+    ]
+  }
+];
+
 
   October: [
     {
