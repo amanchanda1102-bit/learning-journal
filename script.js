@@ -628,10 +628,44 @@ function openAllEntries(){
       filtered.forEach(e=>{
         const d=document.createElement("div"); d.className="entry";
         const h=document.createElement("h3"); h.textContent=`${e.title} — ${e.date}`; d.appendChild(h);
-        if(e.sections){ e.sections.forEach(sec=>{
-          if(sec.heading){ d.innerHTML += `<strong>${sec.heading}:</strong><br>${sec.content}<br><br>`; }
-          else { d.innerHTML += `<p>${sec.content}</p>`; }
-        }); } else if(e.content){ d.innerHTML += `<p>${e.content}</p>`; }
+if (e.sections) {
+  e.sections.forEach(sec => {
+
+    if (sec.heading) {
+      const strong = document.createElement("strong");
+      strong.textContent = sec.heading + ":";
+      d.appendChild(strong);
+      d.appendChild(document.createElement("br"));
+    }
+
+    if (sec.content) {
+      const p = document.createElement("p");
+      p.textContent = sec.content;
+      d.appendChild(p);
+    }
+
+    if (sec.image) {
+      const img = document.createElement("img");
+      img.src = sec.image;
+      img.style.maxWidth = "100%";
+      img.style.margin = "10px 0";
+      d.appendChild(img);
+    }
+
+    if (sec.pdf) {
+      const iframe = document.createElement("iframe");
+      iframe.src = sec.pdf;
+      iframe.width = "100%";
+      iframe.height = "600";
+      iframe.style.border = "1px solid #ccc";
+      iframe.style.margin = "10px 0";
+      d.appendChild(iframe);
+    }
+
+    d.appendChild(document.createElement("br"));
+  });
+}
+ else if(e.content){ d.innerHTML += `<p>${e.content}</p>`; }
         allEntriesContainer.appendChild(d);
       });
     });
