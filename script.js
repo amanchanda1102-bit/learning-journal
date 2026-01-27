@@ -311,7 +311,8 @@ And safety`},
       jobType: "on-job",
       sections: [
         {
-          content: "I show examples of how I have set up and set down learning events, demonstrating how objectives were achieved, stakeholder/learner management, inclusion, follow-up/evaluation, and monitoring learner progress."
+          content: "I show examples of how I have set up and set down learning events, demonstrating how objectives were achieved, stakeholder/learner management, inclusion, follow-up/evaluation, and monitoring learner progress.",
+        pdf: "https://amanchanda1102-bit.github.io/learning-journal/setup.pdf"
         },
         {
           heading: "Linked KSBs",
@@ -360,6 +361,8 @@ And safety`},
       sections: [
         { 
           content: "In my progress review with the help of my coach I realised I was not updating my pdp enough, which meant I was not keeping up with tasks properly. From that progress review onwards, I updated it monthly. I found I was keeping up with tasks much easier and when I was asked where I was or what I had to do left I had a better picture."
+          image: ["https://amanchanda1102-bit.github.io/learning-journal/PDP1.jpg",
+                 "https://amanchanda1102-bit.github.io/learning-journal/PDP2.jpg"]
         },
         {
           heading: "Linked KSBs",
