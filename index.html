@@ -15,12 +15,11 @@
 <aside class="contents-panel" id="contentsPanel">
   <h3>Contents</h3>
   <div id="contentsList"></div>
-  <div class="contents-footer">
-    <button onclick="goHome()">🏠 Home Page</button>
-    <button onclick="openHeatmap()">🔥 Heatmap</button>
-    <button onclick="openAllEntries()">📖 View All Entries</button>
-    <button onclick="openApply()">✏️ Apply Learning</button>
-  </div>
+<div class="contents-footer">
+  <button onclick="goHome()">🏠 Home Page</button>
+  <button onclick="openHeatmap()">🔥 Heatmap</button>
+  <button onclick="openAllEntries()">📖 View All Entries</button>
+</div>
 </aside>
 
 <header>
@@ -46,17 +45,12 @@
   <div class="month-header">
     <h2>KSB Heatmap</h2>
   </div>
+
   <div id="heatmapGrid"></div>
+
   <button class="back-btn" onclick="goHome()">← Back</button>
 </section>
 
-<section class="month-page" id="applyPage" style="display:none;">
-  <div class="month-header">
-    <h2>Apply Learning</h2>
-  </div>
-  <div id="applyEntries"></div>
-  <button class="back-btn" onclick="goHome()">← Back</button>
-</section>
 
 <button class="reset-btn" onclick="resetProgress()">Reset progress</button>
 
@@ -64,3 +58,11 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
