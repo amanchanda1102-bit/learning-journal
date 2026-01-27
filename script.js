@@ -735,11 +735,13 @@ function highlightCurrentMonth(month){
 
 /* ---------- OPEN ALL ENTRIES ---------- */
 function openAllEntries() {
+  // Hide the month grid and heatmap
   grid.style.display = "none";
   page.style.display = "block";
   title.textContent = "All Entries";
   entries.innerHTML = "";
 
+  // Loop through all months
   Object.keys(data).forEach(month => {
     data[month].forEach(e => {
       const d = document.createElement("div");
@@ -749,21 +751,23 @@ function openAllEntries() {
       h.textContent = `${month} — ${e.title} — ${e.date}`;
       d.appendChild(h);
 
-      if(e.sections){
+      if (e.sections) {
         e.sections.forEach(sec => {
-          if(sec.heading){
+
+          if (sec.heading) {
             const strong = document.createElement("strong");
             strong.textContent = sec.heading + ":";
             d.appendChild(strong);
             d.appendChild(document.createElement("br"));
           }
-          if(sec.content){
+
+          if (sec.content) {
             const p = document.createElement("p");
             p.textContent = sec.content;
             d.appendChild(p);
           }
 
-          if(sec.images){
+          if (sec.images) {
             sec.images.forEach(src => {
               const img = document.createElement("img");
               img.src = src;
@@ -773,7 +777,7 @@ function openAllEntries() {
             });
           }
 
-          if(sec.pdf){
+          if (sec.pdf) {
             const iframe = document.createElement("iframe");
             iframe.src = sec.pdf;
             iframe.width = "100%";
@@ -783,13 +787,13 @@ function openAllEntries() {
             d.appendChild(iframe);
           }
 
-          if(sec.youtube){
+          if (sec.youtube) {
             const iframe = document.createElement("iframe");
             let ytURL = sec.youtube;
-            if(ytURL.includes("watch?v=")){
+            if (ytURL.includes("watch?v=")) {
               const videoId = ytURL.split("watch?v=")[1].split("&")[0];
               ytURL = `https://www.youtube.com/embed/${videoId}`;
-            } else if(ytURL.includes("youtu.be/")){
+            } else if (ytURL.includes("youtu.be/")) {
               const videoId = ytURL.split("youtu.be/")[1].split("?")[0];
               ytURL = `https://www.youtube.com/embed/${videoId}`;
             }
@@ -798,7 +802,8 @@ function openAllEntries() {
             iframe.height = "400";
             iframe.style.border = "1px solid #ccc";
             iframe.style.margin = "10px 0";
-            iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+            iframe.allow =
+              "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
             iframe.allowFullscreen = true;
             d.appendChild(iframe);
           }
@@ -811,6 +816,7 @@ function openAllEntries() {
     });
   });
 }
+
 
 
 /* ---------- INIT ---------- */
