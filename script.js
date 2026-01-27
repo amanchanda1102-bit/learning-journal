@@ -480,29 +480,38 @@ function openMonth(m){
 
     if(e.sections){
       e.sections.forEach(sec=>{
-       if(sec.heading){
-  d.innerHTML += `<strong>${sec.heading}:</strong><br>${sec.content || ""}<br><br>`;
-} else if(sec.content){
-  d.innerHTML += `<p>${sec.content}</p>`;
+if (sec.heading) {
+  const strong = document.createElement("strong");
+  strong.textContent = sec.heading + ":";
+  d.appendChild(strong);
+  d.appendChild(document.createElement("br"));
 }
 
-if(sec.pdf){
+if (sec.content) {
+  const p = document.createElement("p");
+  p.textContent = sec.content;
+  d.appendChild(p);
+}
+
+if (sec.image) {
+  const img = document.createElement("img");
+  img.src = sec.image;
+  img.style.maxWidth = "100%";
+  img.style.margin = "10px 0";
+  d.appendChild(img);
+}
+
+if (sec.pdf) {
   const iframe = document.createElement("iframe");
   iframe.src = sec.pdf;
   iframe.width = "100%";
   iframe.height = "600";
   iframe.style.border = "1px solid #ccc";
-  iframe.style.marginTop = "10px";
+  iframe.style.margin = "10px 0";
   d.appendChild(iframe);
 }
 
-        if (sec.image) {
-  const img = document.createElement("img");
-  img.src = sec.image;
-  img.style.maxWidth = "100%";
-  img.style.marginTop = "10px";
-  d.appendChild(img);
-}
+d.appendChild(document.createElement("br"));
 
 
       });
