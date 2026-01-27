@@ -109,7 +109,8 @@ const data = {
       sections: [
         {
           content: I created a heatmap, based on the KSBs to track how I develop over the course of this programme. I also created a CPD, Continuing Professional Development, log after reading through the EPA and Gateway guidelines.",
-         pdf: "https://amanchanda1102-bit.github.io/learning-journal/CPD.pdf"},
+         image: "https://amanchanda1102-bit.github.io/learning-journal/heatmap.png",
+          pdf: "https://amanchanda1102-bit.github.io/learning-journal/CPD.pdf"},
         {
           heading: "Linked KSBs",
           content: "B2"
