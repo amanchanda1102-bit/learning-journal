@@ -108,7 +108,7 @@ const data = {
       jobType: "off-job",
       sections: [
         {
-          content: "TAXXXXX, I created a heatmap, based on the KSBs to track how I develop over the course of this programme. I also created a CPD, Continuing Professional Development, log after reading through the EPA and Gateway guidelines.",
+          content: I created a heatmap, based on the KSBs to track how I develop over the course of this programme. I also created a CPD, Continuing Professional Development, log after reading through the EPA and Gateway guidelines.",
          pdf: "https://amanchanda1102-bit.github.io/learning-journal/CPD.pdf"},
         {
           heading: "Linked KSBs",
