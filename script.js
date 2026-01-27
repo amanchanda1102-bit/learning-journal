@@ -601,6 +601,7 @@ function backToMonths(){
 function goHome(){
   page.style.display="none";
   document.getElementById("heatmapPage").style.display="none";
+  document.getElementById("applyPage").style.display="none";
   grid.style.display="grid";
   panel.classList.remove("open");
   overlay.style.display="none";
@@ -735,6 +736,39 @@ function highlightCurrentMonth(month){
     if(m.querySelector("button").textContent===month){
       m.classList.add("active");
     }
+  });
+}
+function openApply(){
+  // Hide other views
+  grid.style.display = "none";
+  page.style.display = "none";
+  document.getElementById("heatmapPage").style.display = "none";
+
+  const applyPage = document.getElementById("applyPage");
+  const applyEntries = document.getElementById("applyEntries");
+  applyEntries.innerHTML = "";
+  applyPage.style.display = "block";
+
+  Object.entries(data).forEach(([month, entries])=>{
+    const monthDiv = document.createElement("div");
+    monthDiv.className = "apply-month";
+
+    const monthTitle = document.createElement("h3");
+    monthTitle.textContent = month;
+    monthDiv.appendChild(monthTitle);
+
+    // Add reflections text area
+    const textArea = document.createElement("textarea");
+    textArea.placeholder = "How did you apply your learning this month?";
+    textArea.style.width = "100%";
+    textArea.style.minHeight = "100px";
+    textArea.value = JSON.parse(localStorage.getItem(`apply-${month}`)) || "";
+    textArea.oninput = ()=> {
+      localStorage.setItem(`apply-${month}`, JSON.stringify(textArea.value));
+    };
+    monthDiv.appendChild(textArea);
+
+    applyEntries.appendChild(monthDiv);
   });
 }
 
