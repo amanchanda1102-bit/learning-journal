@@ -488,7 +488,7 @@ let completed = JSON.parse(localStorage.getItem("ljCompleted")) || [];
 grid.style.display = "grid";
 page.style.display = "none";
 document.getElementById("heatmapPage").style.display = "none";
-document.getElementById("applyPage").style.display = "none";
+
 
 /* ---------- MONTH BUTTONS ---------- */
 Object.keys(data).forEach(m=>{
@@ -592,7 +592,6 @@ function backToMonths(){
 function goHome(){
   page.style.display="none";
   document.getElementById("heatmapPage").style.display="none";
-  document.getElementById("applyPage").style.display="none";
   grid.style.display="grid";
   panel.classList.remove("open");
   overlay.style.display="none";
@@ -659,7 +658,6 @@ Object.entries(data).forEach(([m,es])=>{
 function openHeatmap(){
   grid.style.display="none";
   page.style.display="none";
-  document.getElementById("applyPage").style.display="none";
 
   const heatPage = document.getElementById("heatmapPage");
   heatPage.style.display="block";
@@ -711,45 +709,3 @@ function highlightCurrentMonth(month){
   });
 }
 
-/* ---------- APPLY LEARNING PAGE ---------- */
-function openApply(){
-  grid.style.display = "none";
-  page.style.display = "none";
-  document.getElementById("heatmapPage").style.display="none";
-
-  const applyPage = document.getElementById("applyPage");
-  const applyEntries = document.getElementById("applyEntries");
-  if(!applyPage || !applyEntries) return;
-
-  applyEntries.innerHTML = "";
-  applyPage.style.display = "block";
-
-  Object.keys(data).forEach(month => {
-    const monthDiv = document.createElement("div");
-    monthDiv.className = "apply-month";
-
-    const monthTitle = document.createElement("h3");
-    monthTitle.textContent = month;
-    monthDiv.appendChild(monthTitle);
-
-    const textArea = document.createElement("textarea");
-    textArea.placeholder = "How did you apply your learning this month?";
-    textArea.style.width = "100%";
-    textArea.style.minHeight = "100px";
-
-    try {
-      const saved = localStorage.getItem(`apply-${month}`);
-      textArea.value = saved ? JSON.parse(saved) : "";
-    } catch(e) { textArea.value = ""; }
-
-    textArea.oninput = ()=> {
-      localStorage.setItem(`apply-${month}`, JSON.stringify(textArea.value));
-    };
-
-    monthDiv.appendChild(textArea);
-    applyEntries.appendChild(monthDiv);
-  });
-}
-
-/* ---------- INIT ---------- */
-updateProgress();
