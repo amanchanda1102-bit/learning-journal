@@ -669,6 +669,140 @@ Object.entries(data).forEach(([m,es])=>{
   contentsList.appendChild(d);
 });
 
+/* ---------- ALL ENTRIES PAGE ---------- */
+
+function openAllEntries() {
+  grid.style.display = "none";
+  page.style.display = "block";
+  title.textContent = "All Entries";
+  entries.innerHTML = "";
+
+  const filterBar = document.createElement("div");
+  filterBar.style.marginBottom = "20px";
+  filterBar.style.display = "flex";
+  filterBar.style.flexWrap = "wrap";
+  filterBar.style.gap = "10px";
+
+  const ksbSelect = document.createElement("select");
+  ksbSelect.innerHTML =
+    `<option value="all">All KSBs</option>` +
+    Object.keys(KSB_DICTIONARY)
+      .map(k => `<option value="${k}">${k}</option>`)
+      .join("");
+
+  ksbSelect.style.padding = "6px 10px";
+  ksbSelect.style.borderRadius = "6px";
+  ksbSelect.style.border = "1px solid var(--border)";
+  filterBar.appendChild(ksbSelect);
+
+  const typeSelect = document.createElement("select");
+  typeSelect.innerHTML = `
+    <option value="all">All Job Types</option>
+    <option value="on-job">On-Job</option>
+    <option value="off-job">Off-Job</option>
+  `;
+
+  typeSelect.style.padding = "6px 10px";
+  typeSelect.style.borderRadius = "6px";
+  typeSelect.style.border = "1px solid var(--border)";
+  filterBar.appendChild(typeSelect);
+
+  entries.appendChild(filterBar);
+
+  const allEntriesContainer = document.createElement("div");
+  entries.appendChild(allEntriesContainer);
+
+  function renderEntries() {
+    allEntriesContainer.innerHTML = "";
+
+    const selectedKSB = ksbSelect.value;
+    const selectedType = typeSelect.value;
+
+    Object.entries(data).forEach(([month, monthEntries]) => {
+      const filtered = monthEntries.filter(e => {
+        if (selectedType !== "all" && e.jobType !== selectedType) return false;
+
+        if (selectedKSB === "all") return true;
+
+        if (!e.sections) return false;
+
+        return e.sections.some(sec => {
+          const contentIncludes =
+            sec.content &&
+            (sec.content.includes(selectedKSB) ||
+              sec.content.split(", ").includes(selectedKSB));
+
+          const headingIncludes =
+            sec.heading && sec.heading.includes(selectedKSB);
+
+          return contentIncludes || headingIncludes;
+        });
+      });
+
+      if (filtered.length === 0) return;
+
+      const monthHeading = document.createElement("h3");
+      monthHeading.textContent = month;
+      allEntriesContainer.appendChild(monthHeading);
+
+      filtered.forEach(e => {
+        const d = document.createElement("div");
+        d.className = "entry";
+
+        const h = document.createElement("h3");
+        h.textContent = `${e.title} — ${e.date}`;
+        d.appendChild(h);
+
+        if (e.sections) {
+          e.sections.forEach(sec => {
+
+            if (sec.heading) {
+              const strong = document.createElement("strong");
+              strong.textContent = sec.heading + ":";
+              d.appendChild(strong);
+              d.appendChild(document.createElement("br"));
+            }
+
+            if (sec.content) {
+              const p = document.createElement("p");
+              p.textContent = sec.content;
+              d.appendChild(p);
+            }
+
+            if (sec.image) {
+              const img = document.createElement("img");
+              img.src = sec.image;
+              img.style.maxWidth = "100%";
+              img.style.margin = "10px 0";
+              d.appendChild(img);
+            }
+
+            if (sec.pdf) {
+              const iframe = document.createElement("iframe");
+              iframe.src = sec.pdf;
+              iframe.width = "100%";
+              iframe.height = "600";
+              iframe.style.border = "1px solid #ccc";
+              iframe.style.margin = "10px 0";
+              d.appendChild(iframe);
+            }
+
+            d.appendChild(document.createElement("br"));
+          });
+        }
+
+        allEntriesContainer.appendChild(d);
+      });
+    });
+
+    attachKSBTooltips();
+  }
+
+  renderEntries();
+
+  ksbSelect.onchange = renderEntries;
+  typeSelect.onchange = renderEntries;
+}
 
 /* ---------- HEATMAP ---------- */
 function openHeatmap(){
