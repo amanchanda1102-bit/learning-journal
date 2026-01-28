@@ -451,179 +451,178 @@ And safety`},
 };
 
 /* ---------- APPLIED LEARNING DATA ---------- */
+/******** APPLIED LEARNING DATA ********/
+
 const appliedLearning = {
   intro: "This is the application of the topics learnt in sessions to my specific work and workplace.",
   entries: [
+
     {
-      title: "How to collect objective feedback",
+      title: "How to collect objective feedback and use it to improve performance",
       date: "22/01/2025",
       sections: [
         {
-          heading: "Details",
           content: `An anonymous online survey can reduce bias and people being overly nice. It could potentially reduce the number of responses, however my team is small and growth and learning is valued so in my situation this wouldn't cause an issue.
+
 If gathering feedback from co-workers, gather feedback from people who feel neutral or positive about you as those who feel negative about you probably are not going to provide constructive criticisms, especially in an anonymous survey.
+
 Providing a set of questions as well as ratings (1 to 5) can help with getting relevant feedback. You can focus the questions on areas you want to assess where you are at or specific things you want to work on. Doing a self assessment can help with this process.
+
 Open ended questions can allow for anything you may have not thought of, whether that be strengths and areas of development or ideas for goals / ways of getting better. All of which can help you identify areas of developments as well as strengths you may not have known you had in a constructive way.`
         },
         {
-          heading: "How to use feedback to improve performance",
           content: `See common trends in responses. Most online surveys have features to show average or graph which will help with this. If the response to one rating was low for every person, that is a noticeable area of development, where as on where the ratings are very varied may not be as helpful in identifying an area.
+
 Think about whether this is something you can change and how long it would take to change (if you are anxious or quiet that is not something that changes overnight as opposed to file or desk organisation).
+
 Once identified, use this feedback and self assessment, to pick a few areas (based on importance), create a plan or smart goals both short and long term. Or if you already have a Personal Development Plan, update it with these.`
         }
       ]
     },
+
     {
-      title: "How technology supports effective learning, either alone or in conjunction with other channels",
+      title: "How technology supports effective learning",
       date: "19/02/2025",
       sections: [
         {
-          heading: "Virtual learning",
           content: `Virtual forms of learning, whether that be virtual platforms and online resources or zoom classrooms or recordings, can make learning a lot more accessible. It can allow the user to learn from anywhere at any time. This makes learning more inclusive, for example, to those with other commitments or who need more time or maybe have trouble accessing a physical location.
-Some if not most online videos or classrooms have auto generated subtitles, which while not always 100% accurate can aid those with visual impairments or even those who speak other languages (as even if auto generated captions for other languages aren't available the english captions can help aid translation). The hearing impaired can also control the volume, if they need it louder. It also allows you to go back or pause if you miss anything or need time to write things down.
-Moodle is an LMS or Learning Management System that makes use of these features. At Babcock's Minley site, Moodle is the main learning platform used. It contains the pre learning, for when the trainees do flipped classroom learning. It also contains all of the resources for revision and some of the classes provided are on there.`
+
+Some if not most online videos or classrooms have auto generated subtitles, which while not always 100% accurate can aid those with visual impairments or even those who speak other languages. The hearing impaired can also control the volume. It also allows you to go back or pause if you miss anything or need time to write things down.
+
+Moodle is an LMS or Learning Management System that makes use of these features. At Babcock's Minley site, Moodle is the main learning platform used. It contains pre learning and all of the resources for revision and recorded classes.`
         },
         {
-          heading: "LXP / advanced platforms",
-          content: `LXP or Learning Experience Platforms, are like LMS’ but better. It's more learner centred, using AI and analytics so learning can be personalised to the user. It can be used to help gauge where a learner is at, providing more help on the topics the data shows they find more difficult. While reducing time wasted on topics the learner is confident in. This could also help track interests, skills and areas of development. If they linger on a page or a set of pages on x topic, they can be recommended a course in x.
-LPX often uses gamification, this helps keep learners engaged and wanting to use the system more. Often it'll have a points system, with points for streaks or daily check-ins or completion of tasks. This is positive reinforcement, encouraging the learning behaviours. Often the learning on platforms like this contain short videos with questions to reinforce learning and check understanding. This again, can help keep the learners engaged, ensuring they're actually learning and not just trying to get through the tasks.`
+          content: `LXP or Learning Experience Platforms are more learner centred, using AI and analytics so learning can be personalised to the user. It helps gauge where a learner is at and recommends courses based on interests and difficulty.
+
+LPX often uses gamification such as points, streaks and completion rewards. This encourages engagement and learning behaviours. Learning is often delivered in short videos with questions to reinforce understanding.
+
+While we don't currently have an LXP I believe we'd benefit from it. At our Lyneham branch they use interactive 3D models such as pipes and valves which show flow systems in a way that is much easier to understand than 2D diagrams or real pipes where you cannot see inside.
+
+This would help new soldiers explore learning opportunities based on interests rather than sifting through documents on the LMS.`
         },
         {
-          heading: "Extended reality / interactive learning",
-          content: `While we don't have an LXP I believe we'd benefit from it. Theory makes up less than half of the courses we provide. However as we work with the royal engineers, understanding the ins and outs of things can be advantageous. At our Lyneham branch, they use 3d models of interactive objects, e.g. pipes and valves. You can see things flowing through and what happens to those things when you turn a valve. This can be extremely useful as ordinarily this would be taught with a 2d diagram which can be hard to visualise or a real pipe which you cant see the insides of, making it harder to make the connection. This is an example of where something interactive is better than a powerpoint or real life demonstration.`
-        },
-        {
-          heading: "Internal information systems",
-          content: `Internal information systems(IIS) manage and store data, most companies will have multiple systems. They could have one on the contact us page where potential customers or suppliers put in queries or propositions. This can be stored and analysed later, are we getting a lot of the same training requests? Is this a gap in the market? Do we have the capabilities? Etc.
-Tie this into the IIS on all courses and departments and abilities we have. Take learning about pipes for example, if they wanted models what can we offer them? We have a 3D modeller with a 3D printer and a multimedia team with online 3D model capabilities. What are the cost differences and turn around times? - we could look at previous models made, how long they took, and price estimates. For the online one we would also have data on how often the models are used, engagement rates as well as other stats on learning.
-There will also be one containing all of the current employees' information. At my workplace we need someone to redo the Moodle packages. The Internal info system could be used to find the best fit for the task - whose current skill sets are the most similar, what kind of training could we provide them so they could fill this need, would they even be interested in a course, do they regularly pick up courses offered? Etc.
-On our internal system we upload our PDRs or Performance and development reviews, this is where the employee writes down goals for the year. This is reviewed later, where managers assess strengths and areas for developments and how the goal progress is going. This helps the employee feel more a part of the team and helps them work to become a better employee, also if they have anything they are interested in learning or training this is a way of letting it be known and the manager can help facilitate this goal.`
+          content: `Extended reality is used in the form of simulation software which allows practice of communication between leaders and troops. It is cost effective, repeatable, realistic and can be played back for review.
+
+Internal Information Systems manage and store company data. They can be used to analyse training requests, identify gaps, compare costs of resources like 3D models, track engagement and assign the right people to projects.
+
+Our internal systems also hold PDRs which track goals and development. This helps managers give feedback and helps employees feel part of the team and supported in learning.`
         }
       ]
     },
+
     {
-      title: "Different L&D roles required for effective learning and development in Babcock",
+      title: "Different L&D roles in Babcock and my responsibilities",
       date: "02/04/2025",
       sections: [
         {
-          heading: "Roles in L&D",
-          content: `Specific to our company these are the L&D roles we have: 
-Media team: they deal with headshots, websites, QR codes, banners, anything media related but specifically for the L&D team.
-Schedulers/admin: They enter the information on all of the applicants or trainees. As well as scheduling courses throughout the year. We often run multiple of the same course, so spreading those out over the year as to ensure every course is booked in on the (limited) facilities eg the fields or training grounds or lake. They also take into account usual off periods for soldiers, as well as bank holidays making sure to schedule around those. They book facilities and equipment for each course with internal and external places. They are also the ones that deal with any changes or cancellations. If a group can’t use the field because of adverse weather conditions they rearrange schedules based on level of importance and availability. As everything in the course is usually in place for a reason, eg a competency that has to be marked off and therefore the trainees can’t miss it and have to do it another time.
-Training developer: They receive the requirements laid out by the TNA or training analysts. Based on that they develop the course specification and potential delivery points for the trainer.
-Training facilitator: The person that delivers the training to the trainees. They receive the specs as well as potential delivery points and create their learning resources based on this. They are the ones that interact with the learners.
-Director of L&D: They keep everything under control, making sure everyone is going at a good pace. They deal with issues if they arise and are the point of contact for the higher ups as well as the customer e.g. the army. Between them they make decisions which are distributed throughout the L&D team.
-Training designer: When elearning modules are involved or anything that needs to be designed (other than facilitators PowerPoints) the designer deals with this. Creating what is needed based on the specs.
-Training quality assessor: They go round and randomly check on courses, gathering feedback on everything from did the course deliver what you wanted, do you feel it helped to how was the food and accommodation. He ensures everything is up to spec, and any issues are sent to the right people.
-Training analysts: They review courses every 5 years. They ask the wider regimen how the soldiers are and if there’s anything they think should be done differently. With this and research, they create a document outlining what changes need to be made and why. This is what is passed on to the training developers.
-Training assistant: They assist with training, the parts that the trainer may not have control of. Eg the simulation suite. Setting everything up before and closing everything down after. Providing guidance with the simulation software and then assisting with any queries or problems with the computers or users.`
+          content: `The L&D roles in our company include:
+
+Media team – deal with websites, QR codes, banners and media.
+
+Schedulers/admin – manage trainees, schedule courses, book facilities and rearrange sessions if needed.
+
+Training developer – create course specifications based on training needs analysis.
+
+Training facilitator – deliver training and create learning resources.
+
+Director of L&D – oversees the whole department and makes key decisions.
+
+Training designer – designs elearning modules and learning materials.
+
+Training quality assessor – checks courses and gathers feedback.
+
+Training analysts – review courses every five years and create change documents.
+
+Training assistant – assist with training and simulation suites.`
         },
         {
-          heading: "My role and responsibilities within the L&D structure",
-          content: `My role is Training assistant or L&D apprentice. I assist with training within the simulation suite. My responsibilities include:
-I help set up the hall for the trainees. I assist with queries and computer problems. I also aid the creation of simulation software. I do this by creating custom assets that I’m asked for. I also create missions as and when requested by putting items and objects in the simulation software. We offer multiple courses here, within the courses such as the commander course, there are specific training parts. Physical field training, knowledge based, they may be asked questions and skill based, where they are expected to demonstrate the thing. In the commander course there is a need for communication, leadership and organisational skills. This can be practised in the simulation suite. So we create the training, deliver the instructions on use of equipment and then aid with any queries throughout. Setting up and closing down the hall and computers before and after use.`
+          content: `My role is Training assistant and L&D apprentice. I help set up halls, assist with IT issues and support trainees.
+
+I help create simulation assets and missions, assist with communication and leadership training in the simulation suite, and ensure everything is prepared and closed down properly before and after sessions.`
         }
       ]
     },
+
     {
-      title: "Communication Mediums and Methods",
+      title: "Communication mediums and organisational values",
       date: "28/05/2025",
       sections: [
         {
-          heading: "Description",
-          content: "Reviewed different communication mediums (written, verbal, virtual) and methods (instant message, email, video call, meetings, phone calls, social media posts). Applied knowledge to select appropriate methods based on urgency, sensitivity, accessibility, complexity, record-keeping, audience familiarity, and quantity. Examples included emailing for simple updates and video calls or face-to-face meetings for complex or urgent matters."
+          content: `There are three main communication mediums: written, verbal and virtual.
+
+Methods include instant messaging, email, video calls, meetings, phone calls and social media posts.
+
+Choosing the right method depends on urgency, sensitivity, accessibility, complexity, record keeping, audience familiarity and quantity of people involved.
+
+For urgent matters instant messaging or phone calls are best. Sensitive information is better shared in person. Complex topics work better in meetings or video calls. Emails are useful for records and simple updates.`
         },
         {
-          heading: "Linked KSBs",
-          content: "S1, S2, K1"
+          content: `Babcock has six organisational values:
+
+Be curious – questioning and improving training methods.
+
+Be kind – inclusivity and accessibility.
+
+Be courageous – improving outdated training.
+
+Think outcomes – using feedback and results.
+
+Collaborate – teamwork and shared ideas.
+
+Own and deliver – maintaining high quality standards.
+
+These values directly impact how training is planned and delivered.`
         }
       ]
     },
+
     {
-      title: "Applying Principles of Trust Across Functions",
+      title: "Applying trust principles and managing conflict",
       date: "25/06/2025",
       sections: [
         {
-          heading: "Description",
-          content: "Worked with the training team during a three-day session with IT issues. Applied ABCD model of trust: Able (resolved issues), Believable (communicated honestly), Connected (kept team informed), Dependable (ensured smooth continuation). This helped build trust and collaboration with the team and trainer."
+          content: `During a training session with IT problems I applied the ABCD model of trust.
+
+Able – resolving problems as they arose.
+
+Believable – communicating honestly.
+
+Connected – staying in contact with team and trainer.
+
+Dependable – ensuring training continued smoothly.
+
+This built trust and collaboration with trainees and staff.`
         },
         {
-          heading: "Linked KSBs",
-          content: "S3, B4, K2"
+          content: `I also applied these principles within the team by communicating constantly with my mentor while working alone.
+
+I handled setup, troubleshooting and reports which helped narrow down issues and ensured smooth delivery.
+
+For conflict management I lean toward collaboration and compromise using the Thomas-Kilmann model.
+
+I plan improvements by researching alternatives, collaborating with my mentor and presenting ideas to management.`
         }
       ]
     },
+
     {
-      title: "Applying Principles of Trust Within Team",
-      date: "25/06/2025",
-      sections: [
-        {
-          heading: "Description",
-          content: "Worked alone on day two of training, communicated with mentor via calls and instant messaging to stay connected and manage IT issues. Took responsibility for monitoring trainee problems, downloading reports, and ensuring smooth operations in absence of team members, demonstrating dependability and collaboration."
-        },
-        {
-          heading: "Linked KSBs",
-          content: "S3, B4, K2"
-        }
-      ]
-    },
-    {
-      title: "Conflict Management for Team Relationships",
-      date: "25/06/2025",
-      sections: [
-        {
-          heading: "Description",
-          content: "Applied conflict handling skills using the Thomas-Kilmann model, leaning toward collaboration and compromise depending on the situation. Focused on maintaining positive team relationships and productive outcomes, for example planning changes to independent learning materials by researching alternatives, collaborating with mentor, and presenting to manager with evidence."
-        },
-        {
-          heading: "Linked KSBs",
-          content: "S4, B5, K3"
-        }
-      ]
-    },
-    {
-      title: "Setting Up a Training Event",
+      title: "Setting up and settling down training events",
       date: "20/08/2025",
       sections: [
         {
-          heading: "Description",
-          content: "Considered special requirements (accessibility, dietary, prayer), environmental factors (temperature, noise, lighting), and capacity (attendance, room size, materials) to plan an effective training event."
+          content: `When setting up training events I consider special requirements such as accessibility, dietary needs and prayer spaces.
+
+Environmental factors like temperature, noise and lighting are managed.
+
+Capacity is planned including room size, attendance, handouts, equipment and logistics.`
         },
         {
-          heading: "Linked KSBs",
-          content: "S5, B6, K4"
+          content: `When settling down events I ensure objectives are met, conduct debriefs, gather feedback using Menti, ask questions to gauge understanding and manage post-session organisation such as equipment and room setup.`
         }
       ]
-    },
-    {
-      title: "Settling Down a Training Event",
-      date: "20/08/2025",
-      sections: [
-        {
-          heading: "Description",
-          content: "Ensured learning objectives were met, conducted debrief and feedback using Menti, asked questions to gauge understanding, and managed post-training logistics such as collecting materials and ensuring proper room setup."
-        },
-        {
-          heading: "Linked KSBs",
-          content: "S5, B6, K4"
-        }
-      ]
-    },
-    {
-      title: "Applying Organisational Values to Training Practice",
-      date: "28/05/2025",
-      sections: [
-        {
-          heading: "Description",
-          content: "Applied Babcock values (Be curious, Be kind, Be courageous, Think outcomes, Collaborate, Own + Deliver) to training practice. Examples include improving training methods, considering accessibility, including diverse examples, collecting feedback, and ensuring high-quality delivery."
-        },
-        {
-          heading: "Linked KSBs",
-          content: "S6, B7, K5"
-        }
-       ]
-      }
-     ]
+    }
+
+  ]
 };
 
 
