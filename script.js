@@ -524,7 +524,7 @@ Training assistant: They assist with training, the parts that the trainer may no
 I help set up the hall for the trainees. I assist with queries and computer problems. I also aid the creation of simulation software. I do this by creating custom assets that I’m asked for. I also create missions as and when requested by putting items and objects in the simulation software. We offer multiple courses here, within the courses such as the commander course, there are specific training parts. Physical field training, knowledge based, they may be asked questions and skill based, where they are expected to demonstrate the thing. In the commander course there is a need for communication, leadership and organisational skills. This can be practised in the simulation suite. So we create the training, deliver the instructions on use of equipment and then aid with any queries throughout. Setting up and closing down the hall and computers before and after use.`
         }
       ]
-    }
+    },
     {
       title: "Communication Mediums and Methods",
       date: "28/05/2025",
