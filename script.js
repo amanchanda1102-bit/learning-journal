@@ -792,14 +792,14 @@ function openMonth(m) {
   updateProgress();
 }
 
-/* ---------- ALL ENTRIES PAGE ---------- */
-
+/* ---------- ALL ENTRIES PAGE WITH SCROLL HIGHLIGHT ---------- */
 function openAllEntries() {
   grid.style.display = "none";
   page.style.display = "block";
   title.textContent = "All Entries";
   entries.innerHTML = "";
 
+  // --- Filter Bar ---
   const filterBar = document.createElement("div");
   filterBar.style.marginBottom = "20px";
   filterBar.style.display = "flex";
@@ -824,7 +824,6 @@ function openAllEntries() {
     <option value="on-job">On-Job</option>
     <option value="off-job">Off-Job</option>
   `;
-
   typeSelect.style.padding = "6px 10px";
   typeSelect.style.borderRadius = "6px";
   typeSelect.style.border = "1px solid var(--border)";
@@ -832,6 +831,7 @@ function openAllEntries() {
 
   entries.appendChild(filterBar);
 
+  // --- Entries Container ---
   const allEntriesContainer = document.createElement("div");
   entries.appendChild(allEntriesContainer);
 
@@ -844,20 +844,14 @@ function openAllEntries() {
     Object.entries(data).forEach(([month, monthEntries]) => {
       const filtered = monthEntries.filter(e => {
         if (selectedType !== "all" && e.jobType !== selectedType) return false;
-
         if (selectedKSB === "all") return true;
-
         if (!e.sections) return false;
-
         return e.sections.some(sec => {
           const contentIncludes =
             sec.content &&
             (sec.content.includes(selectedKSB) ||
               sec.content.split(", ").includes(selectedKSB));
-
-          const headingIncludes =
-            sec.heading && sec.heading.includes(selectedKSB);
-
+          const headingIncludes = sec.heading && sec.heading.includes(selectedKSB);
           return contentIncludes || headingIncludes;
         });
       });
@@ -878,28 +872,26 @@ function openAllEntries() {
 
         if (e.sections) {
           e.sections.forEach(sec => {
-
             if (sec.heading) {
               const strong = document.createElement("strong");
               strong.textContent = sec.heading + ":";
               d.appendChild(strong);
               d.appendChild(document.createElement("br"));
             }
-
             if (sec.content) {
               const p = document.createElement("p");
               p.textContent = sec.content;
               d.appendChild(p);
             }
-
-            if (sec.image) {
-              const img = document.createElement("img");
-              img.src = sec.image;
-              img.style.maxWidth = "100%";
-              img.style.margin = "10px 0";
-              d.appendChild(img);
+            if (sec.images) {
+              sec.images.forEach(src => {
+                const img = document.createElement("img");
+                img.src = src;
+                img.style.maxWidth = "100%";
+                img.style.margin = "10px 0";
+                d.appendChild(img);
+              });
             }
-
             if (sec.pdf) {
               const iframe = document.createElement("iframe");
               iframe.src = sec.pdf;
@@ -909,7 +901,6 @@ function openAllEntries() {
               iframe.style.margin = "10px 0";
               d.appendChild(iframe);
             }
-
             d.appendChild(document.createElement("br"));
           });
         }
@@ -919,6 +910,21 @@ function openAllEntries() {
     });
 
     attachKSBTooltips();
+
+    // --- Scroll Highlight Observer ---
+    const allEntries = allEntriesContainer.querySelectorAll(".entry");
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            allEntries.forEach(e => e.classList.remove("active"));
+            entry.target.classList.add("active");
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+    allEntries.forEach(entry => observer.observe(entry));
   }
 
   renderEntries();
