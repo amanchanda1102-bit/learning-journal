@@ -629,45 +629,168 @@ function resetProgress(){
 }
 
 
-/* ---------- CONTENTS PANEL ---------- */
-document.getElementById("contentsToggle").onclick=()=>{
-  panel.classList.add("open");
-  overlay.style.display="block";
-};
+/* ---------- CONTENTS PANEL WITH HIGHLIGHTING ---------- */
 
-overlay.onclick=()=>{
-  panel.classList.remove("open");
-  overlay.style.display="none";
-};
+const contentsList = document.getElementById("contentsList");
 
-const contentsList=document.getElementById("contentsList");
+Object.entries(data).forEach(([month, monthEntries]) => {
+  const monthDiv = document.createElement("div");
+  monthDiv.className = "contents-month";
 
-Object.entries(data).forEach(([m,es])=>{
-  const d=document.createElement("div");
-  d.className="contents-month";
+  const monthBtn = document.createElement("button");
+  monthBtn.textContent = month;
+  monthBtn.onclick = () => openMonth(month);
+  monthDiv.appendChild(monthBtn);
 
-  const b=document.createElement("button");
-  b.textContent=m;
-  b.onclick=()=>openMonth(m);
-  d.appendChild(b);
+  monthEntries.forEach((entry, i) => {
+    const entryDiv = document.createElement("div");
+    entryDiv.className = "contents-entry";
+    entryDiv.textContent = `${entry.date} — ${entry.title}`;
 
-  es.forEach((e,i)=>{
-    const c=document.createElement("div");
-    c.className="contents-entry";
-    c.textContent=`${e.date} — ${e.title}`;
+    entryDiv.onclick = () => {
+      openMonth(month);
+      setTimeout(() => {
+        const allEntries = document.querySelectorAll(".entry");
 
-    c.onclick=()=>{
-      openMonth(m);
-      setTimeout(()=>{
-        document.querySelectorAll(".entry")[i]?.scrollIntoView({behavior:"smooth"});
-      },150);
+        // Scroll to the clicked entry
+        allEntries[i]?.scrollIntoView({ behavior: "smooth" });
+
+        // Remove previous active highlights
+        document.querySelectorAll(".contents-entry").forEach(e => e.classList.remove("active"));
+        document.querySelectorAll(".entry").forEach(e => e.classList.remove("active"));
+
+        // Add active class to clicked entry
+        allEntries[i]?.classList.add("active");
+        entryDiv.classList.add("active");
+      }, 150);
     };
 
-    d.appendChild(c);
+    monthDiv.appendChild(entryDiv);
   });
 
-  contentsList.appendChild(d);
+  contentsList.appendChild(monthDiv);
 });
+
+/* ---------- SCROLL HIGHLIGHT FOR ENTRIES ---------- */
+function enableEntryScrollHighlight() {
+  const allEntries = document.querySelectorAll(".entry");
+  const allContents = document.querySelectorAll(".contents-entry");
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        const index = Array.from(allEntries).indexOf(entry.target);
+        if (entry.isIntersecting) {
+          // Remove previous active highlights
+          allEntries.forEach(e => e.classList.remove("active"));
+          allContents.forEach(e => e.classList.remove("active"));
+
+          // Highlight the entry in view
+          entry.target.classList.add("active");
+          allContents[index]?.classList.add("active");
+
+          // Highlight the current month in contents panel
+          const monthName = entry.target.closest("#monthEntries")?.previousElementSibling?.textContent;
+          document.querySelectorAll(".contents-month").forEach(m => {
+            m.classList.toggle(
+              "active",
+              m.querySelector("button")?.textContent === monthName
+            );
+          });
+        }
+      });
+    },
+    { threshold: 0.5 } // Entry considered visible when 50% is in viewport
+  );
+
+  allEntries.forEach(entry => observer.observe(entry));
+}
+
+// Call this after opening a month to enable scroll highlight
+function openMonth(m) {
+  highlightCurrentMonth(m);
+
+  grid.style.display = "none";
+  page.style.display = "block";
+  title.textContent = m;
+  entries.innerHTML = "";
+
+  data[m].forEach(e => {
+    const d = document.createElement("div");
+    d.className = "entry";
+
+    const h = document.createElement("h3");
+    h.textContent = `${e.title} — ${e.date}`;
+    d.appendChild(h);
+
+    if (e.sections) {
+      e.sections.forEach(sec => {
+        if (sec.heading) {
+          const strong = document.createElement("strong");
+          strong.textContent = sec.heading + ":";
+          d.appendChild(strong);
+          d.appendChild(document.createElement("br"));
+        }
+
+        if (sec.content) {
+          const p = document.createElement("p");
+          p.textContent = sec.content;
+          d.appendChild(p);
+        }
+
+        if (sec.images) {
+          sec.images.forEach(src => {
+            const img = document.createElement("img");
+            img.src = src;
+            img.style.maxWidth = "100%";
+            img.style.margin = "10px 0";
+            d.appendChild(img);
+          });
+        }
+
+        if (sec.pdf) {
+          const iframe = document.createElement("iframe");
+          iframe.src = sec.pdf;
+          iframe.width = "100%";
+          iframe.height = "600";
+          iframe.style.border = "1px solid #ccc";
+          iframe.style.margin = "10px 0";
+          d.appendChild(iframe);
+        }
+
+        if (sec.youtube) {
+          const iframe = document.createElement("iframe");
+          let ytURL = sec.youtube;
+          if (ytURL.includes("watch?v=")) {
+            const videoId = ytURL.split("watch?v=")[1].split("&")[0];
+            ytURL = `https://www.youtube.com/embed/${videoId}`;
+          } else if (ytURL.includes("youtu.be/")) {
+            const videoId = ytURL.split("youtu.be/")[1].split("?")[0];
+            ytURL = `https://www.youtube.com/embed/${videoId}`;
+          }
+          iframe.src = ytURL;
+          iframe.width = "100%";
+          iframe.height = "400";
+          iframe.style.border = "1px solid #ccc";
+          iframe.style.margin = "10px 0";
+          iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+          iframe.allowFullscreen = true;
+          d.appendChild(iframe);
+        }
+
+        d.appendChild(document.createElement("br"));
+      });
+    }
+
+    entries.appendChild(d);
+  });
+
+  // Enable scroll-based highlighting for newly added entries
+  enableEntryScrollHighlight();
+
+  if (!completed.includes(m)) completed.push(m);
+  updateProgress();
+}
 
 /* ---------- ALL ENTRIES PAGE ---------- */
 
