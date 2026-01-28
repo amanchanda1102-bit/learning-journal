@@ -667,92 +667,15 @@ Object.entries(data).forEach(([m,es])=>{
 
   contentsList.appendChild(d);
 });
-/* ---------- all entries ---------- */
 function openAllEntries() {
   // Hide month grid and heatmap
   grid.style.display = "none";
   page.style.display = "block";
   title.textContent = "All Entries";
-  entries.innerHTML = "";
+  entries.innerHTML = ""; // clear previous entries
 
-  // Loop through all months and their entries
-  Object.keys(data).forEach(month => {
-    data[month].forEach(e => {
-      const d = document.createElement("div");
-      d.className = "entry";
-
-      const h = document.createElement("h3");
-      h.textContent = `${e.title} — ${e.date} (${month})`;
-      d.appendChild(h);
-
-      if(e.sections){
-        e.sections.forEach(sec => {
-          if(sec.heading){
-            const strong = document.createElement("strong");
-            strong.textContent = sec.heading + ":";
-            d.appendChild(strong);
-            d.appendChild(document.createElement("br"));
-          }
-          if(sec.content){
-            const p = document.createElement("p");
-            p.textContent = sec.content;
-            d.appendChild(p);
-          }
-          if (sec.images) {
-            sec.images.forEach(src => {
-              const img = document.createElement("img");
-              img.src = src;
-              img.style.maxWidth = "100%";
-              img.style.margin = "10px 0";
-              d.appendChild(img);
-            });
-          }
-          
-          if (sec.image) {
-            const img = document.createElement("img");
-            img.src = sec.image;
-            img.style.maxWidth = "100%";
-            img.style.margin = "10px 0";
-            d.appendChild(img);
-          }
-
-          if(sec.pdf){
-            const iframe = document.createElement("iframe");
-            iframe.src = sec.pdf;
-            iframe.width = "100%";
-            iframe.height = "600";
-            iframe.style.border = "1px solid #ccc";
-            iframe.style.margin = "10px 0";
-            d.appendChild(iframe);
-          }
-          if(sec.youtube){
-            const iframe = document.createElement("iframe");
-            let ytURL = sec.youtube;
-            if(ytURL.includes("watch?v=")){
-              const videoId = ytURL.split("watch?v=")[1].split("&")[0];
-              ytURL = `https://www.youtube.com/embed/${videoId}`;
-            } else if(ytURL.includes("youtu.be/")){
-              const videoId = ytURL.split("youtu.be/")[1].split("?")[0];
-              ytURL = `https://www.youtube.com/embed/${videoId}`;
-            }
-            iframe.src = ytURL;
-            iframe.width = "100%";
-            iframe.height = "400";
-            iframe.style.border = "1px solid #ccc";
-            iframe.style.margin = "10px 0";
-            iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-            iframe.allowFullscreen = true;
-            d.appendChild(iframe);
-          }
-          d.appendChild(document.createElement("br"));
-        });
-      }
-
-      entries.appendChild(d);
-    });
-  });
-}
-const filterBar = document.createElement("div");
+  // Create filter bar
+  const filterBar = document.createElement("div");
   filterBar.style.marginBottom = "20px";
   filterBar.style.display = "flex";
   filterBar.style.flexWrap = "wrap";
@@ -761,9 +684,7 @@ const filterBar = document.createElement("div");
   // KSB select
   const ksbSelect = document.createElement("select");
   ksbSelect.innerHTML = `<option value="all">All KSBs</option>` +
-    Object.keys(KSB_DICTIONARY)
-      .map(k => `<option value="${k}">${k}</option>`)
-      .join("");
+    Object.keys(KSB_DICTIONARY).map(k => `<option value="${k}">${k}</option>`).join("");
   ksbSelect.style.padding = "6px 10px";
   ksbSelect.style.borderRadius = "6px";
   ksbSelect.style.border = "1px solid var(--border)";
@@ -779,7 +700,98 @@ const filterBar = document.createElement("div");
   typeSelect.style.border = "1px solid var(--border)";
   filterBar.appendChild(typeSelect);
 
-  monthEntries.appendChild(filterBar);
+  entries.appendChild(filterBar);
+
+  // Function to render entries with filters applied
+  function renderEntries() {
+    // Remove old entries except filter bar
+    entries.querySelectorAll(".entry").forEach(e => e.remove());
+
+    Object.keys(data).forEach(month => {
+      data[month].forEach(e => {
+        // Filter by job type
+        if (typeSelect.value !== "all" && e.jobType !== typeSelect.value) return;
+
+        // Filter by KSB
+        if (ksbSelect.value !== "all") {
+          const hasKSB = e.sections?.some(sec => sec.content?.includes(ksbSelect.value)) || false;
+          if (!hasKSB) return;
+        }
+
+        const d = document.createElement("div");
+        d.className = "entry";
+
+        const h = document.createElement("h3");
+        h.textContent = `${e.title} — ${e.date} (${month})`;
+        d.appendChild(h);
+
+        if (e.sections) {
+          e.sections.forEach(sec => {
+            if (sec.heading) {
+              const strong = document.createElement("strong");
+              strong.textContent = sec.heading + ":";
+              d.appendChild(strong);
+              d.appendChild(document.createElement("br"));
+            }
+            if (sec.content) {
+              const p = document.createElement("p");
+              p.textContent = sec.content;
+              d.appendChild(p);
+            }
+            if (sec.images) {
+              sec.images.forEach(src => {
+                const img = document.createElement("img");
+                img.src = src;
+                img.style.maxWidth = "100%";
+                img.style.margin = "10px 0";
+                d.appendChild(img);
+              });
+            }
+            if (sec.pdf) {
+              const iframe = document.createElement("iframe");
+              iframe.src = sec.pdf;
+              iframe.width = "100%";
+              iframe.height = "600";
+              iframe.style.border = "1px solid #ccc";
+              iframe.style.margin = "10px 0";
+              d.appendChild(iframe);
+            }
+            if (sec.youtube) {
+              const iframe = document.createElement("iframe");
+              let ytURL = sec.youtube;
+              if (ytURL.includes("watch?v=")) {
+                const videoId = ytURL.split("watch?v=")[1].split("&")[0];
+                ytURL = `https://www.youtube.com/embed/${videoId}`;
+              } else if (ytURL.includes("youtu.be/")) {
+                const videoId = ytURL.split("youtu.be/")[1].split("?")[0];
+                ytURL = `https://www.youtube.com/embed/${videoId}`;
+              }
+              iframe.src = ytURL;
+              iframe.width = "100%";
+              iframe.height = "400";
+              iframe.style.border = "1px solid #ccc";
+              iframe.style.margin = "10px 0";
+              iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+              iframe.allowFullscreen = true;
+              d.appendChild(iframe);
+            }
+            d.appendChild(document.createElement("br"));
+          });
+        }
+
+        entries.appendChild(d);
+      });
+    });
+  }
+
+  // Initial render
+  renderEntries();
+
+  // Add filter events
+  ksbSelect.onchange = renderEntries;
+  typeSelect.onchange = renderEntries;
+}
+
 /* ---------- HEATMAP ---------- */
 function openHeatmap(){
 
