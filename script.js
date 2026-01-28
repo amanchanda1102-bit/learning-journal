@@ -816,3 +816,10 @@ function highlightCurrentMonth(month){
 /* ---------- INIT ---------- */
 updateProgress();
 
+/* ---------- VIEW ALL BUTTON ---------- */
+const viewAllBtn = document.getElementById("viewAllBtn");
+if(viewAllBtn){
+  viewAllBtn.onclick = openAllEntries;
+}
+
+
