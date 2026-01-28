@@ -350,7 +350,7 @@ And safety`},
       {
         heading: "Linked KSBs",
         content: "S13, B1"
-      },  
+      }]},  
     {title: "PDP Updates",
     date: "03/09/2025",
     jobType: "off-job",
@@ -365,7 +365,7 @@ And safety`},
       }
     ]
   }
-      }],
+    ]},
 
 
   October: [
