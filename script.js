@@ -360,7 +360,7 @@ And safety`},
       jobType: "off-job",
       sections: [
         { 
-          content: "In my progress review with the help of my coach I realised I was not updating my pdp enough, which meant I was not keeping up with tasks properly. From that progress review onwards, I updated it monthly. I found I was keeping up with tasks much easier and when I was asked where I was or what I had to do left I had a better picture.",
+          content: "In my progress review with the help of my coach I realised I was not updating my pdp enough, which meant I was not keeping up with tasks properly. From that progress review onwards, I updated it monthly. I found I was keeping up with tasks much easier and when I was asked where I was or what I had to do left I had a better picture."
           image: ["https://amanchanda1102-bit.github.io/learning-journal/PDP1.jpg",
                  "https://amanchanda1102-bit.github.io/learning-journal/PDP2.jpg"]
         },
@@ -484,6 +484,7 @@ const overlay = document.getElementById("contentsOverlay");
 
 let completed = JSON.parse(localStorage.getItem("ljCompleted")) || [];
 
+
 /* ---------- SHOW MONTH GRID ON LOAD ---------- */
 grid.style.display = "grid";
 page.style.display = "none";
@@ -500,8 +501,10 @@ Object.keys(data).forEach(m=>{
   grid.appendChild(btn);
 });
 
+
 /* ---------- OPEN MONTH ---------- */
 function openMonth(m){
+
   highlightCurrentMonth(m);
 
   grid.style.display="none";
@@ -510,67 +513,72 @@ function openMonth(m){
   entries.innerHTML="";
 
   data[m].forEach(e=>{
-    const d = document.createElement("div");
-    d.className = "entry";
 
-    const h = document.createElement("h3");
-    h.textContent = `${e.title} — ${e.date}`;
+    const d=document.createElement("div");
+    d.className="entry";
+
+    const h=document.createElement("h3");
+    h.textContent=`${e.title} — ${e.date}`;
     d.appendChild(h);
 
     if(e.sections){
       e.sections.forEach(sec=>{
+
         if(sec.heading){
-          const strong = document.createElement("strong");
-          strong.textContent = sec.heading+":";
+          const strong=document.createElement("strong");
+          strong.textContent=sec.heading+":";
           d.appendChild(strong);
           d.appendChild(document.createElement("br"));
         }
 
         if(sec.content){
-          const p = document.createElement("p");
-          p.textContent = sec.content;
+          const p=document.createElement("p");
+          p.textContent=sec.content;
           d.appendChild(p);
         }
 
-        if(sec.images){
-          sec.images.forEach(src=>{
-            const img = document.createElement("img");
-            img.src = src;
-            img.style.maxWidth = "100%";
-            img.style.margin = "10px 0";
-            d.appendChild(img);
-          });
-        }
+if(sec.images){
+  sec.images.forEach(src => {
+    const img = document.createElement("img");
+    img.src = src;
+    img.style.maxWidth = "100%";
+    img.style.margin = "10px 0";
+    d.appendChild(img);
+  });
+}
 
         if(sec.pdf){
-          const iframe = document.createElement("iframe");
-          iframe.src = sec.pdf;
-          iframe.width = "100%";
-          iframe.height = "600";
+          const iframe=document.createElement("iframe");
+          iframe.src=sec.pdf;
+          iframe.width="100%";
+          iframe.height="600";
           iframe.style.border="1px solid #ccc";
-          iframe.style.margin = "10px 0";
+          iframe.style.margin="10px 0";
           d.appendChild(iframe);
         }
 
         if(sec.youtube){
-          const iframe = document.createElement("iframe");
-          let ytURL = sec.youtube;
-          if(ytURL.includes("watch?v=")){
-            const videoId = ytURL.split("watch?v=")[1].split("&")[0];
-            ytURL = `https://www.youtube.com/embed/${videoId}`;
-          } else if(ytURL.includes("youtu.be/")){
-            const videoId = ytURL.split("youtu.be/")[1].split("?")[0];
-            ytURL = `https://www.youtube.com/embed/${videoId}`;
-          }
-          iframe.src = ytURL;
-          iframe.width="100%";
-          iframe.height="400";
-          iframe.style.border="1px solid #ccc";
-          iframe.style.margin="10px 0";
-          iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-          iframe.allowFullscreen = true;
-          d.appendChild(iframe);
-        }
+  const iframe = document.createElement("iframe");
+  
+  // Convert normal YouTube links to embed format if needed
+  let ytURL = sec.youtube;
+  if(ytURL.includes("watch?v=")){
+    const videoId = ytURL.split("watch?v=")[1].split("&")[0];
+    ytURL = `https://www.youtube.com/embed/${videoId}`;
+  } else if(ytURL.includes("youtu.be/")){
+    const videoId = ytURL.split("youtu.be/")[1].split("?")[0];
+    ytURL = `https://www.youtube.com/embed/${videoId}`;
+  }
+
+  iframe.src = ytURL;
+  iframe.width = "100%";
+  iframe.height = "400";
+  iframe.style.border = "1px solid #ccc";
+  iframe.style.margin = "10px 0";
+  iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+  iframe.allowFullscreen = true;
+  d.appendChild(iframe);
+}
 
         d.appendChild(document.createElement("br"));
       });
@@ -582,6 +590,7 @@ function openMonth(m){
   if(!completed.includes(m)) completed.push(m);
   updateProgress();
 }
+
 
 /* ---------- NAV ---------- */
 function backToMonths(){
@@ -596,6 +605,7 @@ function goHome(){
   panel.classList.remove("open");
   overlay.style.display="none";
 }
+
 
 /* ---------- PROGRESS ---------- */
 function updateProgress(){
@@ -618,63 +628,77 @@ function resetProgress(){
   }
 }
 
+
 /* ---------- CONTENTS PANEL ---------- */
-document.getElementById("contentsToggle").onclick=()=> {
+document.getElementById("contentsToggle").onclick=()=>{
   panel.classList.add("open");
   overlay.style.display="block";
 };
 
-overlay.onclick=()=> {
+overlay.onclick=()=>{
   panel.classList.remove("open");
   overlay.style.display="none";
 };
 
-const contentsList = document.getElementById("contentsList");
+const contentsList=document.getElementById("contentsList");
 
 Object.entries(data).forEach(([m,es])=>{
-  const d = document.createElement("div");
+  const d=document.createElement("div");
   d.className="contents-month";
 
-  const b = document.createElement("button");
-  b.textContent = m;
+  const b=document.createElement("button");
+  b.textContent=m;
   b.onclick=()=>openMonth(m);
   d.appendChild(b);
 
   es.forEach((e,i)=>{
-    const c = document.createElement("div");
+    const c=document.createElement("div");
     c.className="contents-entry";
-    c.textContent = `${e.date} — ${e.title}`;
+    c.textContent=`${e.date} — ${e.title}`;
+
     c.onclick=()=>{
       openMonth(m);
-      setTimeout(()=>{ document.querySelectorAll(".entry")[i]?.scrollIntoView({behavior:"smooth"}); },150);
+      setTimeout(()=>{
+        document.querySelectorAll(".entry")[i]?.scrollIntoView({behavior:"smooth"});
+      },150);
     };
+
     d.appendChild(c);
   });
 
   contentsList.appendChild(d);
 });
 
+
 /* ---------- HEATMAP ---------- */
 function openHeatmap(){
+
   grid.style.display="none";
   page.style.display="none";
 
-  const heatPage = document.getElementById("heatmapPage");
+  const heatPage=document.getElementById("heatmapPage");
   heatPage.style.display="block";
 
   buildHeatmap();
 }
 
 function buildHeatmap(){
-  const heatGrid = document.getElementById("heatmapGrid");
+
+  const heatGrid=document.getElementById("heatmapGrid");
   heatGrid.innerHTML="";
 
   const months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
   heatGrid.appendChild(makeCell("KSB","header"));
-  months.forEach(m=> heatGrid.appendChild(makeCell(m,"header")));
+
+  months.forEach(m=>{
+    heatGrid.appendChild(makeCell(m,"header"));
+  });
 
   Object.entries(LIP_KSB_MONTHS).forEach(([ksb,vals])=>{
+
     heatGrid.appendChild(makeCell(ksb,"ksb-label"));
+
     vals.forEach(v=>{
       const cell=document.createElement("div");
       cell.className=`heat-cell ${ratingClass(v)}`;
@@ -685,11 +709,13 @@ function buildHeatmap(){
 }
 
 function makeCell(text,type){
-  const div = document.createElement("div");
+  const div=document.createElement("div");
   div.textContent=text;
   div.className="heat-cell";
+
   if(type==="header") div.classList.add("header");
   if(type==="ksb-label") div.classList.add("ksb-label");
+
   return div;
 }
 
@@ -701,10 +727,17 @@ function ratingClass(v){
   return "";
 }
 
+
 /* ---------- HIGHLIGHT ---------- */
 function highlightCurrentMonth(month){
   document.querySelectorAll(".contents-month").forEach(m=>m.classList.remove("active"));
   document.querySelectorAll(".contents-month").forEach(m=>{
-    if(m.querySelector("button").textContent===month) m.classList.add("active");
+    if(m.querySelector("button").textContent===month){
+      m.classList.add("active");
+    }
   });
 }
+
+
+/* ---------- INIT ---------- */
+updateProgress();
