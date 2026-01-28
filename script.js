@@ -450,7 +450,6 @@ And safety`},
   ]
 };
 
-/* ---------- APPLIED LEARNING DATA ---------- */
 const appliedLearning = {
   intro: "This is the application of the topics learnt in sessions to my specific work and workplace.",
   entries: [
@@ -532,13 +531,14 @@ This helps the employee feel more a part of the team and helps them work to beco
         }
       ]
     },
-  {
-    title: "Different L&D roles required for effective learning and development in Babcock",
-    date: "02/04/2025",
-    sections: [
-      {
-        heading: "Content",
-        content: `Specific to our company these are the L&D roles we have:
+
+    {
+      title: "Different L&D roles required for effective learning and development in Babcock",
+      date: "02/04/2025",
+      sections: [
+        {
+          heading: "Content",
+          content: `Specific to our company these are the L&D roles we have:
 
 Media team: they deal with headshots, websites, QR codes, banners, anything media related but specifically for the L&D team.
 
@@ -566,17 +566,17 @@ I help set up the hall for the trainees. I assist with queries and computer prob
 We offer multiple courses here, within the courses such as the commander course, there are specific training parts. Physical field training, knowledge based, they may be asked questions and skill based, where they are expected to demonstrate the thing. In the commander course there is a need for communication, leadership and organisational skills. This can be practised in the simulation suite.
 
 So we create the training, deliver the instructions on use of equipment and then aid with any queries throughout. Setting up and closing down the hall and computers before and after use.`
-      }
-    ]
-  },
+        }
+      ]
+    },
 
-  {
-    title: "The different mediums and methods of communications, and how to select the appropriate one for different messages and audiences",
-    date: "28/05/2025",
-    sections: [
-      {
-        heading: "Content",
-        content: `There are a few mediums of communication: written , verbal and virtual. 
+    {
+      title: "The different mediums and methods of communications, and how to select the appropriate one for different messages and audiences",
+      date: "28/05/2025",
+      sections: [
+        {
+          heading: "Content",
+          content: `There are a few mediums of communication: written , verbal and virtual. 
 For each medium there are different methods.
 
 Virtual
@@ -617,17 +617,17 @@ I’m close with my mentor and so i message him on whatsapp, i am less close to 
 
 Quantity:
 More than one person? If it’s a company, maybe a social media post or newsletter. If it’s a smaller team, a group email or team message. If it’s something you expect a lot of questions on, a team chat is better as people can see what questions people and can react to it instead of cluttering the inbox with a lot of the same question.`
-      }
-    ]
-  },
+        }
+      ]
+    },
 
-  {
-    title: "The values of the organisation and how they impact learning practice",
-    date: "25/06/2025",
-    sections: [
-      {
-        heading: "Content",
-        content: `Babcock has 6 values:
+    {
+      title: "The values of the organisation and how they impact learning practice",
+      date: "25/06/2025",
+      sections: [
+        {
+          heading: "Content",
+          content: `Babcock has 6 values:
 
 Be curious – question things, why things are done a certain way, why this new and cheap tech is not used etc. 
 Impact: when creating and delivering training we come up with ideas on how to do it better, we ask trainees, we ask each other. This leads to better training.
@@ -646,17 +646,17 @@ Impact: we share information, work together. This helps us create cohesive train
 
 Own + Deliver – own what you create, do it to a standard you’re proud of. As if everyone treats their work like this the overall work will be excellent. 
 Impact: we make sure our own work whether that’s slides, delivery, quality assurance is up to standard which ensures all work is up to standard and ready for training.`
-      }
-    ]
-  },
+        }
+      ]
+    },
 
-  {
-    title: "How to used the principles of trust to work collaboratively across functions",
-    date: "25/06/2025",
-    sections: [
-      {
-        heading: "Content",
-        content: `When holding a training session for a group of soldiers, we had some IT problems.
+    {
+      title: "How to used the principles of trust to work collaboratively across functions",
+      date: "25/06/2025",
+      sections: [
+        {
+          heading: "Content",
+          content: `When holding a training session for a group of soldiers, we had some IT problems.
 
 Using the ABCD model of trust
 
@@ -679,32 +679,32 @@ How ability to handle conflict helps build better working relationships.
 Typically I lean more cooperative in the Thomas-kilmann Conflict Model. My level of assertiveness varies but is usually on the higher end. It really depends on the situation though. If my grade is on the line and the people in charge are not doing well I’ll be less cooperative and push more for my side to be taken but really it would be for the greater good of the team e.g. a higher grade. However in a work environment, there’s less pressure, it’s a team effort and that’s reflected in the results. For example no single person will get credit. So I lean more towards collaboration or competition, but I am happy to compromise. In the end, it’s better to have good relationships with your team members, where everyone is happy with the work produced, than have people playing the blame game and possibly making collaboration more difficult next time.
 
 After our session, I am planning to approach an area of conflict with a plan. I want to suggest changing up the independent earning materials, as they were created a decade ago. To do this I will research the other methods, prices, and evidence on its advantages. I will collaborate with my mentor, discussing it with him, as any questions he has will likely be questions our boss will have. Getting those answers early can show confidence and that this is thought out. Setting up a meeting with our boss, seeing what he thinks and any questions he has because in the end, if he doesn’t get a win out of it, it won’t be approved. He is the head of training.`
-      }
-    ]
-  },
+        }
+      ]
+    },
 
-  {
-    title: "What you need to consider when setting up a training event",
-    date: "20/08/2025",
-    sections: [
-      {
-        heading: "Content",
-        content: `Any special requirements: if anyone completing or delivering the training have any special needs or requirements. does anyone have any impairments? visual, hearing, intellectual etc. Does the room need to be wheelchair accessible. dietary requirements, is anyone fasting, or need to pray at certain times – do we have a room that can temporarily be used as a prayer room.
+    {
+      title: "What you need to consider when setting up a training event",
+      date: "20/08/2025",
+      sections: [
+        {
+          heading: "Content",
+          content: `Any special requirements: if anyone completing or delivering the training have any special needs or requirements. does anyone have any impairments? visual, hearing, intellectual etc. Does the room need to be wheelchair accessible. dietary requirements, is anyone fasting, or need to pray at certain times – do we have a room that can temporarily be used as a prayer room.
 
 Environment: keeping in mind environmental factors that could effect the training taking place or could be distractions. what’s the weather like? if it's hot putting in measures to keep the room cool (lots of people or lots of computers running can cause the room to heat up). Having windows open or aircon but also access to a water cooler. If it's cold, making sure the room isn’t too cold, providing tea and coffee if very cold. Making sure event is indoor if raining. Are there noise outside from other actives? is this distracting enough that you can't open the windows. Is the light from outside obstructing view of the projectors? pull blinds down.
 
 Capacity: Being able to provide appropriate training in an appropriate place depending on the amount of people. how many people are coming? is the room big enough, how is everyone getting in, has an invite been sent out, is the hall easy to find, does food need to be provided, speakers working in case voice projection is needed? has anyone dropped out? do you need handouts? if so, how many do you need.`
-      }
-    ]
-  },
+        }
+      ]
+    },
 
-  {
-    title: "What you need to consider when setting down a training event",
-    date: "20/08/2025",
-    sections: [
-      {
-        heading: "Content",
-        content: `Has the learning objectives been met?
+    {
+      title: "What you need to consider when setting down a training event",
+      date: "20/08/2025",
+      sections: [
+        {
+          heading: "Content",
+          content: `Has the learning objectives been met?
 have a debrief, go over what was learnt. ask questions - preferably the same questions asked at the start to gauge learning an understanding - if at the start they were asked how they feel about the topic on a scale from 1 to 10, asking again and seeing if anyone is still giving a low score.
 
 Ask if anyone has any questions – using Menti may help people feel more comfortable asking questions.
@@ -712,11 +712,12 @@ Ask if anyone has any questions – using Menti may help people feel more comfor
 Could also add a few feedback questions after on Menti to get learners reaction to the training - did they enjoy it, what part was their favourite and least favourite - this can be used to tweak the training for future use, maybe everyone disliked a certain aspect, this can be changed or removed entirely.
 
 Make sure everyone has their stuff, no one has left anything behind. Make sure everything is put back how it should be.`
-      }
-    ]
-  }
- ]
-);
+        }
+      ]
+    }
+
+  ]
+};
 
 
 const LIP_KSB_MONTHS = {
