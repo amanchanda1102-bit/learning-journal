@@ -621,7 +621,9 @@ I help set up the hall for the trainees. I assist with queries and computer prob
           heading: "Linked KSBs",
           content: "S6, B7, K5"
         }
-  ]
+       ]
+      }
+     ]
 };
 
 
