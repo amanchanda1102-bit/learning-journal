@@ -473,209 +473,169 @@ const LIP_KSB_MONTHS = {
 
 
 /* ---------- ELEMENTS ---------- */
-const grid = document.getElementById("monthsGrid");
-const page = document.getElementById("monthPage");
-const title = document.getElementById("monthTitle");
-const entries = document.getElementById("monthEntries");
-const fill = document.getElementById("progressFill");
-const label = document.getElementById("progressLabel");
+const monthsGrid = document.getElementById("monthsGrid");
+const monthPage = document.getElementById("monthPage");
+const monthTitle = document.getElementById("monthTitle");
+const monthEntries = document.getElementById("monthEntries");
+const progressFill = document.getElementById("progressFill");
+const progressLabel = document.getElementById("progressLabel");
 
-const panel = document.getElementById("contentsPanel");
-const overlay = document.getElementById("contentsOverlay");
+const contentsPanel = document.getElementById("contentsPanel");
+const contentsOverlay = document.getElementById("contentsOverlay");
 const contentsList = document.getElementById("contentsList");
 const contentsToggle = document.getElementById("contentsToggle");
 
 let completed = JSON.parse(localStorage.getItem("ljCompleted")) || [];
 
-/* ---------- SHOW MONTH GRID ON LOAD ---------- */
-grid.style.display = "grid";
-page.style.display = "none";
-document.getElementById("heatmapPage").style.display = "none";
+/* ---------- MOCK DATA ---------- */
+const data = {
+  "January": [
+    { title: "Intro to JS", date: "01/01/2026", sections: [{ heading:"Notes", content:"Learned basics of JS." }] },
+    { title: "HTML Practice", date: "01/05/2026", sections: [{ content:"Built simple HTML page." }] }
+  ],
+  "February": [
+    { title: "CSS Styling", date: "02/10/2026", sections: [{ content:"Styled pages using CSS." }] }
+  ]
+};
 
-/* ---------- MONTH BUTTONS ---------- */
-Object.keys(data).forEach(m => {
-  const btn = document.createElement("button");
-  btn.className = "month";
-  btn.textContent = m;
-  if (completed.includes(m)) btn.classList.add("completed");
-  btn.onclick = () => openMonth(m);
-  grid.appendChild(btn);
-});
+/* ---------- BUILD MONTH BUTTONS ---------- */
+function buildMonths() {
+  monthsGrid.innerHTML = "";
+  Object.keys(data).forEach(m => {
+    const btn = document.createElement("button");
+    btn.className = "month";
+    btn.textContent = m;
+    if (completed.includes(m)) btn.classList.add("completed");
+    btn.onclick = () => openMonth(m);
+    monthsGrid.appendChild(btn);
+  });
+}
 
 /* ---------- OPEN MONTH ---------- */
-function openMonth(m) {
-  highlightCurrentMonth(m);
-  grid.style.display = "none";
-  page.style.display = "block";
-  title.textContent = m;
-  entries.innerHTML = "";
+function openMonth(month) {
+  highlightCurrentMonth(month);
+  monthsGrid.style.display = "none";
+  monthPage.style.display = "block";
+  monthTitle.textContent = month;
+  monthEntries.innerHTML = "";
 
-  data[m].forEach(e => {
-    const d = document.createElement("div");
-    d.className = "entry";
+  data[month].forEach((entry, index) => {
+    const div = document.createElement("div");
+    div.className = "entry";
 
-    const h = document.createElement("h3");
-    h.textContent = `${e.title} — ${e.date}`;
-    d.appendChild(h);
+    const h3 = document.createElement("h3");
+    h3.textContent = `${entry.date} — ${entry.title}`;
+    div.appendChild(h3);
 
-    if (e.sections) {
-      e.sections.forEach(sec => {
+    if (entry.sections) {
+      entry.sections.forEach(sec => {
         if (sec.heading) {
           const strong = document.createElement("strong");
           strong.textContent = sec.heading + ":";
-          d.appendChild(strong);
-          d.appendChild(document.createElement("br"));
+          div.appendChild(strong);
+          div.appendChild(document.createElement("br"));
         }
         if (sec.content) {
           const p = document.createElement("p");
           p.textContent = sec.content;
-          d.appendChild(p);
+          div.appendChild(p);
         }
-        if (sec.images) {
-          sec.images.forEach(src => {
-            const img = document.createElement("img");
-            img.src = src;
-            img.style.maxWidth = "100%";
-            img.style.margin = "10px 0";
-            d.appendChild(img);
-          });
-        }
-        if (sec.pdf) {
-          const iframe = document.createElement("iframe");
-          iframe.src = sec.pdf;
-          iframe.width = "100%";
-          iframe.height = "600";
-          iframe.style.border = "1px solid #ccc";
-          iframe.style.margin = "10px 0";
-          d.appendChild(iframe);
-        }
-        if (sec.youtube) {
-          const iframe = document.createElement("iframe");
-          let ytURL = sec.youtube;
-          if (ytURL.includes("watch?v=")) {
-            const videoId = ytURL.split("watch?v=")[1].split("&")[0];
-            ytURL = `https://www.youtube.com/embed/${videoId}`;
-          } else if (ytURL.includes("youtu.be/")) {
-            const videoId = ytURL.split("youtu.be/")[1].split("?")[0];
-            ytURL = `https://www.youtube.com/embed/${videoId}`;
-          }
-          iframe.src = ytURL;
-          iframe.width = "100%";
-          iframe.height = "400";
-          iframe.style.border = "1px solid #ccc";
-          iframe.style.margin = "10px 0";
-          iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-          iframe.allowFullscreen = true;
-          d.appendChild(iframe);
-        }
-        d.appendChild(document.createElement("br"));
       });
     }
-    entries.appendChild(d);
+
+    monthEntries.appendChild(div);
   });
 
+  // Scroll highlight
   enableEntryScrollHighlight();
 
-  if (!completed.includes(m)) completed.push(m);
+  if (!completed.includes(month)) completed.push(month);
   updateProgress();
+
+  // Rebuild contents panel now that entries exist
+  buildContentsPanel();
 }
 
-/* ---------- NAV ---------- */
+/* ---------- BACK TO MONTH GRID ---------- */
 function backToMonths() {
-  page.style.display = "none";
-  grid.style.display = "grid";
-}
-
-function goHome() {
-  page.style.display = "none";
-  document.getElementById("heatmapPage").style.display = "none";
-  grid.style.display = "grid";
-  panel.classList.remove("open");
-  overlay.style.display = "none";
+  monthPage.style.display = "none";
+  monthsGrid.style.display = "grid";
 }
 
 /* ---------- PROGRESS ---------- */
 function updateProgress() {
   const pct = Math.round((completed.length / Object.keys(data).length) * 100);
-  fill.style.width = pct + "%";
-  label.textContent = pct + "% complete";
+  progressFill.style.width = pct + "%";
+  progressLabel.textContent = pct + "% complete";
   localStorage.setItem("ljCompleted", JSON.stringify(completed));
+
   document.querySelectorAll(".month").forEach(b => {
     b.classList.toggle("completed", completed.includes(b.textContent));
   });
 }
 
-function resetProgress() {
-  if (confirm("Reset all progress?")) {
-    completed = [];
-    localStorage.removeItem("ljCompleted");
-    updateProgress();
-  }
-}
-
-/* ---------- SCROLL HIGHLIGHT ---------- */
+/* ---------- ENTRY SCROLL HIGHLIGHT ---------- */
 function enableEntryScrollHighlight() {
-  const allEntries = document.querySelectorAll(".entry");
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        allEntries.forEach(e => e.classList.remove("active"));
-        entry.target.classList.add("active");
+  const entries = document.querySelectorAll(".entry");
+  const observer = new IntersectionObserver(items => {
+    items.forEach(item => {
+      if (item.isIntersecting) {
+        entries.forEach(e => e.classList.remove("active"));
+        item.target.classList.add("active");
       }
     });
   }, { threshold: 0.5 });
 
-  allEntries.forEach(e => observer.observe(e));
+  entries.forEach(e => observer.observe(e));
 }
 
 /* ---------- CONTENTS PANEL ---------- */
 contentsToggle.onclick = () => {
-  panel.classList.add("open");
-  overlay.style.display = "block";
+  contentsPanel.classList.add("open");
+  contentsOverlay.style.display = "block";
 };
-overlay.onclick = () => {
-  panel.classList.remove("open");
-  overlay.style.display = "none";
+contentsOverlay.onclick = () => {
+  contentsPanel.classList.remove("open");
+  contentsOverlay.style.display = "none";
 };
 
-/* Build Contents List */
-contentsList.innerHTML = "";
-Object.entries(data).forEach(([month, monthEntries]) => {
-  const monthDiv = document.createElement("div");
-  monthDiv.className = "contents-month";
+// Build Contents
+function buildContentsPanel() {
+  contentsList.innerHTML = "";
+  Object.entries(data).forEach(([month, entries]) => {
+    const monthDiv = document.createElement("div");
+    monthDiv.className = "contents-month";
 
-  const monthBtn = document.createElement("button");
-  monthBtn.textContent = month;
-  monthBtn.onclick = () => openMonth(month);
-  monthDiv.appendChild(monthBtn);
+    const monthBtn = document.createElement("button");
+    monthBtn.textContent = month;
+    monthBtn.onclick = () => openMonth(month);
+    monthDiv.appendChild(monthBtn);
 
-  monthEntries.forEach((entry, i) => {
-    const entryDiv = document.createElement("div");
-    entryDiv.className = "contents-entry";
-    entryDiv.textContent = `${entry.date} — ${entry.title}`;
+    entries.forEach((entry, i) => {
+      const entryDiv = document.createElement("div");
+      entryDiv.className = "contents-entry";
+      entryDiv.textContent = `${entry.date} — ${entry.title}`;
+      entryDiv.onclick = (e) => {
+        e.stopPropagation();
+        openMonth(month);
+        setTimeout(() => {
+          const allEntries = document.querySelectorAll(".entry");
+          if (allEntries[i]) {
+            allEntries[i].scrollIntoView({ behavior: "smooth", block: "start" });
+            allEntries.forEach(e => e.classList.remove("active"));
+            allEntries[i].classList.add("active");
+          }
+        }, 150);
+        contentsPanel.classList.remove("open");
+        contentsOverlay.style.display = "none";
+      };
+      monthDiv.appendChild(entryDiv);
+    });
 
-    entryDiv.onclick = (e) => {
-      e.stopPropagation();
-      openMonth(month);
-      setTimeout(() => {
-        const allEntries = document.querySelectorAll(".entry");
-        if (allEntries[i]) {
-          allEntries[i].scrollIntoView({ behavior: "smooth", block: "start" });
-          allEntries.forEach(e => e.classList.remove("active"));
-          allEntries[i].classList.add("active");
-        }
-      }, 150);
-      panel.classList.remove("open");
-      overlay.style.display = "none";
-    };
-
-    monthDiv.appendChild(entryDiv);
+    contentsList.appendChild(monthDiv);
   });
+}
 
-  contentsList.appendChild(monthDiv);
-});
-
-/* ---------- HIGHLIGHT CURRENT MONTH IN CONTENTS ---------- */
 function highlightCurrentMonth(month) {
   document.querySelectorAll(".contents-month").forEach(m => m.classList.remove("active"));
   document.querySelectorAll(".contents-month").forEach(m => {
@@ -685,49 +645,6 @@ function highlightCurrentMonth(month) {
   });
 }
 
-/* ---------- HEATMAP ---------- */
-function openHeatmap() {
-  grid.style.display = "none";
-  page.style.display = "none";
-  const heatPage = document.getElementById("heatmapPage");
-  heatPage.style.display = "block";
-  buildHeatmap();
-}
-
-function buildHeatmap() {
-  const heatGrid = document.getElementById("heatmapGrid");
-  heatGrid.innerHTML = "";
-  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-  heatGrid.appendChild(makeCell("KSB","header"));
-  months.forEach(m => heatGrid.appendChild(makeCell(m,"header")));
-
-  Object.entries(LIP_KSB_MONTHS).forEach(([ksb, vals]) => {
-    heatGrid.appendChild(makeCell(ksb,"ksb-label"));
-    vals.forEach(v => {
-      const cell = document.createElement("div");
-      cell.className = `heat-cell ${ratingClass(v)}`;
-      cell.textContent = v;
-      heatGrid.appendChild(cell);
-    });
-  });
-}
-
-function makeCell(text,type){
-  const div=document.createElement("div");
-  div.textContent=text;
-  div.className="heat-cell";
-  if(type==="header") div.classList.add("header");
-  if(type==="ksb-label") div.classList.add("ksb-label");
-  return div;
-}
-
-function ratingClass(v){
-  if(v==="Poor") return "heat-poor";
-  if(v==="Average") return "heat-average";
-  if(v==="Good") return "heat-good";
-  if(v==="Very Good") return "heat-verygood";
-  return "";
-}
-
 /* ---------- INIT ---------- */
+buildMonths();
 updateProgress();
