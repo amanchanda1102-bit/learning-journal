@@ -698,7 +698,7 @@ function openAllEntries() {
             p.textContent = sec.content;
             d.appendChild(p);
           }
-          if(sec.images){
+          if (sec.images) {
             sec.images.forEach(src => {
               const img = document.createElement("img");
               img.src = src;
@@ -707,6 +707,15 @@ function openAllEntries() {
               d.appendChild(img);
             });
           }
+          
+          if (sec.image) {
+            const img = document.createElement("img");
+            img.src = sec.image;
+            img.style.maxWidth = "100%";
+            img.style.margin = "10px 0";
+            d.appendChild(img);
+          }
+
           if(sec.pdf){
             const iframe = document.createElement("iframe");
             iframe.src = sec.pdf;
