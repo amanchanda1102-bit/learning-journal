@@ -525,6 +525,102 @@ I help set up the hall for the trainees. I assist with queries and computer prob
         }
       ]
     }
+    {
+      title: "Communication Mediums and Methods",
+      date: "28/05/2025",
+      sections: [
+        {
+          heading: "Description",
+          content: "Reviewed different communication mediums (written, verbal, virtual) and methods (instant message, email, video call, meetings, phone calls, social media posts). Applied knowledge to select appropriate methods based on urgency, sensitivity, accessibility, complexity, record-keeping, audience familiarity, and quantity. Examples included emailing for simple updates and video calls or face-to-face meetings for complex or urgent matters."
+        },
+        {
+          heading: "Linked KSBs",
+          content: "S1, S2, K1"
+        }
+      ]
+    },
+    {
+      title: "Applying Principles of Trust Across Functions",
+      date: "25/06/2025",
+      sections: [
+        {
+          heading: "Description",
+          content: "Worked with the training team during a three-day session with IT issues. Applied ABCD model of trust: Able (resolved issues), Believable (communicated honestly), Connected (kept team informed), Dependable (ensured smooth continuation). This helped build trust and collaboration with the team and trainer."
+        },
+        {
+          heading: "Linked KSBs",
+          content: "S3, B4, K2"
+        }
+      ]
+    },
+    {
+      title: "Applying Principles of Trust Within Team",
+      date: "25/06/2025",
+      sections: [
+        {
+          heading: "Description",
+          content: "Worked alone on day two of training, communicated with mentor via calls and instant messaging to stay connected and manage IT issues. Took responsibility for monitoring trainee problems, downloading reports, and ensuring smooth operations in absence of team members, demonstrating dependability and collaboration."
+        },
+        {
+          heading: "Linked KSBs",
+          content: "S3, B4, K2"
+        }
+      ]
+    },
+    {
+      title: "Conflict Management for Team Relationships",
+      date: "25/06/2025",
+      sections: [
+        {
+          heading: "Description",
+          content: "Applied conflict handling skills using the Thomas-Kilmann model, leaning toward collaboration and compromise depending on the situation. Focused on maintaining positive team relationships and productive outcomes, for example planning changes to independent learning materials by researching alternatives, collaborating with mentor, and presenting to manager with evidence."
+        },
+        {
+          heading: "Linked KSBs",
+          content: "S4, B5, K3"
+        }
+      ]
+    },
+    {
+      title: "Setting Up a Training Event",
+      date: "20/08/2025",
+      sections: [
+        {
+          heading: "Description",
+          content: "Considered special requirements (accessibility, dietary, prayer), environmental factors (temperature, noise, lighting), and capacity (attendance, room size, materials) to plan an effective training event."
+        },
+        {
+          heading: "Linked KSBs",
+          content: "S5, B6, K4"
+        }
+      ]
+    },
+    {
+      title: "Settling Down a Training Event",
+      date: "20/08/2025",
+      sections: [
+        {
+          heading: "Description",
+          content: "Ensured learning objectives were met, conducted debrief and feedback using Menti, asked questions to gauge understanding, and managed post-training logistics such as collecting materials and ensuring proper room setup."
+        },
+        {
+          heading: "Linked KSBs",
+          content: "S5, B6, K4"
+        }
+      ]
+    },
+    {
+      title: "Applying Organisational Values to Training Practice",
+      date: "28/05/2025",
+      sections: [
+        {
+          heading: "Description",
+          content: "Applied Babcock values (Be curious, Be kind, Be courageous, Think outcomes, Collaborate, Own + Deliver) to training practice. Examples include improving training methods, considering accessibility, including diverse examples, collecting feedback, and ensuring high-quality delivery."
+        },
+        {
+          heading: "Linked KSBs",
+          content: "S6, B7, K5"
+        }
   ]
 };
 
