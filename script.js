@@ -715,7 +715,7 @@ Make sure everyone has their stuff, no one has left anything behind. Make sure e
       }
     ]
   }
-
+ ]
 );
 
 
