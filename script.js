@@ -471,7 +471,6 @@ const LIP_KSB_MONTHS = {
   B9: ["Average","Average","Average","Average","Average","Average","Average","Average","Average","Good","Good","Good"]
 };
 
-
 /* ---------- ELEMENTS ---------- */
 const grid = document.getElementById("monthsGrid");
 const page = document.getElementById("monthPage");
@@ -481,233 +480,27 @@ const fill = document.getElementById("progressFill");
 const label = document.getElementById("progressLabel");
 const panel = document.getElementById("contentsPanel");
 const overlay = document.getElementById("contentsOverlay");
+const contentsList = document.getElementById("contentsList");
 
 let completed = JSON.parse(localStorage.getItem("ljCompleted")) || [];
 
-
-/* ---------- SHOW MONTH GRID ON LOAD ---------- */
+/* ---------- INITIAL DISPLAY ---------- */
 grid.style.display = "grid";
 page.style.display = "none";
 document.getElementById("heatmapPage").style.display = "none";
 
-
-/* ---------- MONTH BUTTONS ---------- */
-Object.keys(data).forEach(m=>{
+/* ---------- CREATE MONTH BUTTONS ---------- */
+Object.keys(data).forEach(m => {
   const btn = document.createElement("button");
-  btn.className="month";
+  btn.className = "month";
   btn.textContent = m;
   if(completed.includes(m)) btn.classList.add("completed");
-  btn.onclick = ()=>openMonth(m);
+  btn.onclick = () => openMonth(m);
   grid.appendChild(btn);
 });
 
-
-/* ---------- OPEN MONTH ---------- */
+/* ---------- OPEN MONTH FUNCTION ---------- */
 function openMonth(m){
-
-  highlightCurrentMonth(m);
-
-  grid.style.display="none";
-  page.style.display="block";
-  title.textContent=m;
-  entries.innerHTML="";
-
-  data[m].forEach(e=>{
-
-    const d=document.createElement("div");
-    d.className="entry";
-
-    const h=document.createElement("h3");
-    h.textContent=`${e.title} — ${e.date}`;
-    d.appendChild(h);
-
-    if(e.sections){
-      e.sections.forEach(sec=>{
-
-        if(sec.heading){
-          const strong=document.createElement("strong");
-          strong.textContent=sec.heading+":";
-          d.appendChild(strong);
-          d.appendChild(document.createElement("br"));
-        }
-
-        if(sec.content){
-          const p=document.createElement("p");
-          p.textContent=sec.content;
-          d.appendChild(p);
-        }
-
-if(sec.images){
-  sec.images.forEach(src => {
-    const img = document.createElement("img");
-    img.src = src;
-    img.style.maxWidth = "100%";
-    img.style.margin = "10px 0";
-    d.appendChild(img);
-  });
-}
-
-        if(sec.pdf){
-          const iframe=document.createElement("iframe");
-          iframe.src=sec.pdf;
-          iframe.width="100%";
-          iframe.height="600";
-          iframe.style.border="1px solid #ccc";
-          iframe.style.margin="10px 0";
-          d.appendChild(iframe);
-        }
-
-        if(sec.youtube){
-  const iframe = document.createElement("iframe");
-  
-  // Convert normal YouTube links to embed format if needed
-  let ytURL = sec.youtube;
-  if(ytURL.includes("watch?v=")){
-    const videoId = ytURL.split("watch?v=")[1].split("&")[0];
-    ytURL = `https://www.youtube.com/embed/${videoId}`;
-  } else if(ytURL.includes("youtu.be/")){
-    const videoId = ytURL.split("youtu.be/")[1].split("?")[0];
-    ytURL = `https://www.youtube.com/embed/${videoId}`;
-  }
-
-  iframe.src = ytURL;
-  iframe.width = "100%";
-  iframe.height = "400";
-  iframe.style.border = "1px solid #ccc";
-  iframe.style.margin = "10px 0";
-  iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-  iframe.allowFullscreen = true;
-  d.appendChild(iframe);
-}
-
-        d.appendChild(document.createElement("br"));
-      });
-    }
-
-    entries.appendChild(d);
-  });
-
-  if(!completed.includes(m)) completed.push(m);
-  updateProgress();
-}
-
-
-/* ---------- NAV ---------- */
-function backToMonths(){
-  page.style.display="none";
-  grid.style.display="grid";
-}
-
-function goHome(){
-  page.style.display="none";
-  document.getElementById("heatmapPage").style.display="none";
-  grid.style.display="grid";
-  panel.classList.remove("open");
-  overlay.style.display="none";
-}
-
-
-/* ---------- PROGRESS ---------- */
-function updateProgress(){
-  const pct=Math.round((completed.length/Object.keys(data).length)*100);
-  fill.style.width=pct+"%";
-  label.textContent=pct+"% complete";
-
-  localStorage.setItem("ljCompleted",JSON.stringify(completed));
-
-  document.querySelectorAll(".month").forEach(b=>{
-    b.classList.toggle("completed",completed.includes(b.textContent));
-  });
-}
-
-function resetProgress(){
-  if(confirm("Reset all progress?")){
-    completed=[];
-    localStorage.removeItem("ljCompleted");
-    updateProgress();
-  }
-}
-
-
-/* ---------- CONTENTS PANEL WITH HIGHLIGHTING ---------- */
-
-const contentsList = document.getElementById("contentsList");
-
-Object.entries(data).forEach(([month, monthEntries]) => {
-  const monthDiv = document.createElement("div");
-  monthDiv.className = "contents-month";
-
-  const monthBtn = document.createElement("button");
-  monthBtn.textContent = month;
-  monthBtn.onclick = () => openMonth(month);
-  monthDiv.appendChild(monthBtn);
-
-  monthEntries.forEach((entry, i) => {
-    const entryDiv = document.createElement("div");
-    entryDiv.className = "contents-entry";
-    entryDiv.textContent = `${entry.date} — ${entry.title}`;
-
-    entryDiv.onclick = () => {
-      openMonth(month);
-      setTimeout(() => {
-        const allEntries = document.querySelectorAll(".entry");
-
-        // Scroll to the clicked entry
-        allEntries[i]?.scrollIntoView({ behavior: "smooth" });
-
-        // Remove previous active highlights
-        document.querySelectorAll(".contents-entry").forEach(e => e.classList.remove("active"));
-        document.querySelectorAll(".entry").forEach(e => e.classList.remove("active"));
-
-        // Add active class to clicked entry
-        allEntries[i]?.classList.add("active");
-        entryDiv.classList.add("active");
-      }, 150);
-    };
-
-    monthDiv.appendChild(entryDiv);
-  });
-
-  contentsList.appendChild(monthDiv);
-});
-
-/* ---------- SCROLL HIGHLIGHT FOR ENTRIES ---------- */
-function enableEntryScrollHighlight() {
-  const allEntries = document.querySelectorAll(".entry");
-  const allContents = document.querySelectorAll(".contents-entry");
-
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        const index = Array.from(allEntries).indexOf(entry.target);
-        if (entry.isIntersecting) {
-          // Remove previous active highlights
-          allEntries.forEach(e => e.classList.remove("active"));
-          allContents.forEach(e => e.classList.remove("active"));
-
-          // Highlight the entry in view
-          entry.target.classList.add("active");
-          allContents[index]?.classList.add("active");
-
-          // Highlight the current month in contents panel
-          const monthName = entry.target.closest("#monthEntries")?.previousElementSibling?.textContent;
-          document.querySelectorAll(".contents-month").forEach(m => {
-            m.classList.toggle(
-              "active",
-              m.querySelector("button")?.textContent === monthName
-            );
-          });
-        }
-      });
-    },
-    { threshold: 0.5 } // Entry considered visible when 50% is in viewport
-  );
-
-  allEntries.forEach(entry => observer.observe(entry));
-}
-
-// Call this after opening a month to enable scroll highlight
-function openMonth(m) {
   highlightCurrentMonth(m);
 
   grid.style.display = "none";
@@ -723,22 +516,22 @@ function openMonth(m) {
     h.textContent = `${e.title} — ${e.date}`;
     d.appendChild(h);
 
-    if (e.sections) {
+    if(e.sections){
       e.sections.forEach(sec => {
-        if (sec.heading) {
+        if(sec.heading){
           const strong = document.createElement("strong");
           strong.textContent = sec.heading + ":";
           d.appendChild(strong);
           d.appendChild(document.createElement("br"));
         }
 
-        if (sec.content) {
+        if(sec.content){
           const p = document.createElement("p");
           p.textContent = sec.content;
           d.appendChild(p);
         }
 
-        if (sec.images) {
+        if(sec.images){
           sec.images.forEach(src => {
             const img = document.createElement("img");
             img.src = src;
@@ -748,7 +541,7 @@ function openMonth(m) {
           });
         }
 
-        if (sec.pdf) {
+        if(sec.pdf){
           const iframe = document.createElement("iframe");
           iframe.src = sec.pdf;
           iframe.width = "100%";
@@ -758,13 +551,13 @@ function openMonth(m) {
           d.appendChild(iframe);
         }
 
-        if (sec.youtube) {
+        if(sec.youtube){
           const iframe = document.createElement("iframe");
           let ytURL = sec.youtube;
-          if (ytURL.includes("watch?v=")) {
+          if(ytURL.includes("watch?v=")){
             const videoId = ytURL.split("watch?v=")[1].split("&")[0];
             ytURL = `https://www.youtube.com/embed/${videoId}`;
-          } else if (ytURL.includes("youtu.be/")) {
+          } else if(ytURL.includes("youtu.be/")){
             const videoId = ytURL.split("youtu.be/")[1].split("?")[0];
             ytURL = `https://www.youtube.com/embed/${videoId}`;
           }
@@ -785,49 +578,142 @@ function openMonth(m) {
     entries.appendChild(d);
   });
 
-  // Enable scroll-based highlighting for newly added entries
   enableEntryScrollHighlight();
 
-  if (!completed.includes(m)) completed.push(m);
+  if(!completed.includes(m)) completed.push(m);
   updateProgress();
 }
 
-/* ---------- ALL ENTRIES PAGE ---------- */
+/* ---------- SCROLL HIGHLIGHT ---------- */
+function enableEntryScrollHighlight() {
+  const allEntries = document.querySelectorAll(".entry");
+  const allContents = document.querySelectorAll(".contents-entry");
 
-function openAllEntries() {
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        const index = Array.from(allEntries).indexOf(entry.target);
+        if(entry.isIntersecting){
+          allEntries.forEach(e => e.classList.remove("active"));
+          allContents.forEach(e => e.classList.remove("active"));
+          entry.target.classList.add("active");
+          allContents[index]?.classList.add("active");
+
+          const monthName = entry.target.closest("#monthEntries")?.previousElementSibling?.textContent;
+          document.querySelectorAll(".contents-month").forEach(m => {
+            m.classList.toggle("active", m.querySelector("button")?.textContent === monthName);
+          });
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  allEntries.forEach(entry => observer.observe(entry));
+}
+
+/* ---------- PROGRESS ---------- */
+function updateProgress(){
+  const pct = Math.round((completed.length / Object.keys(data).length) * 100);
+  fill.style.width = pct + "%";
+  label.textContent = pct + "% complete";
+  localStorage.setItem("ljCompleted", JSON.stringify(completed));
+
+  document.querySelectorAll(".month").forEach(b => {
+    b.classList.toggle("completed", completed.includes(b.textContent));
+  });
+}
+
+function resetProgress(){
+  if(confirm("Reset all progress?")){
+    completed = [];
+    localStorage.removeItem("ljCompleted");
+    updateProgress();
+  }
+}
+
+/* ---------- NAVIGATION ---------- */
+function backToMonths(){
+  page.style.display = "none";
+  grid.style.display = "grid";
+}
+
+function goHome(){
+  page.style.display = "none";
+  document.getElementById("heatmapPage").style.display="none";
+  grid.style.display = "grid";
+  panel.classList.remove("open");
+  overlay.style.display="none";
+}
+
+/* ---------- HIGHLIGHT CURRENT MONTH IN PANEL ---------- */
+function highlightCurrentMonth(month){
+  document.querySelectorAll(".contents-month").forEach(m => m.classList.remove("active"));
+  document.querySelectorAll(".contents-month").forEach(m => {
+    if(m.querySelector("button").textContent === month){
+      m.classList.add("active");
+    }
+  });
+}
+
+/* ---------- CONTENTS PANEL ---------- */
+Object.entries(data).forEach(([month, monthEntries]) => {
+  const monthDiv = document.createElement("div");
+  monthDiv.className = "contents-month";
+
+  const monthBtn = document.createElement("button");
+  monthBtn.textContent = month;
+  monthBtn.onclick = () => openMonth(month);
+  monthDiv.appendChild(monthBtn);
+
+  monthEntries.forEach((entry, i) => {
+    const entryDiv = document.createElement("div");
+    entryDiv.className = "contents-entry";
+    entryDiv.textContent = `${entry.date} — ${entry.title}`;
+
+    entryDiv.onclick = () => {
+      openMonth(month);
+      setTimeout(() => {
+        const allEntries = document.querySelectorAll(".entry");
+        allEntries[i]?.scrollIntoView({behavior:"smooth"});
+        document.querySelectorAll(".contents-entry").forEach(e => e.classList.remove("active"));
+        document.querySelectorAll(".entry").forEach(e => e.classList.remove("active"));
+        allEntries[i]?.classList.add("active");
+        entryDiv.classList.add("active");
+      }, 150);
+    };
+
+    monthDiv.appendChild(entryDiv);
+  });
+
+  contentsList.appendChild(monthDiv);
+});
+
+/* ---------- ALL ENTRIES PAGE ---------- */
+function openAllEntries(){
   grid.style.display = "none";
   page.style.display = "block";
   title.textContent = "All Entries";
   entries.innerHTML = "";
 
   const filterBar = document.createElement("div");
-  filterBar.style.marginBottom = "20px";
-  filterBar.style.display = "flex";
-  filterBar.style.flexWrap = "wrap";
-  filterBar.style.gap = "10px";
+  filterBar.style.marginBottom="20px";
+  filterBar.style.display="flex";
+  filterBar.style.flexWrap="wrap";
+  filterBar.style.gap="10px";
 
   const ksbSelect = document.createElement("select");
-  ksbSelect.innerHTML =
-    `<option value="all">All KSBs</option>` +
-    Object.keys(KSB_DICTIONARY)
-      .map(k => `<option value="${k}">${k}</option>`)
-      .join("");
-
-  ksbSelect.style.padding = "6px 10px";
-  ksbSelect.style.borderRadius = "6px";
-  ksbSelect.style.border = "1px solid var(--border)";
+  ksbSelect.innerHTML = `<option value="all">All KSBs</option>` + Object.keys(KSB_DICTIONARY).map(k=>`<option value="${k}">${k}</option>`).join("");
+  ksbSelect.style.padding="6px 10px";
+  ksbSelect.style.borderRadius="6px";
+  ksbSelect.style.border="1px solid var(--border)";
   filterBar.appendChild(ksbSelect);
 
   const typeSelect = document.createElement("select");
-  typeSelect.innerHTML = `
-    <option value="all">All Job Types</option>
-    <option value="on-job">On-Job</option>
-    <option value="off-job">Off-Job</option>
-  `;
-
-  typeSelect.style.padding = "6px 10px";
-  typeSelect.style.borderRadius = "6px";
-  typeSelect.style.border = "1px solid var(--border)";
+  typeSelect.innerHTML = `<option value="all">All Job Types</option><option value="on-job">On-Job</option><option value="off-job">Off-Job</option>`;
+  typeSelect.style.padding="6px 10px";
+  typeSelect.style.borderRadius="6px";
+  typeSelect.style.border="1px solid var(--border)";
   filterBar.appendChild(typeSelect);
 
   entries.appendChild(filterBar);
@@ -835,81 +721,67 @@ function openAllEntries() {
   const allEntriesContainer = document.createElement("div");
   entries.appendChild(allEntriesContainer);
 
-  function renderEntries() {
+  function renderEntries(){
     allEntriesContainer.innerHTML = "";
-
     const selectedKSB = ksbSelect.value;
     const selectedType = typeSelect.value;
 
-    Object.entries(data).forEach(([month, monthEntries]) => {
-      const filtered = monthEntries.filter(e => {
-        if (selectedType !== "all" && e.jobType !== selectedType) return false;
-
-        if (selectedKSB === "all") return true;
-
-        if (!e.sections) return false;
-
-        return e.sections.some(sec => {
-          const contentIncludes =
-            sec.content &&
-            (sec.content.includes(selectedKSB) ||
-              sec.content.split(", ").includes(selectedKSB));
-
-          const headingIncludes =
-            sec.heading && sec.heading.includes(selectedKSB);
-
+    Object.entries(data).forEach(([month, monthEntries])=>{
+      const filtered = monthEntries.filter(e=>{
+        if(selectedType!=="all" && e.jobType!==selectedType) return false;
+        if(selectedKSB==="all") return true;
+        if(!e.sections) return false;
+        return e.sections.some(sec=>{
+          const contentIncludes = sec.content && (sec.content.includes(selectedKSB) || sec.content.split(", ").includes(selectedKSB));
+          const headingIncludes = sec.heading && sec.heading.includes(selectedKSB);
           return contentIncludes || headingIncludes;
         });
       });
 
-      if (filtered.length === 0) return;
+      if(filtered.length===0) return;
 
       const monthHeading = document.createElement("h3");
       monthHeading.textContent = month;
       allEntriesContainer.appendChild(monthHeading);
 
-      filtered.forEach(e => {
+      filtered.forEach(e=>{
         const d = document.createElement("div");
-        d.className = "entry";
-
+        d.className="entry";
         const h = document.createElement("h3");
-        h.textContent = `${e.title} — ${e.date}`;
+        h.textContent=`${e.title} — ${e.date}`;
         d.appendChild(h);
 
-        if (e.sections) {
-          e.sections.forEach(sec => {
-
-            if (sec.heading) {
-              const strong = document.createElement("strong");
-              strong.textContent = sec.heading + ":";
+        if(e.sections){
+          e.sections.forEach(sec=>{
+            if(sec.heading){
+              const strong=document.createElement("strong");
+              strong.textContent=sec.heading+":";
               d.appendChild(strong);
               d.appendChild(document.createElement("br"));
             }
-
-            if (sec.content) {
-              const p = document.createElement("p");
-              p.textContent = sec.content;
+            if(sec.content){
+              const p=document.createElement("p");
+              p.textContent=sec.content;
               d.appendChild(p);
             }
-
-            if (sec.image) {
-              const img = document.createElement("img");
-              img.src = sec.image;
-              img.style.maxWidth = "100%";
-              img.style.margin = "10px 0";
-              d.appendChild(img);
+            if(sec.images){
+              sec.images.forEach(src=>{
+                const img=document.createElement("img");
+                img.src=src;
+                img.style.maxWidth="100%";
+                img.style.margin="10px 0";
+                d.appendChild(img);
+              });
             }
-
-            if (sec.pdf) {
-              const iframe = document.createElement("iframe");
-              iframe.src = sec.pdf;
-              iframe.width = "100%";
-              iframe.height = "600";
-              iframe.style.border = "1px solid #ccc";
-              iframe.style.margin = "10px 0";
+            if(sec.pdf){
+              const iframe=document.createElement("iframe");
+              iframe.src=sec.pdf;
+              iframe.width="100%";
+              iframe.height="600";
+              iframe.style.border="1px solid #ccc";
+              iframe.style.margin="10px 0";
               d.appendChild(iframe);
             }
-
             d.appendChild(document.createElement("br"));
           });
         }
@@ -918,44 +790,41 @@ function openAllEntries() {
       });
     });
 
-    attachKSBTooltips();
+    const allEntries = allEntriesContainer.querySelectorAll(".entry");
+    const observer = new IntersectionObserver(
+      entries=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            allEntries.forEach(e=>e.classList.remove("active"));
+            entry.target.classList.add("active");
+          }
+        });
+      }, {threshold:0.5}
+    );
+    allEntries.forEach(entry=>observer.observe(entry));
   }
 
   renderEntries();
-
   ksbSelect.onchange = renderEntries;
   typeSelect.onchange = renderEntries;
 }
 
 /* ---------- HEATMAP ---------- */
 function openHeatmap(){
-
   grid.style.display="none";
   page.style.display="none";
-
-  const heatPage=document.getElementById("heatmapPage");
-  heatPage.style.display="block";
-
+  document.getElementById("heatmapPage").style.display="block";
   buildHeatmap();
 }
 
 function buildHeatmap(){
-
   const heatGrid=document.getElementById("heatmapGrid");
   heatGrid.innerHTML="";
-
   const months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-
   heatGrid.appendChild(makeCell("KSB","header"));
-
-  months.forEach(m=>{
-    heatGrid.appendChild(makeCell(m,"header"));
-  });
-
+  months.forEach(m=>heatGrid.appendChild(makeCell(m,"header")));
   Object.entries(LIP_KSB_MONTHS).forEach(([ksb,vals])=>{
-
     heatGrid.appendChild(makeCell(ksb,"ksb-label"));
-
     vals.forEach(v=>{
       const cell=document.createElement("div");
       cell.className=`heat-cell ${ratingClass(v)}`;
@@ -969,10 +838,8 @@ function makeCell(text,type){
   const div=document.createElement("div");
   div.textContent=text;
   div.className="heat-cell";
-
   if(type==="header") div.classList.add("header");
   if(type==="ksb-label") div.classList.add("ksb-label");
-
   return div;
 }
 
@@ -983,18 +850,6 @@ function ratingClass(v){
   if(v==="Very Good") return "heat-verygood";
   return "";
 }
-
-
-/* ---------- HIGHLIGHT ---------- */
-function highlightCurrentMonth(month){
-  document.querySelectorAll(".contents-month").forEach(m=>m.classList.remove("active"));
-  document.querySelectorAll(".contents-month").forEach(m=>{
-    if(m.querySelector("button").textContent===month){
-      m.classList.add("active");
-    }
-  });
-}
-
 
 /* ---------- INIT ---------- */
 updateProgress();
