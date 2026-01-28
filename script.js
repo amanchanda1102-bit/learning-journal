@@ -158,11 +158,11 @@ March: [
     date: "05/03/2025",
     sections: [
       {
-        content: "Created a building using Blender ...",
+        content: "Created a building using blender, it is needed to redesign a training ground. However when it came to learning how models are put into the VBS system it became evident this was not going to be usable. Well it could be but it would take a lot more time and effort than just starting again. My mentor suggested learning the process of converting the buildings, so they can be built with that process in mind. making it easier in the long run",
         youtube: "https://youtu.be/0FQ8kL2uKUY"
       },
       {
-        content: "I started again, with a basic test model. ..."
+        content: "I started again, with a basic test model. The goal was to get this into VBS. Which suceeded. As suggested in the feedback from my mentor I need to be more confident in my abilities, starting with a simpler model, building up from the basics will give me a better knowledge foundation helping me feel more confident in my modelling skills. It meant I now knew the process better and could start with the actual models needed. The only issue was the texturing. However since there was going to be a call to review progress buildings with no texture were good even just to show the possibilities."
       },
       {
         images: [
@@ -172,7 +172,7 @@ March: [
         ]
       },
       {
-        content: "These are the untextured 3D models. ..."
+        content: "These are the untextured 3D models. Although I followed a guide on texturing, I couldn't get part a section and so emailed the company (the simulation software company) for assistance. In the mean while, Since I have the model creation part down, I start on smaller models such as train tracks and fences that will be on the training ground. Rather than waiting for an answer and then doing the whole model from scratch I will now have base models that 1. can be shown for demonstration purposes and 2. only need texturing as a last step. This will speed up my ability to achieve the outcomes."
       },
       {
         heading: "Linked KSBs",
@@ -180,7 +180,7 @@ March: [
       }
     ]
   }
-  ],
+],
 
 
   April: [
@@ -283,17 +283,17 @@ And safety`},
   date: "23/07/2025",
   sections: [
     {
-      images: ["https://amanchanda1102-bit.github.io/learning-journal/images/guide.png",
-               "https://amanchanda1102-bit.github.io/learning-journal/images/text.png"],
+      images: ["https://amanchanda1102-bit.github.io/learning-journal/images/guide.jpg",
+               "https://amanchanda1102-bit.github.io/learning-journal/images/text.jpg"],
       content: "Around here there was a second meeting about the models. There was word about seeing if other people on different sites would be interested in also making custom models for specific training needs. I decided to make a guide. Not only for myself as a reminder on how to do things but also for possible internal company use. As I’m sure I’m not the only one that will find the provided guides absolutely useless."
     },
     {
-      images: ["https://amanchanda1102-bit.github.io/learning-journal/images/pinkfence.png"],
+      images: ["https://amanchanda1102-bit.github.io/learning-journal/images/pinkfence.jpg"],
       content: "In the guide there are two types of shaders. I realised since these are simple objects I may be able to use the simple shader. It also didn’t seem to work for me. As shown below."
     },
     {
-      images: ["https://amanchanda1102-bit.github.io/learning-journal/images/group4.png",
-               "https://amanchanda1102-bit.github.io/learning-journal/images/group2.png"],
+      images: ["https://amanchanda1102-bit.github.io/learning-journal/images/group4.jpg",
+               "https://amanchanda1102-bit.github.io/learning-journal/images/group2.jpg"],
       content: "I then tried to see if I could reverse engineer an example folder/item provided by the company. I recreated their streetlight example for my fence using a YouTube tutorial on ‘baking’ – creating images of the texture to slap on the objects. This worked! The only caveat being the baking process must be redone if adjustments are made to the model in Blender."
     },
     {
@@ -311,7 +311,8 @@ And safety`},
       jobType: "on-job",
       sections: [
         {
-          content: "I show examples of how I have set up and set down learning events, demonstrating how objectives were achieved, stakeholder/learner management, inclusion, follow-up/evaluation, and monitoring learner progress."
+          content: "I show examples of how I have set up and set down learning events, demonstrating how objectives were achieved, stakeholder/learner management, inclusion, follow-up/evaluation, and monitoring learner progress.",
+        pdf: "https://amanchanda1102-bit.github.io/learning-journal/setup.pdf"
         },
         {
           heading: "Linked KSBs",
@@ -321,56 +322,55 @@ And safety`},
     }
   ],
 
-September: [
-  {
-    title: "Coaching Session",
-    date: "03/09/2025",
-    jobType: "off-job",
-    sections: [
-      {
-        heading: "Concrete Experience",
-        content: "We had a session on coaching as part of the apprenticeship course"
-      },
-      {
-        heading: "Reflective Observation",
-        content: "We learnt about the qualities of a good coach, there was emphasis on the importance of active listening. We were taught about the GROW model – Goal, Reality, Options, Way forward."
-      },
-      {
-        heading: "Active Experimentation",
-        content: "I practiced what was learnt in the session that week by coaching my colleague. I used the GROW method to ask questions. We found that she wanted to do more learning. For the 'what now', it was decided she would find an area to develop a skill or a topic to learn more about. I contacted her about Blender and model making, asking if that would be something she would like. She asked if there was a short intro she could try to see if it was for her. I suggested the donut tutorial I started out with."
-      },
-      {
-        heading: "Abstract Conceptualization",
-        content: "Using the sheet I found from my previous course made it much easier as I had questions I could rattle off. It also meant I could focus more on listening to what she had to say. I do think I still struggled with active listening slightly. I believe this is just because of a lack of practice and thinking too much. So, if I was to do this again, I will have to practice the skill of active listening first."
-      },
-      {
-        heading: "Witness Testimonial",
-        content: "Colleague – I had a coaching session with Angel as part of her apprenticeship work and found it helpful and well structured. She explained the session clearly and used the GROW model to guide the conversation, which made it easy to follow. She asked thoughtful questions and created a comfortable space for me to speak openly. Angel was encouraging and supportive throughout and helped me think about my goals and next steps in a practical way. At times she seemed to be thinking ahead about her next question, but she was aware of this and reflected on it afterwards, showing a genuine desire to improve. Overall, it was a positive experience and I can see her developing into a confident and effective coach with more practice."
-      },
-      {
-        heading: "Linked KSBs",
-        content: "S13, B1"
-      }
-    ]
-  },
-  {
-    title: "PDP Updates",
-    date: "03/09/2025",
-    jobType: "off-job",
-    sections: [
-      {
-        heading: "Progress Reflection",
-        content: "In my progress review with the help of my coach I realised I was not updating my PDP enough, which meant I was not keeping up with tasks properly. From that progress review onwards, I updated it monthly. I found I was keeping up with tasks much easier and when I was asked where I was or what I had left to do, I had a better picture."
-      },
-      {
-        heading: "Linked KSBs",
-        content: "B1, B2"
-      }
-    ]
-  }
-]
-
-
+  September: [
+    {
+      title: "Coaching Session",
+      date: "03/09/2025",
+      jobType: "off-job",
+      sections: [
+        {
+          heading:"concrete experience", 
+          content: "We had a session on coaching as part of the apprenticeship course"
+        },
+        {
+          heading:"Reflective observation", 
+          content: "we learnt about the qualities of a good coach, there was emphasis on the importance of active listening. we were taught about the GROW model – Goal, Reality, Options, Way forward."
+        }, 
+        {
+          heading:"Active experimentation", 
+          content: " I practiced what was learnt in the session that week by coaching my colleague. I used the GROW method to ask questions. We found that she wanted to do more learning, For the what now it was decided she would find an area to develop a skill or a topic to learn more about. I contacted her about blender and model making asking if that would be something she would like. she asked if there was a short intro she could try to see if it was for her. I suggested the donut tutorial I started out with."
+        }, 
+        {
+          heading:"Abstract conceptualization", 
+          content: "Using the sheet I found from my previous course made it much easier as I had questions I could rattle off. It also meant I could focus more on listening to what she had to say. I do think I still struggled with active listening slightly. I believe this is just because of a lack of practice and thinking too much. So, if I was to do this again, I will have to practice the skill of active listening first."
+        },
+        {
+          heading:"Witness testimonial", 
+          content: "Colleague – I had a coaching session with Angel as part of her apprenticeship work and found it helpful and well structured. She explained the session clearly and used the GROW model to guide the conversation, which made it easy to follow. She asked thoughtful questions and created a comfortable space for me to speak openly. Angel was encouraging and supportive throughout and helped me think about my goals and next steps in a practical way. At times she seemed to be thinking ahead about her next question, but she was aware of this and reflected on it afterwards, showing a genuine desire to improve. Overall, it was a positive experience and I can see her developing into a confident and effective coach with more practice."
+        }, 
+        {
+          heading: "Linked KSBs",
+          content: "S13, B1"
+        }
+      ]
+    },
+    {
+      title: "PDP Updates",
+      date: "03/09/2025",
+      jobType: "off-job",
+      sections: [
+        { 
+          content: "In my progress review with the help of my coach I realised I was not updating my pdp enough, which meant I was not keeping up with tasks properly. From that progress review onwards, I updated it monthly. I found I was keeping up with tasks much easier and when I was asked where I was or what I had to do left I had a better picture.",
+          image: ["https://amanchanda1102-bit.github.io/learning-journal/PDP1.jpg",
+                 "https://amanchanda1102-bit.github.io/learning-journal/PDP2.jpg"]
+        },
+        {
+          heading: "Linked KSBs",
+          content: "B1, B2"
+        }
+      ]
+    }
+  ],
 
   October: [
     {
@@ -484,7 +484,6 @@ const overlay = document.getElementById("contentsOverlay");
 
 let completed = JSON.parse(localStorage.getItem("ljCompleted")) || [];
 
-
 /* ---------- SHOW MONTH GRID ON LOAD ---------- */
 grid.style.display = "grid";
 page.style.display = "none";
@@ -501,10 +500,8 @@ Object.keys(data).forEach(m=>{
   grid.appendChild(btn);
 });
 
-
 /* ---------- OPEN MONTH ---------- */
 function openMonth(m){
-
   highlightCurrentMonth(m);
 
   grid.style.display="none";
@@ -513,72 +510,67 @@ function openMonth(m){
   entries.innerHTML="";
 
   data[m].forEach(e=>{
+    const d = document.createElement("div");
+    d.className = "entry";
 
-    const d=document.createElement("div");
-    d.className="entry";
-
-    const h=document.createElement("h3");
-    h.textContent=`${e.title} — ${e.date}`;
+    const h = document.createElement("h3");
+    h.textContent = `${e.title} — ${e.date}`;
     d.appendChild(h);
 
     if(e.sections){
       e.sections.forEach(sec=>{
-
         if(sec.heading){
-          const strong=document.createElement("strong");
-          strong.textContent=sec.heading+":";
+          const strong = document.createElement("strong");
+          strong.textContent = sec.heading+":";
           d.appendChild(strong);
           d.appendChild(document.createElement("br"));
         }
 
         if(sec.content){
-          const p=document.createElement("p");
-          p.textContent=sec.content;
+          const p = document.createElement("p");
+          p.textContent = sec.content;
           d.appendChild(p);
         }
 
-if(sec.images){
-  sec.images.forEach(src => {
-    const img = document.createElement("img");
-    img.src = src;
-    img.style.maxWidth = "100%";
-    img.style.margin = "10px 0";
-    d.appendChild(img);
-  });
-}
+        if(sec.images){
+          sec.images.forEach(src=>{
+            const img = document.createElement("img");
+            img.src = src;
+            img.style.maxWidth = "100%";
+            img.style.margin = "10px 0";
+            d.appendChild(img);
+          });
+        }
 
         if(sec.pdf){
-          const iframe=document.createElement("iframe");
-          iframe.src=sec.pdf;
-          iframe.width="100%";
-          iframe.height="600";
+          const iframe = document.createElement("iframe");
+          iframe.src = sec.pdf;
+          iframe.width = "100%";
+          iframe.height = "600";
           iframe.style.border="1px solid #ccc";
-          iframe.style.margin="10px 0";
+          iframe.style.margin = "10px 0";
           d.appendChild(iframe);
         }
 
         if(sec.youtube){
-  const iframe = document.createElement("iframe");
-  
-  // Convert normal YouTube links to embed format if needed
-  let ytURL = sec.youtube;
-  if(ytURL.includes("watch?v=")){
-    const videoId = ytURL.split("watch?v=")[1].split("&")[0];
-    ytURL = `https://www.youtube.com/embed/${videoId}`;
-  } else if(ytURL.includes("youtu.be/")){
-    const videoId = ytURL.split("youtu.be/")[1].split("?")[0];
-    ytURL = `https://www.youtube.com/embed/${videoId}`;
-  }
-
-  iframe.src = ytURL;
-  iframe.width = "100%";
-  iframe.height = "400";
-  iframe.style.border = "1px solid #ccc";
-  iframe.style.margin = "10px 0";
-  iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-  iframe.allowFullscreen = true;
-  d.appendChild(iframe);
-}
+          const iframe = document.createElement("iframe");
+          let ytURL = sec.youtube;
+          if(ytURL.includes("watch?v=")){
+            const videoId = ytURL.split("watch?v=")[1].split("&")[0];
+            ytURL = `https://www.youtube.com/embed/${videoId}`;
+          } else if(ytURL.includes("youtu.be/")){
+            const videoId = ytURL.split("youtu.be/")[1].split("?")[0];
+            ytURL = `https://www.youtube.com/embed/${videoId}`;
+          }
+          iframe.src = ytURL;
+          iframe.width="100%";
+          iframe.height="400";
+          iframe.style.border="1px solid #ccc";
+          iframe.style.margin="10px 0";
+          iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+          iframe.allowFullscreen = true;
+          d.appendChild(iframe);
+        }
 
         d.appendChild(document.createElement("br"));
       });
@@ -590,7 +582,6 @@ if(sec.images){
   if(!completed.includes(m)) completed.push(m);
   updateProgress();
 }
-
 
 /* ---------- NAV ---------- */
 function backToMonths(){
@@ -605,7 +596,6 @@ function goHome(){
   panel.classList.remove("open");
   overlay.style.display="none";
 }
-
 
 /* ---------- PROGRESS ---------- */
 function updateProgress(){
@@ -628,77 +618,63 @@ function resetProgress(){
   }
 }
 
-
 /* ---------- CONTENTS PANEL ---------- */
-document.getElementById("contentsToggle").onclick=()=>{
+document.getElementById("contentsToggle").onclick=()=> {
   panel.classList.add("open");
   overlay.style.display="block";
 };
 
-overlay.onclick=()=>{
+overlay.onclick=()=> {
   panel.classList.remove("open");
   overlay.style.display="none";
 };
 
-const contentsList=document.getElementById("contentsList");
+const contentsList = document.getElementById("contentsList");
 
 Object.entries(data).forEach(([m,es])=>{
-  const d=document.createElement("div");
+  const d = document.createElement("div");
   d.className="contents-month";
 
-  const b=document.createElement("button");
-  b.textContent=m;
+  const b = document.createElement("button");
+  b.textContent = m;
   b.onclick=()=>openMonth(m);
   d.appendChild(b);
 
   es.forEach((e,i)=>{
-    const c=document.createElement("div");
+    const c = document.createElement("div");
     c.className="contents-entry";
-    c.textContent=`${e.date} — ${e.title}`;
-
+    c.textContent = `${e.date} — ${e.title}`;
     c.onclick=()=>{
       openMonth(m);
-      setTimeout(()=>{
-        document.querySelectorAll(".entry")[i]?.scrollIntoView({behavior:"smooth"});
-      },150);
+      setTimeout(()=>{ document.querySelectorAll(".entry")[i]?.scrollIntoView({behavior:"smooth"}); },150);
     };
-
     d.appendChild(c);
   });
 
   contentsList.appendChild(d);
 });
 
-
 /* ---------- HEATMAP ---------- */
 function openHeatmap(){
-
   grid.style.display="none";
   page.style.display="none";
 
-  const heatPage=document.getElementById("heatmapPage");
+  const heatPage = document.getElementById("heatmapPage");
   heatPage.style.display="block";
 
   buildHeatmap();
 }
 
 function buildHeatmap(){
-
-  const heatGrid=document.getElementById("heatmapGrid");
+  const heatGrid = document.getElementById("heatmapGrid");
   heatGrid.innerHTML="";
 
   const months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-
   heatGrid.appendChild(makeCell("KSB","header"));
-
-  months.forEach(m=>{
-    heatGrid.appendChild(makeCell(m,"header"));
-  });
+  months.forEach(m=> heatGrid.appendChild(makeCell(m,"header")));
 
   Object.entries(LIP_KSB_MONTHS).forEach(([ksb,vals])=>{
-
     heatGrid.appendChild(makeCell(ksb,"ksb-label"));
-
     vals.forEach(v=>{
       const cell=document.createElement("div");
       cell.className=`heat-cell ${ratingClass(v)}`;
@@ -709,13 +685,11 @@ function buildHeatmap(){
 }
 
 function makeCell(text,type){
-  const div=document.createElement("div");
+  const div = document.createElement("div");
   div.textContent=text;
   div.className="heat-cell";
-
   if(type==="header") div.classList.add("header");
   if(type==="ksb-label") div.classList.add("ksb-label");
-
   return div;
 }
 
@@ -727,102 +701,10 @@ function ratingClass(v){
   return "";
 }
 
-
 /* ---------- HIGHLIGHT ---------- */
 function highlightCurrentMonth(month){
   document.querySelectorAll(".contents-month").forEach(m=>m.classList.remove("active"));
   document.querySelectorAll(".contents-month").forEach(m=>{
-    if(m.querySelector("button").textContent===month){
-      m.classList.add("active");
-    }
+    if(m.querySelector("button").textContent===month) m.classList.add("active");
   });
 }
-
-/* ---------- OPEN ALL ENTRIES ---------- */
-function openAllEntries() {
-  // Hide the month grid and heatmap
-  grid.style.display = "none";
-  page.style.display = "block";
-  title.textContent = "All Entries";
-  entries.innerHTML = "";
-
-  // Loop through all months
-  Object.keys(data).forEach(month => {
-    data[month].forEach(e => {
-      const d = document.createElement("div");
-      d.className = "entry";
-
-      const h = document.createElement("h3");
-      h.textContent = `${month} — ${e.title} — ${e.date}`;
-      d.appendChild(h);
-
-      if (e.sections) {
-        e.sections.forEach(sec => {
-
-          if (sec.heading) {
-            const strong = document.createElement("strong");
-            strong.textContent = sec.heading + ":";
-            d.appendChild(strong);
-            d.appendChild(document.createElement("br"));
-          }
-
-          if (sec.content) {
-            const p = document.createElement("p");
-            p.textContent = sec.content;
-            d.appendChild(p);
-          }
-
-          if (sec.images) {
-            sec.images.forEach(src => {
-              const img = document.createElement("img");
-              img.src = src;
-              img.style.maxWidth = "100%";
-              img.style.margin = "10px 0";
-              d.appendChild(img);
-            });
-          }
-
-          if (sec.pdf) {
-            const iframe = document.createElement("iframe");
-            iframe.src = sec.pdf;
-            iframe.width = "100%";
-            iframe.height = "600";
-            iframe.style.border = "1px solid #ccc";
-            iframe.style.margin = "10px 0";
-            d.appendChild(iframe);
-          }
-
-          if (sec.youtube) {
-            const iframe = document.createElement("iframe");
-            let ytURL = sec.youtube;
-            if (ytURL.includes("watch?v=")) {
-              const videoId = ytURL.split("watch?v=")[1].split("&")[0];
-              ytURL = `https://www.youtube.com/embed/${videoId}`;
-            } else if (ytURL.includes("youtu.be/")) {
-              const videoId = ytURL.split("youtu.be/")[1].split("?")[0];
-              ytURL = `https://www.youtube.com/embed/${videoId}`;
-            }
-            iframe.src = ytURL;
-            iframe.width = "100%";
-            iframe.height = "400";
-            iframe.style.border = "1px solid #ccc";
-            iframe.style.margin = "10px 0";
-            iframe.allow =
-              "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-            iframe.allowFullscreen = true;
-            d.appendChild(iframe);
-          }
-
-          d.appendChild(document.createElement("br"));
-        });
-      }
-
-      entries.appendChild(d);
-    });
-  });
-}
-
-
-
-/* ---------- INIT ---------- */
-updateProgress();
