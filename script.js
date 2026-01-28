@@ -466,12 +466,13 @@ If gathering feedback from co-workers, gather feedback from people who feel neut
 
 Providing a set of questions as well as ratings (1 to 5) can help with getting relevant feedback. You can focus the questions on areas you want to assess where you are at or specific things you want to work on. Doing a self assessment can help with this process.
 
-Open ended questions can allow for anything you may have not thought of, whether that be strengths and areas of development or ideas for goals / ways of getting better. All of which can help you identify areas of developments as well as strengths you may not have known you had in a constructive way.'},
+Open ended questions can allow for anything you may have not thought of, whether that be strengths and areas of development or ideas for goals / ways of getting better. All of which can help you identify areas of developments as well as strengths you may not have known you had in a constructive way.`
+        },
 
-{
- heading: "How to use feedback to improve performance",
-
-content: 'See common trends in responses. Most online surveys have features to show average or graph which will help with this. if the response to one rating was low for every person, that is a noticeable area of development, where as on where the ratings are very varied may not be as helpful in identifying an area.
+        {
+         heading: "How to use feedback to improve performance",
+        
+        content: `See common trends in responses. Most online surveys have features to show average or graph which will help with this. if the response to one rating was low for every person, that is a noticeable area of development, where as on where the ratings are very varied may not be as helpful in identifying an area.
 
 Think about whether this is something you can change and how long it would take to change (if you are anxious or quiet that is not something that changes overnight as opposed to file or desk organisation)
 
@@ -508,11 +509,11 @@ Also, someone may join as a regular soldier, enrolled in the starter courses. Be
 
 If they were to do this on our current LMS they would most likely just have to sift through online resources and documents. This could delay them finding a role they are interested in or they could completely miss out on it.
 
-As I've mentioned many times previously, we use Extended reality here,in the form of simulation software. This is especially useful for practice of communication between leaders and troops as well as commanders and drivers. It is cost effective, can be played back to see errors and can be repeated as many times as needed. It also can be done in a realistic current country which can help the trainees get familiar with the general surroundings.'},
+As I've mentioned many times previously, we use Extended reality here,in the form of simulation software. This is especially useful for practice of communication between leaders and troops as well as commanders and drivers. It is cost effective, can be played back to see errors and can be repeated as many times as needed. It also can be done in a realistic current country which can help the trainees get familiar with the general surroundings.`},
 
 {heading: "How internal information systems support learning",
 
-content: 'Internal information systems(IIS) manage and store data, most companies will have multiple systems. They could have one on the contact us page where potential customers or suppliers put in queries or propositions. This can be stored and analysed later, are we getting a lot of the same training requests? Is this a gap in the market? Do we have the capabilities? Etc.
+content: `Internal information systems(IIS) manage and store data, most companies will have multiple systems. They could have one on the contact us page where potential customers or suppliers put in queries or propositions. This can be stored and analysed later, are we getting a lot of the same training requests? Is this a gap in the market? Do we have the capabilities? Etc.
 
 Tie this into the IIS on all courses and departments and abilities we have.
 
@@ -557,11 +558,11 @@ Training quality assessor: they go round and randomly check on courses, gatherin
 
 Training analysts: They review courses every 5 years. They ask the wider regimen how the soldiers are and if there’s anything they think should be done differently. With this and research, they create a document outlining what changes need to be made and why. This is what is passed on to the training developers.
 
-Training assistant: This is me and my mentor. We assist with training, the parts that the trainer may not have control of. Eg the simulation suite. Setting everything up before and closing everything down after. Providing guidance with the simulation software and then assisting with any queries or problems with the computers or users.'},
+Training assistant: This is me and my mentor. We assist with training, the parts that the trainer may not have control of. Eg the simulation suite. Setting everything up before and closing everything down after. Providing guidance with the simulation software and then assisting with any queries or problems with the computers or users.`},
 
 {heading: "My role and responsibilities within the L&D structure",
 
-content: 'My role is Training assistant or L&D apprentice. I assist with training within the simulation suite. My responsibilities include:
+content: `My role is Training assistant or L&D apprentice. I assist with training within the simulation suite. My responsibilities include:
 I help set up the hall for the trainees. I assist with queries and computer problems. I also aid the creation of simulation software. I do this by creating custom assets that i’m asked for. I also create missions as and when requested by putting items and objects in the simulation software.
 
 We offer multiple courses here, within the courses such as the commander course, there are specific training parts. Physical field training, knowledge based, they may be asked questions and skill based, where they are expected to demonstrate the thing. In the commander course there is a need for communication, leadership and organisational skills. This can be practised in the simulation suite.
@@ -591,11 +592,11 @@ Face to face
 -1 to 1 informal
 
 Verbal
--phone call'},
+-phone call`},
 
 {heading: "Selecting a medium and method depends on the purpose and audience of the communication.",
 
-content: 'Purpose
+content: `Purpose
 -Urgency: how urgent is the message?
 an instant message or phone call for more urgent matters, for example, when dealing with crashing PCs during training. A scheduled video call or email is less urgent, for example, when working on a project with no set time limit or time frame.
 
@@ -667,11 +668,11 @@ Believable, I was honest with the problem at hand and our current abilities to f
 
 Connected, I stayed in contact with my team as well as the trainer to keep everyone well informed. I also made sure to listen carefully to where problems were arising when called over to help trainees. This helped with the temporary solution and diagnosis of the main problem
 
-Dependable, The group was there for a 3 day training session, due to all the other things mentioned already, ensuring them training can continue after a break, updating them on the status of he situation, being ready 30 mins early the next day, The group stayed for the 3 days, even though they could have skipped out and said it was due to IT issues on our end. This shows a level of trust and collaboration built between us and them.'},
+Dependable, The group was there for a 3 day training session, due to all the other things mentioned already, ensuring them training can continue after a break, updating them on the status of he situation, being ready 30 mins early the next day, The group stayed for the 3 days, even though they could have skipped out and said it was due to IT issues on our end. This shows a level of trust and collaboration built between us and them.`},
 
 {heading: "How to use the principles of trust to work collaboratively within a team",
 
-content: 'Within this same situation as mentioned in part 1. I was the only one in office for day two. Therefore I had to stay connected and communicate back and forth with my team (e.g. my mentor). I did this via call and instant messenger. As the situation required instant responses/fast communication.
+content: `Within this same situation as mentioned in part 1. I was the only one in office for day two. Therefore I had to stay connected and communicate back and forth with my team (e.g. my mentor). I did this via call and instant messenger. As the situation required instant responses/fast communication.
 
 If I was unable to handle the training alone, Steve would have come in on Tuesday. However Monday, Steve was stuck in traffic and I had to set up. I set up perfectly fine, I’m sure this helped show I’m dependable. I did parts that he couldn’t do from home, e.g. talk to the trainees to see where the problems arise and download the after action reports, making them accessible to Steve. This helped when it comes to narrowing down the problem, as we realised there was an issue when people were repeatedly opening the maps.
 
