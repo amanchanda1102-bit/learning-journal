@@ -743,7 +743,34 @@ function openAllEntries() {
     });
   });
 }
+const filterBar = document.createElement("div");
+  filterBar.style.marginBottom = "20px";
+  filterBar.style.display = "flex";
+  filterBar.style.flexWrap = "wrap";
+  filterBar.style.gap = "10px";
 
+  // KSB select
+  const ksbSelect = document.createElement("select");
+  ksbSelect.innerHTML = `<option value="all">All KSBs</option>` +
+    Object.keys(KSB_DICTIONARY)
+      .map(k => `<option value="${k}">${k}</option>`)
+      .join("");
+  ksbSelect.style.padding = "6px 10px";
+  ksbSelect.style.borderRadius = "6px";
+  ksbSelect.style.border = "1px solid var(--border)";
+  filterBar.appendChild(ksbSelect);
+
+  // Job type select
+  const typeSelect = document.createElement("select");
+  typeSelect.innerHTML = `<option value="all">All Job Types</option>
+<option value="on-job">On-Job</option>
+<option value="off-job">Off-Job</option>`;
+  typeSelect.style.padding = "6px 10px";
+  typeSelect.style.borderRadius = "6px";
+  typeSelect.style.border = "1px solid var(--border)";
+  filterBar.appendChild(typeSelect);
+
+  monthEntries.appendChild(filterBar);
 /* ---------- HEATMAP ---------- */
 function openHeatmap(){
 
