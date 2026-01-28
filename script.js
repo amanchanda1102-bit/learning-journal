@@ -945,41 +945,46 @@ function ratingClass(v){
 }
 
 function openAppliedLearning() {
+  // Hide month grid and show page
   grid.style.display = "none";
-  page.style.display = "block";       // Reuse the month page layout
+  page.style.display = "block";
   title.textContent = "Applied Learning";
   entries.innerHTML = "";
 
-  // Example: show only entries tagged as "applied learning"
-  Object.keys(data).forEach(month => {
-    data[month].forEach(e => {
-      const hasApplied = e.sections.some(sec => sec.applied); // mark sections with applied=true if needed
-      if(hasApplied){
-        const d = document.createElement("div");
-        d.className = "entry";
-        const h = document.createElement("h3");
-        h.textContent = `${e.title} — ${e.date} (${month})`;
-        d.appendChild(h);
+  // Optional intro paragraph
+  const intro = document.createElement("p");
+  intro.textContent = "This is the application of the topics learnt in sessions to my specific work and workplace.";
+  entries.appendChild(intro);
 
-        e.sections.forEach(sec => {
-          if(sec.heading){
-            const strong = document.createElement("strong");
-            strong.textContent = sec.heading + ":";
-            d.appendChild(strong);
-            d.appendChild(document.createElement("br"));
-          }
-          if(sec.content){
-            const p = document.createElement("p");
-            p.textContent = sec.content;
-            d.appendChild(p);
-          }
-        });
+  // Loop through entries
+  appliedLearning.entries.forEach(e => {
+    const d = document.createElement("div");
+    d.className = "entry";
 
-        entries.appendChild(d);
-      }
-    });
+    const h = document.createElement("h3");
+    h.textContent = `${e.title} — ${e.date}`;
+    d.appendChild(h);
+
+    if(e.sections){
+      e.sections.forEach(sec => {
+        if(sec.heading){
+          const strong = document.createElement("strong");
+          strong.textContent = sec.heading + ":";
+          d.appendChild(strong);
+          d.appendChild(document.createElement("br"));
+        }
+        if(sec.content){
+          const p = document.createElement("p");
+          p.textContent = sec.content;
+          d.appendChild(p);
+        }
+      });
+    }
+
+    entries.appendChild(d);
   });
 }
+
 
 
 /* ---------- HIGHLIGHT ---------- */
