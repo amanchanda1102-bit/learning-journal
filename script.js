@@ -667,7 +667,7 @@ Object.entries(data).forEach(([m,es])=>{
 
   contentsList.appendChild(d);
 });
-
+/* ---------- all entries ---------- */
 function openAllEntries() {
   // Hide month grid and heatmap
   grid.style.display = "none";
