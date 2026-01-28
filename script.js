@@ -667,21 +667,22 @@ Object.entries(data).forEach(([m,es])=>{
 
   contentsList.appendChild(d);
 });
+
 function openAllEntries() {
-  // Hide month grid and heatmap
+  // Hide month grid and show page
   grid.style.display = "none";
   page.style.display = "block";
   title.textContent = "All Entries";
-  entries.innerHTML = ""; // clear previous entries
+  entries.innerHTML = ""; // clear old content
 
-  // Create filter bar
+  // --- CREATE FILTER BAR ---
   const filterBar = document.createElement("div");
   filterBar.style.marginBottom = "20px";
   filterBar.style.display = "flex";
-  filterBar.style.flexWrap = "wrap";
   filterBar.style.gap = "10px";
+  filterBar.style.flexWrap = "wrap";
 
-  // KSB select
+  // KSB filter
   const ksbSelect = document.createElement("select");
   ksbSelect.innerHTML = `<option value="all">All KSBs</option>` +
     Object.keys(KSB_DICTIONARY).map(k => `<option value="${k}">${k}</option>`).join("");
@@ -690,21 +691,24 @@ function openAllEntries() {
   ksbSelect.style.border = "1px solid var(--border)";
   filterBar.appendChild(ksbSelect);
 
-  // Job type select
+  // Job type filter
   const typeSelect = document.createElement("select");
-  typeSelect.innerHTML = `<option value="all">All Job Types</option>
-<option value="on-job">On-Job</option>
-<option value="off-job">Off-Job</option>`;
+  typeSelect.innerHTML = `
+    <option value="all">All Job Types</option>
+    <option value="on-job">On-Job</option>
+    <option value="off-job">Off-Job</option>
+  `;
   typeSelect.style.padding = "6px 10px";
   typeSelect.style.borderRadius = "6px";
   typeSelect.style.border = "1px solid var(--border)";
   filterBar.appendChild(typeSelect);
 
+  // Append filter bar above entries
   entries.appendChild(filterBar);
 
-  // Function to render entries with filters applied
+  // --- FUNCTION TO RENDER ENTRIES ---
   function renderEntries() {
-    // Remove old entries except filter bar
+    // Remove old entries, keep filter bar
     entries.querySelectorAll(".entry").forEach(e => e.remove());
 
     Object.keys(data).forEach(month => {
@@ -714,7 +718,7 @@ function openAllEntries() {
 
         // Filter by KSB
         if (ksbSelect.value !== "all") {
-          const hasKSB = e.sections?.some(sec => sec.content?.includes(ksbSelect.value)) || false;
+          const hasKSB = e.sections?.some(sec => sec.content?.includes(ksbSelect.value));
           if (!hasKSB) return;
         }
 
@@ -771,7 +775,8 @@ function openAllEntries() {
               iframe.height = "400";
               iframe.style.border = "1px solid #ccc";
               iframe.style.margin = "10px 0";
-              iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+              iframe.allow =
+                "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
               iframe.allowFullscreen = true;
               d.appendChild(iframe);
             }
@@ -787,10 +792,11 @@ function openAllEntries() {
   // Initial render
   renderEntries();
 
-  // Add filter events
+  // Apply filters when changed
   ksbSelect.onchange = renderEntries;
   typeSelect.onchange = renderEntries;
 }
+
 
 /* ---------- HEATMAP ---------- */
 function openHeatmap(){
