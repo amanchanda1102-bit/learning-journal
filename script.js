@@ -451,29 +451,29 @@ And safety`},
 };
 
 /* ---------- APPLIED LEARNING DATA ---------- */
-/******** APPLIED LEARNING DATA ********/
-
 const appliedLearning = {
   intro: "This is the application of the topics learnt in sessions to my specific work and workplace.",
   entries: [
 
     {
-      title: "How to collect objective feedback and use it to improve performance",
+      title: "How to collect objective feedback",
       date: "22/01/2025",
       sections: [
         {
+          heading: "Content",
           content: `An anonymous online survey can reduce bias and people being overly nice. It could potentially reduce the number of responses, however my team is small and growth and learning is valued so in my situation this wouldn't cause an issue.
 
-If gathering feedback from co-workers, gather feedback from people who feel neutral or positive about you as those who feel negative about you probably are not going to provide constructive criticisms, especially in an anonymous survey.
+If gathering feedback from co-workers, gather feedback from people who feel neutral or positive about you as those who feel negative about you probably are not going to provide constructive criticisms, especially in an anonymous survey
 
 Providing a set of questions as well as ratings (1 to 5) can help with getting relevant feedback. You can focus the questions on areas you want to assess where you are at or specific things you want to work on. Doing a self assessment can help with this process.
 
-Open ended questions can allow for anything you may have not thought of, whether that be strengths and areas of development or ideas for goals / ways of getting better. All of which can help you identify areas of developments as well as strengths you may not have known you had in a constructive way.`
-        },
-        {
-          content: `See common trends in responses. Most online surveys have features to show average or graph which will help with this. If the response to one rating was low for every person, that is a noticeable area of development, where as on where the ratings are very varied may not be as helpful in identifying an area.
+Open ended questions can allow for anything you may have not thought of, whether that be strengths and areas of development or ideas for goals / ways of getting better. All of which can help you identify areas of developments as well as strengths you may not have known you had in a constructive way.
 
-Think about whether this is something you can change and how long it would take to change (if you are anxious or quiet that is not something that changes overnight as opposed to file or desk organisation).
+How to use feedback to improve performance
+
+See common trends in responses. Most online surveys have features to show average or graph which will help with this. if the response to one rating was low for every person, that is a noticeable area of development, where as on where the ratings are very varied may not be as helpful in identifying an area.
+
+Think about whether this is something you can change and how long it would take to change (if you are anxious or quiet that is not something that changes overnight as opposed to file or desk organisation)
 
 Once identified, use this feedback and self assessment, to pick a few areas (based on importance), create a plan or smart goals both short and long term. Or if you already have a Personal Development Plan, update it with these.`
         }
@@ -481,149 +481,242 @@ Once identified, use this feedback and self assessment, to pick a few areas (bas
     },
 
     {
-      title: "How technology supports effective learning",
+      title: "How technology support effective learning, either alone or in conjunction with other channels",
       date: "19/02/2025",
       sections: [
         {
+          heading: "Content",
           content: `Virtual forms of learning, whether that be virtual platforms and online resources or zoom classrooms or recordings, can make learning a lot more accessible. It can allow the user to learn from anywhere at any time. This makes learning more inclusive, for example, to those with other commitments or who need more time or maybe have trouble accessing a physical location.
 
-Some if not most online videos or classrooms have auto generated subtitles, which while not always 100% accurate can aid those with visual impairments or even those who speak other languages. The hearing impaired can also control the volume. It also allows you to go back or pause if you miss anything or need time to write things down.
+Some if not most online videos or classrooms have auto generated subtitles, which while not always 100% accurate can aid those with visual impairments or even those who speak other languages (as even if auto generated captions for other languages aren't available the english captions can help aid translation). The hearing impaired can also control the volume, if they need it louder. It also allows you to go back or pause if you miss anything or need time to write things down.
 
-Moodle is an LMS or Learning Management System that makes use of these features. At Babcock's Minley site, Moodle is the main learning platform used. It contains pre learning and all of the resources for revision and recorded classes.`
-        },
-        {
-          content: `LXP or Learning Experience Platforms are more learner centred, using AI and analytics so learning can be personalised to the user. It helps gauge where a learner is at and recommends courses based on interests and difficulty.
+Moodle is an LMS or Learning Management System that makes use of these features. At Babcock's Minley site, Moodle is the main learning platform used. It contains the pre learning, for when the trainees do flipped classroom learning. It also contains all of the resources for revision and some of the classes provided are on there.
 
-LPX often uses gamification such as points, streaks and completion rewards. This encourages engagement and learning behaviours. Learning is often delivered in short videos with questions to reinforce understanding.
+LXP or Learning Experience Platforms, are like LMS’ but better. It's more learner centred, using AI and analytics so learning can be personalised to the user. It can be used to help gauge where a learner is at, providing more help on the topics the data shows they find more difficult. While reducing time wasted on topics the learner is confident in. It also can help track interests, skills and areas of development. If they linger on a page or a set of pages on x topic, they can be recommended a course in x.
 
-While we don't currently have an LXP I believe we'd benefit from it. At our Lyneham branch they use interactive 3D models such as pipes and valves which show flow systems in a way that is much easier to understand than 2D diagrams or real pipes where you cannot see inside.
+LPX often uses gamification, this helps keep learners engaged and wanting to use the system more. Often it'll have a points system, with points for streaks or daily check-ins or completion of tasks. This is positive reinforcement, encouraging the learning behaviours.
 
-This would help new soldiers explore learning opportunities based on interests rather than sifting through documents on the LMS.`
-        },
-        {
-          content: `Extended reality is used in the form of simulation software which allows practice of communication between leaders and troops. It is cost effective, repeatable, realistic and can be played back for review.
+Often the learning on platforms like this contain short videos with questions to reinforce learning and check understanding. This again, can help keep the learners engaged, ensuring they're actually learning and not just trying to get through the tasks.
 
-Internal Information Systems manage and store company data. They can be used to analyse training requests, identify gaps, compare costs of resources like 3D models, track engagement and assign the right people to projects.
+While we don't have an LXP I believe we'd benefit from it. Theory makes up less than half of the courses we provide. However as we work with the royal engineers, understanding the ins and outs of things can be advantageous.
 
-Our internal systems also hold PDRs which track goals and development. This helps managers give feedback and helps employees feel part of the team and supported in learning.`
+At our lyneham branch, they use 3d models of interactive objects, e.g. pipes and valves. You can see things flowing through and what happens to those things when you turn a valve. This can be extremely useful as ordinarily this would be taught with a 2d diagram which can be hard to visualise or a real pipe which you cant see the insides of, making it harder to make the connection. This is an example of where something interactive is better than a powerpoint or real life demonstration.
+
+Which is where an LXP would be useful.
+
+Also, someone may join as a regular soldier, enrolled in the starter courses. Being able to see learning opportunities tailored to your interests could help new soldiers choose a role and discover more about their options. This is especially useful if they are completely unsure of what they want to do.
+
+If they were to do this on our current LMS they would most likely just have to sift through online resources and documents. This could delay them finding a role they are interested in or they could completely miss out on it.
+
+As I've mentioned many times previously, we use Extended reality here,in the form of simulation software. This is especially useful for practice of communication between leaders and troops as well as commanders and drivers. It is cost effective, can be played back to see errors and can be repeated as many times as needed. It also can be done in a realistic current country which can help the trainees get familiar with the general surroundings.
+
+How internal information systems support learning
+
+Internal information systems(IIS) manage and store data, most companies will have multiple systems. They could have one on the contact us page where potential customers or suppliers put in queries or propositions. This can be stored and analysed later, are we getting a lot of the same training requests? Is this a gap in the market? Do we have the capabilities? Etc.
+
+Tie this into the IIS on all courses and departments and abilities we have.
+
+Take learning about pipes for example, if they wanted models what can we offer them? We have a 3D modeller with a 3D printer and a multimedia team with online 3D model capabilities. What are the cost differences and turn around times? - we could look at previous models made, how long they took, and price estimates.
+
+For the online one we would also have data on how often the models are used, engagement rates as well as other stats on learning.
+
+There will also be one containing all of the current employees' information. At my workplace we need someone to redo the moodle packages.
+
+The Internal info system could be used to find the best fit for the task - whose current skill sets are the most similar, what kind of training could we provide them so they could fill this need, would they even be interested in a course, do they regularly pick up courses offered? Etc.
+
+On our internal system we upload our PDRs or Performance and development reviews, this is where the employee writes down goals for the year. This is reviewed later, where managers assess strengths and areas for developments and how the goal progres is going.
+
+This is useful for managers as it can help gauge where an employee is at, praising achievements and providing feedback where necessary.
+
+This helps the employee feel more a part of the team and helps them work to become a better employee, also if they have anything they are interested in learning or training this is a way of letting it be known and the manager can help facilitate this goal.`
         }
       ]
     },
+  {
+    title: "Different L&D roles required for effective learning and development in Babcock",
+    date: "02/04/2025",
+    sections: [
+      {
+        heading: "Content",
+        content: `Specific to our company these are the L&D roles we have:
 
-    {
-      title: "Different L&D roles in Babcock and my responsibilities",
-      date: "02/04/2025",
-      sections: [
-        {
-          content: `The L&D roles in our company include:
+Media team: they deal with headshots, websites, QR codes, banners, anything media related but specifically for the L&D team.
 
-Media team – deal with websites, QR codes, banners and media.
+Schedulers/admin: They enter the information on all of the applicants or trainees. As well as scheduling courses throughout the year. We often run multiple of the same course, so spreading those out over the year as to ensure every course is booked in on the (limited) facilities eg the fields or training grounds or lake. They also take into account usual off periods for soldiers, as well as bank holidays making sure to schedule around those. They book facilities and equipment for each course with internal and external places. They are also the ones that deal with any changes or cancellations. If a group can’t use the field because of adverse weather conditions they rearrange schedules based on level of importance and availability. As everything in the course is usually in place for a reason, eg a competency that has to be marked off and therefore the trainees can’t miss it and have to do it another time.
 
-Schedulers/admin – manage trainees, schedule courses, book facilities and rearrange sessions if needed.
+Training developer: They receive the requirements laid out by the TNA or training analysts. Based on thai they develop the course specification and potential delivery points for the trainer.
 
-Training developer – create course specifications based on training needs analysis.
+Training facilitator: the person that delivers the training to the trainees. They receive the specs as well as potential delivery points and create their learning resources based on this.They are the ones that interact with the learners.
 
-Training facilitator – deliver training and create learning resources.
+Director of L&D: they keep everything under control, making sure everyone is going at a good pace. They deal with issues if they arise and are the point of contact for the higher ups as well as the customer e.g. the army. Between them they make decisions which are distributed throughout the L&D team.
 
-Director of L&D – oversees the whole department and makes key decisions.
+Training designer: When elearning modules are involved or anything that needs to be designed (other than facilitators powerpoints) the designer deals with this. Creating what is needed based on the specs.
 
-Training designer – designs elearning modules and learning materials.
+Training quality assessor: they go round and randomly check on courses, gathering feedback on everything from did the course deliver what you wanted, do you feel it helped to how was the food and accommodation. He ensures everything is up to spec, and any issues are sent to the right people.
 
-Training quality assessor – checks courses and gathers feedback.
+Training analysts: They review courses every 5 years. They ask the wider regimen how the soldiers are and if there’s anything they think should be done differently. With this and research, they create a document outlining what changes need to be made and why. This is what is passed on to the training developers.
 
-Training analysts – review courses every five years and create change documents.
+Training assistant: This is me and my mentor. We assist with training, the parts that the trainer may not have control of. Eg the simulation suite. Setting everything up before and closing everything down after. Providing guidance with the simulation software and then assisting with any queries or problems with the computers or users.
 
-Training assistant – assist with training and simulation suites.`
-        },
-        {
-          content: `My role is Training assistant and L&D apprentice. I help set up halls, assist with IT issues and support trainees.
+My role and responsibilities within the L&D structure
 
-I help create simulation assets and missions, assist with communication and leadership training in the simulation suite, and ensure everything is prepared and closed down properly before and after sessions.`
-        }
-      ]
-    },
+My role is Training assistant or L&D apprentice. I assist with training within the simulation suite. My responsibilities include:
+I help set up the hall for the trainees. I assist with queries and computer problems. I also aid the creation of simulation software. I do this by creating custom assets that i’m asked for. I also create missions as and when requested by putting items and objects in the simulation software.
 
-    {
-      title: "Communication mediums and organisational values",
-      date: "28/05/2025",
-      sections: [
-        {
-          content: `There are three main communication mediums: written, verbal and virtual.
+We offer multiple courses here, within the courses such as the commander course, there are specific training parts. Physical field training, knowledge based, they may be asked questions and skill based, where they are expected to demonstrate the thing. In the commander course there is a need for communication, leadership and organisational skills. This can be practised in the simulation suite.
 
-Methods include instant messaging, email, video calls, meetings, phone calls and social media posts.
+So we create the training, deliver the instructions on use of equipment and then aid with any queries throughout. Setting up and closing down the hall and computers before and after use.`
+      }
+    ]
+  },
 
-Choosing the right method depends on urgency, sensitivity, accessibility, complexity, record keeping, audience familiarity and quantity of people involved.
+  {
+    title: "The different mediums and methods of communications, and how to select the appropriate one for different messages and audiences",
+    date: "28/05/2025",
+    sections: [
+      {
+        heading: "Content",
+        content: `There are a few mediums of communication: written , verbal and virtual. 
+For each medium there are different methods.
 
-For urgent matters instant messaging or phone calls are best. Sensitive information is better shared in person. Complex topics work better in meetings or video calls. Emails are useful for records and simple updates.`
-        },
-        {
-          content: `Babcock has six organisational values:
+Virtual
+-Instant message
+-email
+-video call
+-social media post
 
-Be curious – questioning and improving training methods.
+Face to face
+-Meeting
+-1 to 1 informal
 
-Be kind – inclusivity and accessibility.
+Verbal
+-phone call
 
-Be courageous – improving outdated training.
+Selecting a medium and method depends on the purpose and audience of the communication.
 
-Think outcomes – using feedback and results.
+Purpose
+-Urgency: how urgent is the message?
+an instant message or phone call for more urgent matters, for example, when dealing with crashing PCs during training. A scheduled video call or email is less urgent, for example, when working on a project with no set time limit or time frame.
 
-Collaborate – teamwork and shared ideas.
+-Sensitive: is the information confidential?
+If emailing, both emails should be on a secure network/laptop. calls are not ideal as they could be recorded or overheard. Texts are probably the most susceptible to being leaked. An In person meeting avoids all of this. And on the other hand, non sensitive information cna pretty much be shared with any method.
 
-Own and deliver – maintaining high quality standards.
+-Able: is it accessible to the people involved?
+If a person is solely remote, the only ways to reach him are virtually or on the phone. Even in situations where the people are able to meet in person it may not be viable depending on the type of message being communicated. I drove an hour, my boss 3 hours, to a site. This was to meet the team and learn about what they do which is why it made sense to do an in person visit. If I was just planning on asking a single question, the drive there to have the message relayed face to face doesn’t make sense.
 
-These values directly impact how training is planned and delivered.`
-        }
-      ]
-    },
+Detail/complex of communication: how detailed is the message? How detailed is the response likely to be?is it complex?
+Is it a non urgent single question wit a yes or no answer than an email is fine. When reschedulking a meeting, I sent an email to my line manager to inform him of the change in case he could make it. He emailed back to say he couldn’t. This communication was simple enough to have it sent by email.If it’s a process you need help with, maybe using a software that would end in a back and forth of emails, trying to explain something visually, a video call or in person meeting would be better. I emailed about an issue I had with a software, the response I received was not actually what I needed help with and was quite hard to understand. If a call or in person meeting was possible, it would have been much more effective and helpful.
 
-    {
-      title: "Applying trust principles and managing conflict",
-      date: "25/06/2025",
-      sections: [
-        {
-          content: `During a training session with IT problems I applied the ABCD model of trust.
+Records of communication: Do you need to keep a record of it?
+If you’re calling a help desk that has reference numbers it already has a built in record of the call, if you need someone to look at something by a certain date, sending emails are good because they are time stamped, and can show that you did your part. Also if you were to email and call them, mentioning that you’ve called x amount of times in the email or keeping the phone log can also be good. Following up in person meetings with a summary email can counter the lack of paper trail from in person meetings.
 
-Able – resolving problems as they arose.
+Gage responses: it’s much easier to tell how someone feels about what you said in person, the verbal and nonverbal cues. So if you were pitching an idea face to face or at the very least video call is the best method.
 
-Believable – communicating honestly.
+Audience Familiarity:
+I’m close with my mentor and so i message him on whatsapp, i am less close to the training design developer so I message him on text. I am less close to my line manager so I messaged him through email.
 
-Connected – staying in contact with team and trainer.
+Quantity:
+More than one person? If it’s a company, maybe a social media post or newsletter. If it’s a smaller team, a group email or team message. If it’s something you expect a lot of questions on, a team chat is better as people can see what questions people and can react to it instead of cluttering the inbox with a lot of the same question.`
+      }
+    ]
+  },
 
-Dependable – ensuring training continued smoothly.
+  {
+    title: "The values of the organisation and how they impact learning practice",
+    date: "25/06/2025",
+    sections: [
+      {
+        heading: "Content",
+        content: `Babcock has 6 values:
 
-This built trust and collaboration with trainees and staff.`
-        },
-        {
-          content: `I also applied these principles within the team by communicating constantly with my mentor while working alone.
+Be curious – question things, why things are done a certain way, why this new and cheap tech is not used etc. 
+Impact: when creating and delivering training we come up with ideas on how to do it better, we ask trainees, we ask each other. This leads to better training.
 
-I handled setup, troubleshooting and reports which helped narrow down issues and ensured smooth delivery.
+Be kind – being inclusive, don’t discourage people from talking, welcome ideas and voices and opinions. Also on the flip side, make sure ideas and opinions are constructive. 
+Impact: When planning training, thinking about accessibility, is it a good time for everyone? Is the building wheelchair accessible?Is there a variety of different people shown in the examples on the slides or in the videos?
 
-For conflict management I lean toward collaboration and compromise using the Thomas-Kilmann model.
+Be courageous – taking risks on new things and not playing it safe. For example just because something isn’t broken doesn’t mean it can’t be made better, more effective. 
+Impact: When training is outdated, e.g. old powerpoint slides with tons of text as opposed to short snappy videos, making it known that there are better ways and getting feedback from trainees to prove this way isn’t working even though it’ll mean redoing all of the knowledge training modules.
 
-I plan improvements by researching alternatives, collaborating with my mentor and presenting ideas to management.`
-        }
-      ]
-    },
+Think: outcomes – Using results as a measure of success, did they feel it helped? Did scores improve? Etc. 
+Impact: we create training with the intention of getting results, we are looking to get feedback as to improve our current ways and continue getting results
 
-    {
-      title: "Setting up and settling down training events",
-      date: "20/08/2025",
-      sections: [
-        {
-          content: `When setting up training events I consider special requirements such as accessibility, dietary needs and prayer spaces.
+Collaborate – working together to create solutions, helping each other, supporting projects, offering a hand, asking for input, sharing ideas. 
+Impact: we share information, work together. This helps us create cohesive training in a shorter time frame.
 
-Environmental factors like temperature, noise and lighting are managed.
+Own + Deliver – own what you create, do it to a standard you’re proud of. As if everyone treats their work like this the overall work will be excellent. 
+Impact: we make sure our own work whether that’s slides, delivery, quality assurance is up to standard which ensures all work is up to standard and ready for training.`
+      }
+    ]
+  },
 
-Capacity is planned including room size, attendance, handouts, equipment and logistics.`
-        },
-        {
-          content: `When settling down events I ensure objectives are met, conduct debriefs, gather feedback using Menti, ask questions to gauge understanding and manage post-session organisation such as equipment and room setup.`
-        }
-      ]
-    }
+  {
+    title: "How to used the principles of trust to work collaboratively across functions",
+    date: "25/06/2025",
+    sections: [
+      {
+        heading: "Content",
+        content: `When holding a training session for a group of soldiers, we had some IT problems.
 
-  ]
-};
+Using the ABCD model of trust
+
+Able, I resolved problems as they arose, taking notes of ones I was unable to deal with in that moment so I could 1. Find a solution, possibly during the breaks. 2. Remember the problem so I am able to fix it immediately next time.
+
+Believable, I was honest with the problem at hand and our current abilities to fix things, this meant the trainer could in turn discuss the best plan of action eg shifting things around to give me time to fix the problem. Allowing training to continue smoothly.
+
+Connected, I stayed in contact with my team as well as the trainer to keep everyone well informed. I also made sure to listen carefully to where problems were arising when called over to help trainees. This helped with the temporary solution and diagnosis of the main problem
+
+Dependable, The group was there for a 3 day training session, due to all the other things mentioned already, ensuring them training can continue after a break, updating them on the status of he situation, being ready 30 mins early the next day, The group stayed for the 3 days, even though they could have skipped out and said it was due to IT issues on our end. This shows a level of trust and collaboration built between us and them.
+
+How to use the principles of trust to work collaboratively within a team
+
+Within this same situation as mentioned in part 1. I was the only one in office for day two. Therefore I had to stay connected and communicate back and forth with my team (e.g. my mentor). I did this via call and instant messenger. As the situation required instant responses/fast communication.
+
+If I was unable to handle the training alone, Steve would have come in on Tuesday. However Monday, Steve was stuck in traffic and I had to set up. I set up perfectly fine, I’m sure this helped show I’m dependable. I did parts that he couldn’t do from home, e.g. talk to the trainees to see where the problems arise and download the after action reports, making them accessible to Steve. This helped when it comes to narrowing down the problem, as we realised there was an issue when people were repeatedly opening the maps.
+
+How ability to handle conflict helps build better working relationships.
+
+Typically I lean more cooperative in the Thomas-kilmann Conflict Model. My level of assertiveness varies but is usually on the higher end. It really depends on the situation though. If my grade is on the line and the people in charge are not doing well I’ll be less cooperative and push more for my side to be taken but really it would be for the greater good of the team e.g. a higher grade. However in a work environment, there’s less pressure, it’s a team effort and that’s reflected in the results. For example no single person will get credit. So I lean more towards collaboration or competition, but I am happy to compromise. In the end, it’s better to have good relationships with your team members, where everyone is happy with the work produced, than have people playing the blame game and possibly making collaboration more difficult next time.
+
+After our session, I am planning to approach an area of conflict with a plan. I want to suggest changing up the independent earning materials, as they were created a decade ago. To do this I will research the other methods, prices, and evidence on its advantages. I will collaborate with my mentor, discussing it with him, as any questions he has will likely be questions our boss will have. Getting those answers early can show confidence and that this is thought out. Setting up a meeting with our boss, seeing what he thinks and any questions he has because in the end, if he doesn’t get a win out of it, it won’t be approved. He is the head of training.`
+      }
+    ]
+  },
+
+  {
+    title: "What you need to consider when setting up a training event",
+    date: "20/08/2025",
+    sections: [
+      {
+        heading: "Content",
+        content: `Any special requirements: if anyone completing or delivering the training have any special needs or requirements. does anyone have any impairments? visual, hearing, intellectual etc. Does the room need to be wheelchair accessible. dietary requirements, is anyone fasting, or need to pray at certain times – do we have a room that can temporarily be used as a prayer room.
+
+Environment: keeping in mind environmental factors that could effect the training taking place or could be distractions. what’s the weather like? if it's hot putting in measures to keep the room cool (lots of people or lots of computers running can cause the room to heat up). Having windows open or aircon but also access to a water cooler. If it's cold, making sure the room isn’t too cold, providing tea and coffee if very cold. Making sure event is indoor if raining. Are there noise outside from other actives? is this distracting enough that you can't open the windows. Is the light from outside obstructing view of the projectors? pull blinds down.
+
+Capacity: Being able to provide appropriate training in an appropriate place depending on the amount of people. how many people are coming? is the room big enough, how is everyone getting in, has an invite been sent out, is the hall easy to find, does food need to be provided, speakers working in case voice projection is needed? has anyone dropped out? do you need handouts? if so, how many do you need.`
+      }
+    ]
+  },
+
+  {
+    title: "What you need to consider when setting down a training event",
+    date: "20/08/2025",
+    sections: [
+      {
+        heading: "Content",
+        content: `Has the learning objectives been met?
+have a debrief, go over what was learnt. ask questions - preferably the same questions asked at the start to gauge learning an understanding - if at the start they were asked how they feel about the topic on a scale from 1 to 10, asking again and seeing if anyone is still giving a low score.
+
+Ask if anyone has any questions – using Menti may help people feel more comfortable asking questions.
+
+Could also add a few feedback questions after on Menti to get learners reaction to the training - did they enjoy it, what part was their favourite and least favourite - this can be used to tweak the training for future use, maybe everyone disliked a certain aspect, this can be changed or removed entirely.
+
+Make sure everyone has their stuff, no one has left anything behind. Make sure everything is put back how it should be.`
+      }
+    ]
+  }
+
+);
 
 
 const LIP_KSB_MONTHS = {
