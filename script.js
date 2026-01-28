@@ -361,7 +361,7 @@ And safety`},
       sections: [
         { 
           content: "In my progress review with the help of my coach I realised I was not updating my pdp enough, which meant I was not keeping up with tasks properly. From that progress review onwards, I updated it monthly. I found I was keeping up with tasks much easier and when I was asked where I was or what I had to do left I had a better picture.",
-          image: ["https://amanchanda1102-bit.github.io/learning-journal/images/PDP1.jpg",
+          images: ["https://amanchanda1102-bit.github.io/learning-journal/images/PDP1.jpg",
                  "https://amanchanda1102-bit.github.io/learning-journal/images/PDP2.jpg"]
         },
         {
