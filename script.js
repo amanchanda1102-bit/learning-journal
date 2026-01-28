@@ -321,7 +321,7 @@ And safety`},
     }
   ],
 
-  September: [
+September: [
   {
     title: "Coaching Session",
     date: "03/09/2025",
@@ -350,8 +350,11 @@ And safety`},
       {
         heading: "Linked KSBs",
         content: "S13, B1"
-      }]},  
-    {title: "PDP Updates",
+      }
+    ]
+  },
+  {
+    title: "PDP Updates",
     date: "03/09/2025",
     jobType: "off-job",
     sections: [
@@ -365,7 +368,8 @@ And safety`},
       }
     ]
   }
-    ]},
+]
+
 
 
   October: [
