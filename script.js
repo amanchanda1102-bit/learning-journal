@@ -365,7 +365,7 @@ And safety`},
       }
     ]
   }
-      }];
+      }],
 
 
   October: [
