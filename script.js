@@ -644,6 +644,99 @@ function highlightCurrentMonth(month) {
     }
   });
 }
+/* ---------- VIEW ALL ENTRIES ---------- */
+const allEntriesPage = document.createElement("section");
+allEntriesPage.className = "month-page";
+allEntriesPage.id = "allEntriesPage";
+allEntriesPage.style.display = "none";
+allEntriesPage.innerHTML = `
+  <div class="month-header"><h2>All Entries</h2></div>
+  <div id="allEntriesContainer"></div>
+  <button class="back-btn" onclick="backToMonthsFromAll()">← Back</button>
+`;
+document.body.insertBefore(allEntriesPage, document.querySelector(".reset-btn"));
+
+const allEntriesContainer = document.getElementById("allEntriesContainer");
+
+function openAllEntries() {
+  monthsGrid.style.display = "none";
+  monthPage.style.display = "none";
+  allEntriesPage.style.display = "block";
+  allEntriesContainer.innerHTML = "";
+
+  Object.keys(data).forEach(month => {
+    const monthHeader = document.createElement("h3");
+    monthHeader.textContent = month;
+    monthHeader.style.marginTop = "20px";
+    allEntriesContainer.appendChild(monthHeader);
+
+    data[month].forEach(entry => {
+      const div = document.createElement("div");
+      div.className = "entry";
+
+      const h4 = document.createElement("h4");
+      h4.textContent = `${entry.date} — ${entry.title}`;
+      div.appendChild(h4);
+
+      if (entry.sections) {
+        entry.sections.forEach(sec => {
+          if (sec.heading) {
+            const strong = document.createElement("strong");
+            strong.textContent = sec.heading + ":";
+            div.appendChild(strong);
+            div.appendChild(document.createElement("br"));
+          }
+          if (sec.content) {
+            const p = document.createElement("p");
+            p.textContent = sec.content;
+            div.appendChild(p);
+          }
+          if (sec.image) {
+            const img = document.createElement("img");
+            img.src = sec.image;
+            img.style.maxWidth = "100%";
+            div.appendChild(img);
+          }
+          if (sec.images) {
+            sec.images.forEach(src => {
+              const img = document.createElement("img");
+              img.src = src;
+              img.style.maxWidth = "100%";
+              div.appendChild(img);
+            });
+          }
+          if (sec.pdf) {
+            const a = document.createElement("a");
+            a.href = sec.pdf;
+            a.textContent = "View PDF";
+            a.target = "_blank";
+            div.appendChild(a);
+            div.appendChild(document.createElement("br"));
+          }
+          if (sec.youtube) {
+            const iframe = document.createElement("iframe");
+            iframe.src = sec.youtube.replace("watch?v=", "embed/");
+            iframe.width = "100%";
+            iframe.height = "315";
+            iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+            iframe.allowFullscreen = true;
+            div.appendChild(iframe);
+          }
+        });
+      }
+
+      allEntriesContainer.appendChild(div);
+    });
+  });
+
+  enableEntryScrollHighlight();
+}
+
+/* ---------- BACK BUTTON ---------- */
+function backToMonthsFromAll() {
+  allEntriesPage.style.display = "none";
+  monthsGrid.style.display = "grid";
+}
 
 /* ---------- INIT ---------- */
 buildMonths();
