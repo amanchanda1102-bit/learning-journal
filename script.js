@@ -955,11 +955,6 @@ function buildHeatmap() {
   heatGrid.appendChild(makeCell("KSB","header"));
   monthsShort.forEach(m => heatGrid.appendChild(makeCell(m,"header")));
 
-  // Example data
-  const LIP_KSB_MONTHS = {
-    B1: ["Good","Average","Poor","Good","Very Good","Average","Good","Good","Average","Poor","Good","Very Good"]
-  };
-
   Object.entries(LIP_KSB_MONTHS).forEach(([ksb, vals]) => {
     heatGrid.appendChild(makeCell(ksb,"ksb-label"));
     vals.forEach(v => {
