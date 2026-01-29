@@ -866,7 +866,7 @@ document.querySelectorAll(".entry")[i]?.scrollIntoView({behavior:"smooth"});
 const allKSBs = new Set();
 Object.values(data).flat().forEach(e => {
   e.sections?.forEach(sec => {
-    if (sec.heading.toLowerCase().includes("linked ksb") && sec.content) {
+    if (sec.heading && sec.heading.toLowerCase().includes("linked ksb") && sec.content) {
       sec.content.split(",").forEach(k => allKSBs.add(k.trim()));
     }
   });
