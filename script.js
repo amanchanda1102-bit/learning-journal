@@ -1109,4 +1109,5 @@ function highlightCurrentMonth(month){
 updateProgress();
 
 // Add "View All Entries" button if exists
-document.getElementById("viewAllBtn")?.addEventListener("click", openAllEntries);
+document.getElementById("viewAllBtn")?.addEventListener("click", () => openAllEntries(""));
+
