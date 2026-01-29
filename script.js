@@ -948,61 +948,85 @@ document.querySelectorAll(".entry")[i]?.scrollIntoView({behavior:"smooth"});
   contentsList.appendChild(d);
 });
 
-/* ---------- ALL KSBs ---------- */
-const allKSBs = new Set();
-Object.values(data).flat().forEach(e => {
-  if (e.sections) e.sections.forEach(sec => {
-    if (sec.heading?.toLowerCase().includes("linked ksb") && sec.content) {
-      sec.content.split(",").forEach(k => allKSBs.add(k.trim()));
-    }
-  });
-});
-/* ---------- ALL ENTRIES PAGE ---------- */
+function openAllEntries(filterKSB = "") {
+  // Hide other pages
+  grid.style.display = "none";
+  page.style.display = "block";
+  document.getElementById("heatmapPage").style.display = "none";
 
-  // Add "View All Entries" button if exists
-document.getElementById("viewAllBtn")?.addEventListener("click", () => openAllEntries(""));
-
-function openAllEntries(filterKSB=""){
-    grid.style.display="none"; page.style.display="block"; title.textContent="All Entries"; entries.innerHTML="";
+  title.textContent = "All Entries";
+  entries.innerHTML = "";
 
   // Remove existing filter if any
   let existing = document.getElementById("allEntriesFilter");
-  if(existing) existing.remove();
+  if (existing) existing.remove();
 
-  // Create KSB filter
+  // Create filter bar
   const filterDiv = document.createElement("div");
-  filterDiv.id="allEntriesFilter"; filterDiv.style.marginBottom="16px";
-  const label = document.createElement("label"); label.for="ksbSelect"; label.textContent="Filter by KSB: ";
-  const select = document.createElement("select"); select.id="ksbSelect";
-  const defaultOption = document.createElement("option"); defaultOption.value=""; defaultOption.textContent="-- All --";
+  filterDiv.id = "allEntriesFilter";
+  filterDiv.style.marginBottom = "16px";
+
+  const labelEl = document.createElement("label");
+  labelEl.htmlFor = "ksbSelect";
+  labelEl.textContent = "Filter by KSB: ";
+
+  const select = document.createElement("select");
+  select.id = "ksbSelect";
+
+  const defaultOption = document.createElement("option");
+  defaultOption.value = "";
+  defaultOption.textContent = "-- All --";
   select.appendChild(defaultOption);
-  Array.from(allKSBs).sort().forEach(k=>{
-    const o = document.createElement("option"); o.value=k; o.textContent=k; select.appendChild(o);
+
+  Array.from(allKSBs).sort().forEach(k => {
+    const o = document.createElement("option");
+    o.value = k;
+    o.textContent = k;
+    select.appendChild(o);
   });
-  select.value=filterKSB;
-  select.addEventListener("change",()=>openAllEntries(select.value));
-  filterDiv.appendChild(label); filterDiv.appendChild(select);
+
+  select.value = filterKSB;
+  select.onchange = () => openAllEntries(select.value);
+
+  filterDiv.appendChild(labelEl);
+  filterDiv.appendChild(select);
   page.insertBefore(filterDiv, entries);
 
-  // Render entries
-  Object.entries(data).forEach(([m,es])=>{
-    let monthAdded=false;
-    es.forEach(e=>{
-      let entryKSBs=[];
-      if(e.sections) e.sections.forEach(sec=>{
-        if(sec.heading.toLowerCase().includes("linked ksb") && sec.content){
-          entryKSBs = sec.content.split(",").map(k=>k.trim());
-        }
-      });
-      if(filterKSB && !entryKSBs.includes(filterKSB)) return;
-      if(!monthAdded){ entries.innerHTML+=`<h3>${m}</h3>`; monthAdded=true; }
-      const contentHTML = e.sections ? e.sections.map(sec=>`<strong>${sec.heading}:</strong><br>${sec.content}<br><br>`).join("") : `<p>${e.content}</p>`;
-      entries.innerHTML+=`<div class="entry"><strong>${e.title}</strong> — ${e.date}<br>${contentHTML}</div>`;
-    });
-  });
-  attachKSBTooltips();
-}
+  // Render entries function
+  function renderEntries() {
+    entries.innerHTML = ""; // clear previous
 
+    Object.entries(data).forEach(([month, es]) => {
+      let monthAdded = false;
+
+      es.forEach(e => {
+        let entryKSBs = [];
+        e.sections?.forEach(sec => {
+          if (sec.heading && sec.heading.toLowerCase().includes("linked ksb") && sec.content) {
+            entryKSBs = sec.content.split(",").map(k => k.trim());
+          }
+        });
+
+        // Skip if filtering and KSB not included
+        if (filterKSB && !entryKSBs.includes(filterKSB)) return;
+
+        if (!monthAdded) {
+          entries.innerHTML += `<h3>${month}</h3>`;
+          monthAdded = true;
+        }
+
+        const contentHTML = e.sections
+          ? e.sections.map(sec => `<strong>${sec.heading}:</strong><br>${sec.content}<br><br>`).join("")
+          : `<p>${e.content}</p>`;
+
+        entries.innerHTML += `<div class="entry"><strong>${e.title}</strong> — ${e.date}<br>${contentHTML}</div>`;
+      });
+    });
+  }
+
+  // Initially render all entries
+  renderEntries();
+}
 
 
 /* ---------- HEATMAP ---------- */
