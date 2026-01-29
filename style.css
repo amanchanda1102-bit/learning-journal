@@ -70,6 +70,7 @@ header h1{margin:0; font-size:1.4rem; color:var(--primary);}
   font-size:12px;
 }
 
+.heat-verypoor{ background:#f87171}
 .heat-poor{ background:#fecaca; }
 .heat-average{ background:#fde68a; }
 .heat-good{ background:#bbf7d0; }
