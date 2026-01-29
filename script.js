@@ -995,20 +995,18 @@ function openAllEntries(filterKSB = "") {
   defaultOption.textContent = "-- All --";
   select.appendChild(defaultOption);
 
+  // Custom order
   const ksbOrder = ["K2","K4","K8","K9","K10","K12","K13",
                     "S11","S12","S13","S17","S18","S19","S20",
                     "B1","B2","B3","B5","B7","B8","B9","B10"];
-  
-ksbOrder.forEach(k => {
-  if (allKSBs.has(k)) {  // only include KSBs that exist in your data
-    const o = document.createElement("option");
-    o.value = k;
-    o.textContent = k;
-    select.appendChild(o);
-  }
-});
-
-
+  ksbOrder.forEach(k => {
+    if (allKSBs.has(k)) {
+      const o = document.createElement("option");
+      o.value = k;
+      o.textContent = k;
+      select.appendChild(o);
+    }
+  });
 
   select.value = filterKSB;
   select.addEventListener("change", () => openAllEntries(select.value));
@@ -1017,11 +1015,12 @@ ksbOrder.forEach(k => {
   filterDiv.appendChild(select);
   page.insertBefore(filterDiv, entries);
 
-  // Render all entries (filtered if a KSB is selected)
+  // Render entries
   Object.entries(data).forEach(([month, es]) => {
     let monthAdded = false;
 
     es.forEach(e => {
+      // Collect KSBs for this entry
       let entryKSBs = [];
       e.sections?.forEach(sec => {
         if (sec.heading && sec.heading.toLowerCase().includes("linked ksb") && sec.content) {
@@ -1029,7 +1028,6 @@ ksbOrder.forEach(k => {
         }
       });
 
-      // Only skip entries if a filter is selected and doesn't match
       if (filterKSB && !entryKSBs.includes(filterKSB)) return;
 
       if (!monthAdded) {
@@ -1037,17 +1035,85 @@ ksbOrder.forEach(k => {
         monthAdded = true;
       }
 
-    const contentHTML = e.sections
-      ? e.sections.map(sec => {
-          let html = "";
-          if (sec.heading) html += `<strong>${sec.heading}:</strong><br>`;
-          if (sec.content) html += sec.content + "<br><br>";
-          return html;
-        }).join("")
-      : `<p>${e.content || ""}</p>`;
+      const d = document.createElement("div");
+      d.className = "entry";
 
+      // Title + date
+      const h = document.createElement("h3");
+      h.textContent = `${e.title} — ${e.date}`;
+      d.appendChild(h);
 
-      entries.innerHTML += `<div class="entry"><strong>${e.title}</strong> — ${e.date}<br>${contentHTML}</div>`;
+      // Sections
+      e.sections?.forEach(sec => {
+        if (sec.heading) {
+          const strong = document.createElement("strong");
+          strong.textContent = sec.heading + ":";
+          d.appendChild(strong);
+          d.appendChild(document.createElement("br"));
+        }
+
+        if (sec.content) {
+          const p = document.createElement("p");
+          p.textContent = sec.content;
+          d.appendChild(p);
+        }
+
+        // Multiple images
+        if (sec.images) {
+          sec.images.forEach(src => {
+            const img = document.createElement("img");
+            img.src = src;
+            img.style.maxWidth = "100%";
+            img.style.margin = "10px 0";
+            d.appendChild(img);
+          });
+        }
+
+        // Single image
+        if (sec.image) {
+          const img = document.createElement("img");
+          img.src = sec.image;
+          img.style.maxWidth = "100%";
+          img.style.margin = "10px 0";
+          d.appendChild(img);
+        }
+
+        // PDF
+        if (sec.pdf) {
+          const iframe = document.createElement("iframe");
+          iframe.src = sec.pdf;
+          iframe.width = "100%";
+          iframe.height = "600";
+          iframe.style.border = "1px solid #ccc";
+          iframe.style.margin = "10px 0";
+          d.appendChild(iframe);
+        }
+
+        // YouTube
+        if (sec.youtube) {
+          const iframe = document.createElement("iframe");
+          let ytURL = sec.youtube;
+          if (ytURL.includes("watch?v=")) {
+            const videoId = ytURL.split("watch?v=")[1].split("&")[0];
+            ytURL = `https://www.youtube.com/embed/${videoId}`;
+          } else if (ytURL.includes("youtu.be/")) {
+            const videoId = ytURL.split("youtu.be/")[1].split("?")[0];
+            ytURL = `https://www.youtube.com/embed/${videoId}`;
+          }
+          iframe.src = ytURL;
+          iframe.width = "100%";
+          iframe.height = "400";
+          iframe.style.border = "1px solid #ccc";
+          iframe.style.margin = "10px 0";
+          iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+          iframe.allowFullscreen = true;
+          d.appendChild(iframe);
+        }
+
+        d.appendChild(document.createElement("br"));
+      });
+
+      entries.appendChild(d);
     });
   });
 }
