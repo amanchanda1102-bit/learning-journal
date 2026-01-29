@@ -779,6 +779,15 @@ Object.keys(data).forEach(m=>{
   grid.appendChild(btn);
 });
 
+function updateProgress() {
+  const fill = document.getElementById("progressFill");
+  const label = document.getElementById("progressLabel");
+  const total = Object.keys(data).length;
+  const done = completed.length;
+  const percent = Math.round((done / total) * 100);
+  fill.style.width = percent + "%";
+  label.textContent = `${percent}% completed`;
+}
 
 /* ---------- OPEN MONTH ---------- */
 function openMonth(m){
@@ -819,6 +828,43 @@ function openMonth(m){
   updateProgress(); // update the progress bar/label
 
 }
+
+/* ---------- NAV ---------- */
+function backToMonths(){
+  page.style.display="none";
+  grid.style.display="grid";
+}
+
+function goHome(){
+  page.style.display="none";
+  document.getElementById("heatmapPage").style.display="none";
+  grid.style.display="grid";
+  panel.classList.remove("open");
+  overlay.style.display="none";
+}
+
+
+/* ---------- PROGRESS ---------- */
+function updateProgress(){
+  const pct=Math.round((completed.length/Object.keys(data).length)*100);
+  fill.style.width=pct+"%";
+  label.textContent=pct+"% complete";
+
+  localStorage.setItem("ljCompleted",JSON.stringify(completed));
+
+  document.querySelectorAll(".month").forEach(b=>{
+    b.classList.toggle("completed",completed.includes(b.textContent));
+  });
+}
+
+function resetProgress(){
+  if(confirm("Reset all progress?")){
+    completed=[];
+    localStorage.removeItem("ljCompleted");
+    updateProgress();
+  }
+}
+
 
 /* ---------- BACK BUTTON ---------- */
 function backToMonths(){
@@ -985,14 +1031,58 @@ function ratingClass(v) {
   if(v==="Very Good") return "heat-verygood";
   return "";
 }
-function updateProgress() {
-  const fill = document.getElementById("progressFill");
-  const label = document.getElementById("progressLabel");
-  const total = Object.keys(data).length;
-  const done = completed.length;
-  const percent = Math.round((done / total) * 100);
-  fill.style.width = percent + "%";
-  label.textContent = `${percent}% completed`;
+
+/* ---------- APPLIED LEARNING ---------- */
+function openAppliedLearning() {
+  // Hide month grid and show page
+  grid.style.display = "none";
+  page.style.display = "block";
+  title.textContent = "Applied Learning";
+  entries.innerHTML = "";
+
+   document.getElementById("heatmapPage").style.display = "none";
+
+  // Optional intro paragraph
+  const intro = document.createElement("p");
+  intro.textContent = "This is the application of the topics learnt in sessions to my specific work and workplace.";
+  entries.appendChild(intro);
+
+  // Loop through entries
+  appliedLearning.entries.forEach(e => {
+    const d = document.createElement("div");
+    d.className = "entry";
+
+    const h = document.createElement("h3");
+    h.textContent = `${e.title} — ${e.date}`;
+    d.appendChild(h);
+
+    if(e.sections){
+      e.sections.forEach(sec => {
+        if(sec.heading){
+          const strong = document.createElement("strong");
+          strong.textContent = sec.heading + ":";
+          d.appendChild(strong);
+          d.appendChild(document.createElement("br"));
+        }
+        if(sec.content){
+          const p = document.createElement("p");
+          p.textContent = sec.content;
+          d.appendChild(p);
+        }
+      });
+    }
+
+    entries.appendChild(d);
+  });
+}
+/* ---------- HIGHLIGHT ---------- */
+function highlightCurrentMonth(month){
+  document.querySelectorAll(".contents-month").forEach(m=>m.classList.remove("active"));
+  document.querySelectorAll(".contents-month").forEach(m=>{
+    if(m.querySelector("button").textContent===month){
+      m.classList.add("active");
+    }
+  });
 }
 
 /* ---------- INIT ---------- */
