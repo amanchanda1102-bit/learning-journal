@@ -1012,7 +1012,8 @@ function openAllEntries(filterKSB="") {
           }
         });
       }
-      if(filterKSB && !entryKSBs.includes(filterKSB)) return;
+      if(filterKSB && filterKSB !== "" && !entryKSBs.includes(filterKSB)) return;
+
 
       if(!monthAdded){
         entries.innerHTML += `<h3>${month}</h3>`;
