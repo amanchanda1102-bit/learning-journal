@@ -949,12 +949,25 @@ document.querySelectorAll(".entry")[i]?.scrollIntoView({behavior:"smooth"});
 });
 
 /* ---------- ALL ENTRIES PAGE ---------- */
+
+// Collect all KSBs (assuming every entry has at least one KSB)
+const allKSBs = new Set();
+Object.values(data).flat().forEach(e => {
+  e.sections?.forEach(sec => {
+    if (sec.heading && sec.heading.toLowerCase().includes("linked ksb") && sec.content) {
+      sec.content.split(",").forEach(k => allKSBs.add(k.trim()));
+    }
+  });
+});
+
+// Attach the "View All Entries" button ONCE, outside of the function
+document.getElementById("viewAllBtn")?.addEventListener("click", () => openAllEntries(""));
+
 function openAllEntries(filterKSB = "") {
   // Hide other pages
   grid.style.display = "none";
   page.style.display = "block";
   document.getElementById("heatmapPage").style.display = "none";
-
   title.textContent = "All Entries";
   entries.innerHTML = "";
 
@@ -974,14 +987,12 @@ function openAllEntries(filterKSB = "") {
   const select = document.createElement("select");
   select.id = "ksbSelect";
 
-  // Default "All" option
   const defaultOption = document.createElement("option");
   defaultOption.value = "";
   defaultOption.textContent = "-- All --";
   select.appendChild(defaultOption);
 
-  // Populate options from your KSB dictionary
-  Object.keys(LIP_KSB_MONTHS).sort().forEach(k => {
+  Array.from(allKSBs).sort().forEach(k => {
     const o = document.createElement("option");
     o.value = k;
     o.textContent = k;
@@ -989,18 +1000,17 @@ function openAllEntries(filterKSB = "") {
   });
 
   select.value = filterKSB;
-  select.onchange = () => openAllEntries(select.value);
+  select.addEventListener("change", () => openAllEntries(select.value));
 
   filterDiv.appendChild(labelEl);
   filterDiv.appendChild(select);
   page.insertBefore(filterDiv, entries);
 
-  // Render entries
+  // Render all entries (filtered if a KSB is selected)
   Object.entries(data).forEach(([month, es]) => {
     let monthAdded = false;
 
     es.forEach(e => {
-      // Collect KSBs for this entry
       let entryKSBs = [];
       e.sections?.forEach(sec => {
         if (sec.heading && sec.heading.toLowerCase().includes("linked ksb") && sec.content) {
@@ -1008,7 +1018,7 @@ function openAllEntries(filterKSB = "") {
         }
       });
 
-      // Skip if filter is applied and entry doesn't match
+      // Only skip entries if a filter is selected and doesn't match
       if (filterKSB && !entryKSBs.includes(filterKSB)) return;
 
       if (!monthAdded) {
@@ -1025,7 +1035,6 @@ function openAllEntries(filterKSB = "") {
   });
 }
 
-document.getElementById("viewAllBtn")?.addEventListener("click", () => openAllEntries(""));
 
 /* ---------- HEATMAP ---------- */
 function openHeatmap() {
