@@ -372,26 +372,30 @@ And safety`},
     }
   ],
 
-  October: [
-    {
-      title: "Cadets Training Delivery",
-      date: "09/10/2025",
-      jobType: "on-job",
-      sections: [
-        {
-          content: "I was asked to cover training delivery for a group of cadets. I had never done the speaking part for face-to-face training before so I was extremely nervous, my mentor put no pressure on me to do it, saying we could cancel if needed. I ended up doing it and was glad I did it. There were a couple of hiccups but luckily Steve was online from home to help with any computer issues."
-        }, 
-        {heading: "How I managed participation, attitudes and behaviours:", content: "74% of teens use YouTube to learn something new for school, The rise in social media short videos shows its a preferred method for getting information. For when the cadets come in and get settled, I had put up videos on VBS and the new updates. I did this to do some crowd control as well as get them interested in the topic of the day, simulation software.  I also, knowing how short attention span and easily distracted teens can be, created a short presentation so there were visuals for what I was talking about. I then left a summary page up on the board at the end so the basic questions can be answered by looking at the screen. One issue I came across was a girl was disengaged, after going over to her, I had found out she wasn't having a good day and was not interested in the competitive game aspect of the training. I adapted the session for her, instead of playing the competitive game Ilet her explore the different vehicles available in VBs as she had shown an interest in tanks.  This kept her engaged and kept her interested in the simulation software which was the end objective. Realistically they are here to learn about the latest learning practices which is VBS, the method in which they learn about it isn't as important. I'd rather her be engaged in that than sitting there twiddling her thumbs or on her phone."
-        },
-        {
-          content: "If I were to do it again, I would have talked slower and taken longer breaks to compose myself and make sure everything was running properly. In the end something in the game broke and one team was able to respawn constantly leading to the two teams getting bored. I think next time I will make sure to pay more attention to how the game is playing out, something I had never thought about when just assisting training delivery."
-        },
-        {
-          heading: "Linked KSBs",
-          content: "S12, S19, S17"
-        }
-      ]
-    },
+October: [
+  {
+    title: "Cadets Training Delivery",
+    date: "09/10/2025",
+    jobType: "on-job",
+    sections: [
+      {
+        content: "I was asked to cover training delivery for a group of cadets. I had never done the speaking part for face-to-face training before so I was extremely nervous. My mentor put no pressure on me to do it, saying we could cancel if needed. I ended up doing it and was glad I did it. There were a couple of hiccups but luckily Steve was online from home to help with any computer issues."
+      },
+      {
+        heading: "How I managed participation, attitudes and behaviours",
+        content: "74% of teens use YouTube to learn something new for school. The rise in social media short videos shows it is a preferred method for getting information. When the cadets came in and got settled, I put up videos on VBS and the new updates to help with crowd control and to get them interested in the topic of the day, simulation software. Knowing how short attention spans and easily distracted teens can be, I created a short presentation with visuals to support what I was explaining. I then left a summary page up on the board at the end so basic questions could be answered by looking at the screen. One issue I came across was a girl who was disengaged. After speaking to her, I found out she wasn’t having a good day and was not interested in the competitive game aspect of the training. I adapted the session for her and instead of playing the competitive game, I let her explore the different vehicles available in VBS as she had shown an interest in tanks. This kept her engaged and interested in the simulation software, which was the end objective. Realistically they are here to learn about the latest learning practices, which is VBS. The method in which they learn about it isn’t as important. I’d rather her be engaged than sitting on her phone or disengaged."
+      },
+      {
+        content: "If I were to do it again, I would have talked slower and taken longer breaks to compose myself and make sure everything was running properly. In the end something in the game broke and one team was able to respawn constantly, leading to both teams getting bored. Next time I will pay more attention to how the game is playing out, which I had never considered when just assisting with training delivery."
+      },
+      {
+        heading: "Linked KSBs",
+        content: "S12, S19, S17"
+      }
+    ]
+  }
+],
+
     {
       title: "Modeling Guidance for Co-worker",
       date: "15/10/2025",
