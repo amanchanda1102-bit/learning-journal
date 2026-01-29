@@ -1146,12 +1146,15 @@ function makeCell(text,type){
 }
 
 function ratingClass(v){
+  if(v==="Very Poor") return "heat-verypoor";
   if(v==="Poor") return "heat-poor";
   if(v==="Average") return "heat-average";
   if(v==="Good") return "heat-good";
   if(v==="Very Good") return "heat-verygood";
   return "";
 }
+
+
 
 function openAppliedLearning() {
   // Hide month grid and show page
