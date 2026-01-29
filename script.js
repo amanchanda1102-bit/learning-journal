@@ -993,37 +993,37 @@ function openAllEntries(filterKSB = "") {
   filterDiv.appendChild(select);
   page.insertBefore(filterDiv, entries);
 
-  // Render entries function
-  function renderEntries() {
-    entries.innerHTML = ""; // clear previous
+  // Render entries
+  Object.entries(data).forEach(([month, es]) => {
+    let monthAdded = false;
 
-    Object.entries(data).forEach(([month, es]) => {
-      let monthAdded = false;
-
-      es.forEach(e => {
-        let entryKSBs = [];
-        e.sections?.forEach(sec => {
-          if (sec.heading && sec.heading.toLowerCase().includes("linked ksb") && sec.content) {
-            entryKSBs = sec.content.split(",").map(k => k.trim());
-          }
-        });
-
-        // Skip if filtering and KSB not included
-        if (filterKSB && !entryKSBs.includes(filterKSB)) return;
-
-        if (!monthAdded) {
-          entries.innerHTML += `<h3>${month}</h3>`;
-          monthAdded = true;
+    es.forEach(e => {
+      // Collect KSBs for this entry (if any)
+      let entryKSBs = [];
+      e.sections?.forEach(sec => {
+        if (sec.heading && sec.heading.toLowerCase().includes("linked ksb") && sec.content) {
+          entryKSBs = sec.content.split(",").map(k => k.trim());
         }
-
-        const contentHTML = e.sections
-          ? e.sections.map(sec => `<strong>${sec.heading}:</strong><br>${sec.content}<br><br>`).join("")
-          : `<p>${e.content}</p>`;
-
-        entries.innerHTML += `<div class="entry"><strong>${e.title}</strong> — ${e.date}<br>${contentHTML}</div>`;
       });
+
+      // Only skip if a filter is applied AND the entry has KSBs AND the filter doesn't match
+      if (filterKSB && entryKSBs.length > 0 && !entryKSBs.includes(filterKSB)) return;
+
+      // Add month header if not already added
+      if (!monthAdded) {
+        entries.innerHTML += `<h3>${month}</h3>`;
+        monthAdded = true;
+      }
+
+      const contentHTML = e.sections
+        ? e.sections.map(sec => `<strong>${sec.heading}:</strong><br>${sec.content}<br><br>`).join("")
+        : `<p>${e.content}</p>`;
+
+      entries.innerHTML += `<div class="entry"><strong>${e.title}</strong> — ${e.date}<br>${contentHTML}</div>`;
     });
-  }
+  });
+}
+
 
   // Initially render all entries
   renderEntries();
