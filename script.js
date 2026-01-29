@@ -992,12 +992,26 @@ function openAllEntries(filterKSB = "") {
   defaultOption.textContent = "-- All --";
   select.appendChild(defaultOption);
 
-Array.from(allKSBs).sort().forEach(k => {
-  const o = document.createElement("option");
-  o.value = k;
-  o.textContent = k;
-  select.appendChild(o);
-});
+  const ksbOrder = ["K2","K4","K8","K9","K10","K12","K13",
+                    "S11","S12","S13","S17","S18","S19","S20",
+                    "B1","B2","B3","B5","B7","B8","B9","B10"];
+  
+  Array.from(allKSBs)
+    .sort((a, b) => {
+      const aIndex = ksbOrder.indexOf(a);
+      const bIndex = ksbOrder.indexOf(b);
+      if(aIndex === -1 && bIndex === -1) return a.localeCompare(b); // both unknown, alphabetical
+      if(aIndex === -1) return 1; // unknown goes last
+      if(bIndex === -1) return -1;
+      return aIndex - bIndex;
+    })
+    .forEach(k => {
+      const o = document.createElement("option");
+      o.value = k;
+      o.textContent = k;
+      select.appendChild(o);
+    });
+
 
   select.value = filterKSB;
   select.addEventListener("change", () => openAllEntries(select.value));
