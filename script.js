@@ -782,97 +782,33 @@ Object.keys(data).forEach(m=>{
 
 /* ---------- OPEN MONTH ---------- */
 function openMonth(m){
+  grid.style.display = "none";
+  page.style.display = "block";
+  document.getElementById("heatmapPage")?.style.display = "none"; // hide heatmap if open
+  title.textContent = m;
+  entries.innerHTML = "";
 
-  highlightCurrentMonth(m);
-
-  grid.style.display="none";
-  page.style.display="block";
-  title.textContent=m;
-  entries.innerHTML="";
-
-  document.getElementById("heatmapPage").style.display = "none";
-  
   data[m].forEach(e=>{
+    const d = document.createElement("div");
+    d.className = "entry";
 
-    const d=document.createElement("div");
-    d.className="entry";
-
-    const h=document.createElement("h3");
-    h.textContent=`${e.title} — ${e.date}`;
+    const h = document.createElement("h3");
+    h.textContent = `${e.title} — ${e.date}`;
     d.appendChild(h);
 
-    if(e.sections){
-      e.sections.forEach(sec=>{
-
-        if(sec.heading){
-          const strong=document.createElement("strong");
-          strong.textContent=sec.heading+":";
-          d.appendChild(strong);
-          d.appendChild(document.createElement("br"));
-        }
-
-        if(sec.content){
-          const p=document.createElement("p");
-          p.textContent=sec.content;
-          d.appendChild(p);
-        }
-        
-        if(sec.images){
-          sec.images.forEach(src => {
-            const img = document.createElement("img");
-            img.src = src;
-            img.style.maxWidth = "100%";
-            img.style.margin = "10px 0";
-            d.appendChild(img);
-          });
-        }
-        
-        // Handle single image
-        if(sec.image){
-          const img = document.createElement("img");
-          img.src = sec.image;
-          img.style.maxWidth = "100%";
-          img.style.margin = "10px 0";
-          d.appendChild(img);
-        }
-
-
-        if(sec.pdf){
-          const iframe=document.createElement("iframe");
-          iframe.src=sec.pdf;
-          iframe.width="100%";
-          iframe.height="600";
-          iframe.style.border="1px solid #ccc";
-          iframe.style.margin="10px 0";
-          d.appendChild(iframe);
-        }
-
-        if(sec.youtube){
-  const iframe = document.createElement("iframe");
-  
-  // Convert normal YouTube links to embed format if needed
-  let ytURL = sec.youtube;
-  if(ytURL.includes("watch?v=")){
-    const videoId = ytURL.split("watch?v=")[1].split("&")[0];
-    ytURL = `https://www.youtube.com/embed/${videoId}`;
-  } else if(ytURL.includes("youtu.be/")){
-    const videoId = ytURL.split("youtu.be/")[1].split("?")[0];
-    ytURL = `https://www.youtube.com/embed/${videoId}`;
-  }
-
-  iframe.src = ytURL;
-  iframe.width = "100%";
-  iframe.height = "400";
-  iframe.style.border = "1px solid #ccc";
-  iframe.style.margin = "10px 0";
-  iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-  iframe.allowFullscreen = true;
-  d.appendChild(iframe);
-}
-
+    e.sections?.forEach(sec=>{
+      if(sec.heading){
+        const strong = document.createElement("strong");
+        strong.textContent = sec.heading + ":";
+        d.appendChild(strong);
         d.appendChild(document.createElement("br"));
-      });
-    }
+      }
+      if(sec.content){
+        const p = document.createElement("p");
+        p.textContent = sec.content;
+        d.appendChild(p);
+      }
+    });
 
     entries.appendChild(d);
   });
@@ -881,103 +817,67 @@ function openMonth(m){
   updateProgress();
 }
 
-
-/* ---------- NAV ---------- */
+/* ---------- BACK BUTTON ---------- */
 function backToMonths(){
-  page.style.display="none";
-  grid.style.display="grid";
+  page.style.display = "none";
+  grid.style.display = "grid";
 }
-
-function goHome(){
-  page.style.display="none";
-  document.getElementById("heatmapPage").style.display="none";
-  grid.style.display="grid";
-  panel.classList.remove("open");
-  overlay.style.display="none";
-}
-
-
-/* ---------- PROGRESS ---------- */
-function updateProgress(){
-  const pct=Math.round((completed.length/Object.keys(data).length)*100);
-  fill.style.width=pct+"%";
-  label.textContent=pct+"% complete";
-
-  localStorage.setItem("ljCompleted",JSON.stringify(completed));
-
-  document.querySelectorAll(".month").forEach(b=>{
-    b.classList.toggle("completed",completed.includes(b.textContent));
-  });
-}
-
-function resetProgress(){
-  if(confirm("Reset all progress?")){
-    completed=[];
-    localStorage.removeItem("ljCompleted");
-    updateProgress();
-  }
-}
-
 
 /* ---------- CONTENTS PANEL ---------- */
-document.getElementById("contentsToggle").onclick=()=>{
+document.getElementById("contentsToggle").onclick = ()=>{
   panel.classList.add("open");
-  overlay.style.display="block";
+  overlay.style.display = "block";
 };
-
-overlay.onclick=()=>{
+overlay.onclick = ()=>{
   panel.classList.remove("open");
-  overlay.style.display="none";
+  overlay.style.display = "none";
 };
 
-const contentsList=document.getElementById("contentsList");
+contentsList.innerHTML = "";
+Object.entries(data).forEach(([m, es])=>{
+  const d = document.createElement("div");
+  d.className = "contents-month";
 
-Object.entries(data).forEach(([m,es])=>{
-  const d=document.createElement("div");
-  d.className="contents-month";
-
-  const b=document.createElement("button");
-  b.textContent=m;
-  b.onclick=()=>openMonth(m);
+  const b = document.createElement("button");
+  b.textContent = m;
+  b.onclick = ()=>openMonth(m);
   d.appendChild(b);
 
   es.forEach((e,i)=>{
-    const c=document.createElement("div");
-    c.className="contents-entry";
-    c.textContent=`${e.date} — ${e.title}`;
-
-    c.onclick=()=>{
+    const c = document.createElement("div");
+    c.className = "contents-entry";
+    c.textContent = `${e.date} — ${e.title}`;
+    c.onclick = ()=>{
       openMonth(m);
-      setTimeout(()=>{
-        document.querySelectorAll(".entry")[i]?.scrollIntoView({behavior:"smooth"});
-      },150);
+      setTimeout(()=>document.querySelectorAll(".entry")[i]?.scrollIntoView({behavior:"smooth"}),150);
     };
-
     d.appendChild(c);
   });
 
   contentsList.appendChild(d);
 });
 
-
-function openAllEntries(filterKSB="") {
+/* ---------- ALL ENTRIES ---------- */
+function openAllEntries(filterKSB=""){
   grid.style.display = "none";
   page.style.display = "block";
+  document.getElementById("heatmapPage")?.style.display = "none";
   title.textContent = "All Entries";
   entries.innerHTML = "";
 
-  // Remove old filter if exists
-  let existing = document.getElementById("allEntriesFilter");
-  if(existing) existing.remove();
+  // Remove old filter
+  const oldFilter = document.getElementById("allEntriesFilter");
+  if(oldFilter) oldFilter.remove();
 
   // Create KSB dropdown
   const filterDiv = document.createElement("div");
   filterDiv.id = "allEntriesFilter";
   filterDiv.style.marginBottom = "16px";
 
-  const label = document.createElement("label");
-  label.for = "ksbSelect";
-  label.textContent = "Filter by KSB: ";
+  const labelEl = document.createElement("label");
+  labelEl.for = "ksbSelect";
+  labelEl.textContent = "Filter by KSB: ";
+
   const select = document.createElement("select");
   select.id = "ksbSelect";
 
@@ -987,203 +887,81 @@ function openAllEntries(filterKSB="") {
   select.appendChild(defaultOption);
 
   Array.from(allKSBs).sort().forEach(k=>{
-    const opt = document.createElement("option");
-    opt.value = k;
-    opt.textContent = k;
-    select.appendChild(opt);
+    const o = document.createElement("option");
+    o.value = k;
+    o.textContent = k;
+    select.appendChild(o);
   });
+
   select.value = filterKSB;
+  select.onchange = ()=>openAllEntries(select.value);
 
-  select.addEventListener("change",()=>openAllEntries(select.value));
-
-  filterDiv.appendChild(label);
+  filterDiv.appendChild(labelEl);
   filterDiv.appendChild(select);
   page.insertBefore(filterDiv, entries);
 
-  // Render all entries
-  Object.entries(data).forEach(([month, entriesArr])=>{
+  // Render entries
+  Object.entries(data).forEach(([m, es])=>{
     let monthAdded = false;
-    entriesArr.forEach(entry=>{
+    es.forEach(e=>{
       let entryKSBs = [];
-      if(entry.sections){
-        entry.sections.forEach(sec=>{
-          if(sec.heading.toLowerCase().includes("linked ksb") && sec.content){
-            entryKSBs = sec.content.split(",").map(k=>k.trim());
-          }
-        });
-      }
+      e.sections?.forEach(sec=>{
+        if(sec.heading.toLowerCase().includes("linked ksb") && sec.content){
+          entryKSBs = sec.content.split(",").map(k=>k.trim());
+        }
+      });
       if(filterKSB && !entryKSBs.includes(filterKSB)) return;
 
-
-
       if(!monthAdded){
-        entries.innerHTML += `<h3>${month}</h3>`;
+        entries.innerHTML += `<h3>${m}</h3>`;
         monthAdded = true;
       }
 
-      const contentHTML = entry.sections
-        ? entry.sections.map(sec=>`<strong>${sec.heading}:</strong><br>${sec.content}<br><br>`).join("")
-        : `<p>${entry.content}</p>`;
-
-      entries.innerHTML += `<div class="entry"><strong>${entry.title}</strong> — ${entry.date}<br>${contentHTML}</div>`;
+      const contentHTML = e.sections ? e.sections.map(sec=>`<strong>${sec.heading}:</strong><br>${sec.content}<br><br>`).join("") : `<p>${e.content}</p>`;
+      entries.innerHTML += `<div class="entry"><strong>${e.title}</strong> — ${e.date}<br>${contentHTML}</div>`;
     });
   });
 }
 
-  // --- FUNCTION TO RENDER ENTRIES ---
-  function renderEntries() {
-    // Remove old entries, keep filter bar
-    entries.querySelectorAll(".entry").forEach(e => e.remove());
-
-    Object.keys(data).forEach(month => {
-      data[month].forEach(e => {
-        // Filter by job type
-        if (typeSelect.value !== "all" && e.jobType !== typeSelect.value) return;
-        
-        if (ksbSelect.value !== "all") {
-          const hasKSB = e.sections?.some(sec => {
-            if (sec.heading === "Linked KSBs" && sec.content) {
-              const ksbs = sec.content.split(",").map(k => k.trim());
-              return ksbs.includes(ksbSelect.value);
-            }
-            return false;
-          });
-          if (!hasKSB) return; // skip this entry
-        }
-
-
-
-        const d = document.createElement("div");
-        d.className = "entry";
-
-        const h = document.createElement("h3");
-        h.textContent = `${e.title} — ${e.date} (${month})`;
-        d.appendChild(h);
-
-        if (e.sections) {
-          e.sections.forEach(sec => {
-            if (sec.heading) {
-              const strong = document.createElement("strong");
-              strong.textContent = sec.heading + ":";
-              d.appendChild(strong);
-              d.appendChild(document.createElement("br"));
-            }
-            if (sec.content) {
-              const p = document.createElement("p");
-              p.textContent = sec.content;
-              d.appendChild(p);
-            }
-            if (sec.images) {
-              sec.images.forEach(src => {
-                const img = document.createElement("img");
-                img.src = src;
-                img.style.maxWidth = "100%";
-                img.style.margin = "10px 0";
-                d.appendChild(img);
-              });
-            }
-            if (sec.image) {
-              sec.image.forEach(src => {
-                const img = document.createElement("img");
-                img.src = src;
-                img.style.maxWidth = "100%";
-                img.style.margin = "10px 0";
-                d.appendChild(img);
-              });
-            }
-            if (sec.pdf) {
-              const iframe = document.createElement("iframe");
-              iframe.src = sec.pdf;
-              iframe.width = "100%";
-              iframe.height = "600";
-              iframe.style.border = "1px solid #ccc";
-              iframe.style.margin = "10px 0";
-              d.appendChild(iframe);
-            }
-            if (sec.youtube) {
-              const iframe = document.createElement("iframe");
-              let ytURL = sec.youtube;
-              if (ytURL.includes("watch?v=")) {
-                const videoId = ytURL.split("watch?v=")[1].split("&")[0];
-                ytURL = `https://www.youtube.com/embed/${videoId}`;
-              } else if (ytURL.includes("youtu.be/")) {
-                const videoId = ytURL.split("youtu.be/")[1].split("?")[0];
-                ytURL = `https://www.youtube.com/embed/${videoId}`;
-              }
-              iframe.src = ytURL;
-              iframe.width = "100%";
-              iframe.height = "400";
-              iframe.style.border = "1px solid #ccc";
-              iframe.style.margin = "10px 0";
-              iframe.allow =
-                "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-              iframe.allowFullscreen = true;
-              d.appendChild(iframe);
-            }
-            d.appendChild(document.createElement("br"));
-          });
-        }
-
-        entries.appendChild(d);
-      });
-    });
-  }
-
-  // Initial render
-  renderEntries();
-
-  // Apply filters when changed
-  ksbSelect.onchange = renderEntries;
-  typeSelect.onchange = renderEntries;
-}
-
-
 /* ---------- HEATMAP ---------- */
 function openHeatmap(){
+  grid.style.display = "none";
+  page.style.display = "none";
 
-  grid.style.display="none";
-  page.style.display="none";
-
-  const heatPage=document.getElementById("heatmapPage");
-  heatPage.style.display="block";
+  const heatPage = document.getElementById("heatmapPage");
+  heatPage.style.display = "block";
 
   buildHeatmap();
 }
 
 function buildHeatmap(){
+  const heatGrid = document.getElementById("heatmapGrid");
+  heatGrid.innerHTML = "";
 
-  const heatGrid=document.getElementById("heatmapGrid");
-  heatGrid.innerHTML="";
-
-  const months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-
+  const monthsShort = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
   heatGrid.appendChild(makeCell("KSB","header"));
+  monthsShort.forEach(m=>heatGrid.appendChild(makeCell(m,"header")));
 
-  months.forEach(m=>{
-    heatGrid.appendChild(makeCell(m,"header"));
-  });
+  // Example placeholder data
+  const LIP_KSB_MONTHS = {B1:["Good","Average","Poor","Good","Very Good","Average","Good","Good","Average","Poor","Good","Very Good"]};
 
-  Object.entries(LIP_KSB_MONTHS).forEach(([ksb,vals])=>{
-
+  Object.entries(LIP_KSB_MONTHS).forEach(([ksb, vals])=>{
     heatGrid.appendChild(makeCell(ksb,"ksb-label"));
-
     vals.forEach(v=>{
-      const cell=document.createElement("div");
-      cell.className=`heat-cell ${ratingClass(v)}`;
-      cell.textContent=v;
+      const cell = document.createElement("div");
+      cell.className = `heat-cell ${ratingClass(v)}`;
+      cell.textContent = v;
       heatGrid.appendChild(cell);
     });
   });
 }
 
 function makeCell(text,type){
-  const div=document.createElement("div");
-  div.textContent=text;
-  div.className="heat-cell";
-
+  const div = document.createElement("div");
+  div.textContent = text;
+  div.className = "heat-cell";
   if(type==="header") div.classList.add("header");
   if(type==="ksb-label") div.classList.add("ksb-label");
-
   return div;
 }
 
@@ -1196,71 +974,6 @@ function ratingClass(v){
   return "";
 }
 
-
-
-function openAppliedLearning() {
-  // Hide month grid and show page
-  grid.style.display = "none";
-  page.style.display = "block";
-  title.textContent = "Applied Learning";
-  entries.innerHTML = "";
-
-   document.getElementById("heatmapPage").style.display = "none";
-
-  // Optional intro paragraph
-  const intro = document.createElement("p");
-  intro.textContent = "This is the application of the topics learnt in sessions to my specific work and workplace.";
-  entries.appendChild(intro);
-
-  // Loop through entries
-  appliedLearning.entries.forEach(e => {
-    const d = document.createElement("div");
-    d.className = "entry";
-
-    const h = document.createElement("h3");
-    h.textContent = `${e.title} — ${e.date}`;
-    d.appendChild(h);
-
-    if(e.sections){
-      e.sections.forEach(sec => {
-        if(sec.heading){
-          const strong = document.createElement("strong");
-          strong.textContent = sec.heading + ":";
-          d.appendChild(strong);
-          d.appendChild(document.createElement("br"));
-        }
-        if(sec.content){
-          const p = document.createElement("p");
-          p.textContent = sec.content;
-          d.appendChild(p);
-        }
-      });
-    }
-
-    entries.appendChild(d);
-  });
-}
-
-
-
-/* ---------- HIGHLIGHT ---------- */
-function highlightCurrentMonth(month){
-  document.querySelectorAll(".contents-month").forEach(m=>m.classList.remove("active"));
-  document.querySelectorAll(".contents-month").forEach(m=>{
-    if(m.querySelector("button").textContent===month){
-      m.classList.add("active");
-    }
-  });
-}
-
-
 /* ---------- INIT ---------- */
 updateProgress();
-
-/* ---------- VIEW ALL BUTTON ---------- */
-const viewAllBtn = document.getElementById("viewAllBtn");
-if(viewAllBtn){
-  viewAllBtn.onclick = openAllEntries;
-}
-
-
+document.getElementById("viewAllBtn")?.addEventListener("click", openAllEntries);
