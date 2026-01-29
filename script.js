@@ -866,7 +866,8 @@ document.querySelectorAll(".entry")[i]?.scrollIntoView({behavior:"smooth"});
 const allKSBs = new Set();
 Object.values(data).flat().forEach(e => {
   e.sections?.forEach(sec => {
-    if (sec.heading && sec.heading.toLowerCase().includes("linked ksb") && sec.content) {
+if (sec.heading && sec.heading.toLowerCase().includes("linked ksb") && sec.content)
+{
       sec.content.split(",").forEach(k => allKSBs.add(k.trim()));
     }
   });
@@ -983,6 +984,15 @@ function ratingClass(v) {
   if(v==="Good") return "heat-good";
   if(v==="Very Good") return "heat-verygood";
   return "";
+}
+function updateProgress() {
+  const fill = document.getElementById("progressFill");
+  const label = document.getElementById("progressLabel");
+  const total = Object.keys(data).length;
+  const done = completed.length;
+  const percent = Math.round((done / total) * 100);
+  fill.style.width = percent + "%";
+  label.textContent = `${percent}% completed`;
 }
 
 /* ---------- INIT ---------- */
