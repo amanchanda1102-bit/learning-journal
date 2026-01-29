@@ -949,8 +949,19 @@ document.querySelectorAll(".entry")[i]?.scrollIntoView({behavior:"smooth"});
 });
 
 /* ---------- ALL ENTRIES PAGE ---------- */
+/* ---------- ALL ENTRIES PAGE ---------- */
+const allKSBs = new Set();
+
+// Build the set of all KSBs
+Object.values(data).flat().forEach(e => {
+  e.sections?.forEach(sec => {
+    if (sec.heading?.toLowerCase().includes("linked ksb") && sec.content) {
+      sec.content.split(",").forEach(k => allKSBs.add(k.trim()));
+    }
+  });
+});
+
 function openAllEntries(filterKSB = "") {
-  // Hide other pages
   grid.style.display = "none";
   page.style.display = "block";
   document.getElementById("heatmapPage").style.display = "none";
@@ -958,11 +969,10 @@ function openAllEntries(filterKSB = "") {
   title.textContent = "All Entries";
   entries.innerHTML = "";
 
-  // Remove existing filter if any
+  // Filter dropdown
   let existing = document.getElementById("allEntriesFilter");
   if (existing) existing.remove();
 
-  // Create filter bar
   const filterDiv = document.createElement("div");
   filterDiv.id = "allEntriesFilter";
   filterDiv.style.marginBottom = "16px";
@@ -974,13 +984,11 @@ function openAllEntries(filterKSB = "") {
   const select = document.createElement("select");
   select.id = "ksbSelect";
 
-  // Default "All" option
   const defaultOption = document.createElement("option");
   defaultOption.value = "";
   defaultOption.textContent = "-- All --";
   select.appendChild(defaultOption);
 
-  // Populate KSB options
   Array.from(allKSBs).sort().forEach(k => {
     const o = document.createElement("option");
     o.value = k;
@@ -989,29 +997,25 @@ function openAllEntries(filterKSB = "") {
   });
 
   select.value = filterKSB;
-
-  // When user changes selection, rerun function with filter
   select.onchange = () => openAllEntries(select.value);
 
   filterDiv.appendChild(labelEl);
   filterDiv.appendChild(select);
   page.insertBefore(filterDiv, entries);
 
-  // Render all entries (filtered if a KSB is selected)
+  // Render all entries (filtered if KSB selected)
   Object.entries(data).forEach(([month, es]) => {
     let monthAdded = false;
 
     es.forEach(e => {
-      // Gather KSBs for this entry
-      let entryKSBs = [];
-      e.sections?.forEach(sec => {
-        if (sec.heading && sec.heading.toLowerCase().includes("linked ksb") && sec.content) {
-          entryKSBs = sec.content.split(",").map(k => k.trim());
-        }
-      });
+      // Collect KSBs for this entry
+      const entryKSBs = e.sections
+        .filter(sec => sec.heading?.toLowerCase().includes("linked ksb") && sec.content)
+        .map(sec => sec.content.split(",").map(k => k.trim()))
+        .flat();
 
-      // Skip entry only if a filter is applied AND entry has KSBs AND filter doesn't match
-      if (filterKSB && entryKSBs.length > 0 && !entryKSBs.includes(filterKSB)) return;
+      // Skip if filtering and entry doesn't match
+      if (filterKSB && !entryKSBs.includes(filterKSB)) return;
 
       // Add month header once
       if (!monthAdded) {
@@ -1019,7 +1023,7 @@ function openAllEntries(filterKSB = "") {
         monthAdded = true;
       }
 
-      // Render entry content
+      // Render entry
       const contentHTML = e.sections
         ? e.sections.map(sec => `<strong>${sec.heading}:</strong><br>${sec.content}<br><br>`).join("")
         : `<p>${e.content}</p>`;
