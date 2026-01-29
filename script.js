@@ -966,36 +966,57 @@ function openAllEntries() {
   title.textContent = "All Entries";
   entries.innerHTML = ""; // clear old content
 
-  // --- CREATE FILTER BAR ---
-  const filterBar = document.createElement("div");
-  filterBar.style.marginBottom = "20px";
-  filterBar.style.display = "flex";
-  filterBar.style.gap = "10px";
-  filterBar.style.flexWrap = "wrap";
+/* ---------- KSB FILTER ONLY ON ALL ENTRIES ---------- */
+const allKSBs = new Set();
+Object.values(data).flat().forEach(e=>{
+  if(e.sections) e.sections.forEach(sec=>{
+    if(sec.heading.toLowerCase().includes("linked ksb") && sec.content){
+      sec.content.split(",").forEach(k=>allKSBs.add(k.trim()));
+    }
+  });
+});
 
-  // KSB filter
-  const ksbSelect = document.createElement("select");
-  ksbSelect.innerHTML = `<option value="all">All KSBs</option>` +
-    Object.keys(KSB_DICTIONARY).map(k => `<option value="${k}">${k}</option>`).join("");
-  ksbSelect.style.padding = "6px 10px";
-  ksbSelect.style.borderRadius = "6px";
-  ksbSelect.style.border = "1px solid var(--border)";
-  filterBar.appendChild(ksbSelect);
+function openAllEntries(filterKSB=""){
+  grid.style.display="none"; page.style.display="block"; title.textContent="All Entries"; entries.innerHTML="";
 
-  // Job type filter
-  const typeSelect = document.createElement("select");
-  typeSelect.innerHTML = `
-    <option value="all">All Job Types</option>
-    <option value="on-job">On-Job</option>
-    <option value="off-job">Off-Job</option>
-  `;
-  typeSelect.style.padding = "6px 10px";
-  typeSelect.style.borderRadius = "6px";
-  typeSelect.style.border = "1px solid var(--border)";
-  filterBar.appendChild(typeSelect);
+  // Remove existing filter if any
+  let existing = document.getElementById("allEntriesFilter");
+  if(existing) existing.remove();
 
-  // Append filter bar above entries
-  entries.appendChild(filterBar);
+  // Create KSB filter
+  const filterDiv = document.createElement("div");
+  filterDiv.id="allEntriesFilter"; filterDiv.style.marginBottom="16px";
+  const label = document.createElement("label"); label.for="ksbSelect"; label.textContent="Filter by KSB: ";
+  const select = document.createElement("select"); select.id="ksbSelect";
+  const defaultOption = document.createElement("option"); defaultOption.value=""; defaultOption.textContent="-- All --";
+  select.appendChild(defaultOption);
+  Array.from(allKSBs).sort().forEach(k=>{
+    const o = document.createElement("option"); o.value=k; o.textContent=k; select.appendChild(o);
+  });
+  select.value=filterKSB;
+  select.addEventListener("change",()=>openAllEntries(select.value));
+  filterDiv.appendChild(label); filterDiv.appendChild(select);
+  page.insertBefore(filterDiv, entries);
+
+  // Render entries
+  Object.entries(data).forEach(([m,es])=>{
+    let monthAdded=false;
+    es.forEach(e=>{
+      let entryKSBs=[];
+      if(e.sections) e.sections.forEach(sec=>{
+        if(sec.heading.toLowerCase().includes("linked ksb") && sec.content){
+          entryKSBs = sec.content.split(",").map(k=>k.trim());
+        }
+      });
+      if(filterKSB && !entryKSBs.includes(filterKSB)) return;
+      if(!monthAdded){ entries.innerHTML+=`<h3>${m}</h3>`; monthAdded=true; }
+      const contentHTML = e.sections ? e.sections.map(sec=>`<strong>${sec.heading}:</strong><br>${sec.content}<br><br>`).join("") : `<p>${e.content}</p>`;
+      entries.innerHTML+=`<div class="entry"><strong>${e.title}</strong> — ${e.date}<br>${contentHTML}</div>`;
+    });
+  });
+  attachKSBTooltips();
+}
+
 
   // --- FUNCTION TO RENDER ENTRIES ---
   function renderEntries() {
