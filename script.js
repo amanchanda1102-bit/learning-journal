@@ -1024,11 +1024,6 @@ function openAllEntries(filterKSB = "") {
   });
 }
 
-
-  // Initially render all entries
-  renderEntries();
-}
-
 /* ---------- HEATMAP ---------- */
 function openHeatmap() {
   grid.style.display = "none";
