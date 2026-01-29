@@ -813,8 +813,12 @@ function openMonth(m){
     entries.appendChild(d);
   });
 
-  if(!completed.includes(m)) completed.push(m);
-  updateProgress();
+  if(!completed.includes(m)) {
+    completed.push(m);
+    localStorage.setItem("ljCompleted", JSON.stringify(completed)); // ← Save to localStorage
+  }
+  updateProgress(); // update the progress bar/label
+
 }
 
 /* ---------- BACK BUTTON ---------- */
@@ -833,6 +837,7 @@ overlay.onclick = ()=>{
   overlay.style.display = "none";
 };
 
+const contentsList = document.getElementById("contentsList");
 contentsList.innerHTML = "";
 Object.entries(data).forEach(([m, es])=>{
   const d = document.createElement("div");
