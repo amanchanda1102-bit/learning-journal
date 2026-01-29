@@ -1006,7 +1006,7 @@ function openAllEntries() {
       data[month].forEach(e => {
         // Filter by job type
         if (typeSelect.value !== "all" && e.jobType !== typeSelect.value) return;
-
+        
         if (ksbSelect.value !== "all") {
           const hasKSB = e.sections?.some(sec => {
             if (sec.heading === "Linked KSBs" && sec.content) {
@@ -1015,8 +1015,9 @@ function openAllEntries() {
             }
             return false;
           });
-          if (!hasKSB) return;
+          if (!hasKSB) return; // skip this entry
         }
+
 
 
         const d = document.createElement("div");
