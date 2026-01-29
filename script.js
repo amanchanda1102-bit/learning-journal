@@ -1007,11 +1007,17 @@ function openAllEntries() {
         // Filter by job type
         if (typeSelect.value !== "all" && e.jobType !== typeSelect.value) return;
 
-        // Filter by KSB
         if (ksbSelect.value !== "all") {
-          const hasKSB = e.sections?.some(sec => sec.content?.includes(ksbSelect.value));
+          const hasKSB = e.sections?.some(sec => {
+            if (sec.heading === "Linked KSBs" && sec.content) {
+              const ksbs = sec.content.split(",").map(k => k.trim());
+              return ksbs.includes(ksbSelect.value);
+            }
+            return false;
+          });
           if (!hasKSB) return;
         }
+
 
         const d = document.createElement("div");
         d.className = "entry";
