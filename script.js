@@ -992,15 +992,11 @@ function openAllEntries(filterKSB = "") {
   defaultOption.textContent = "-- All --";
   select.appendChild(defaultOption);
 
-// Desired order
-const ksbOrder = ["K2","K4","K8","K9","K10","K12","K13","S11","S12","S13","S17","S18","S19","S20","B1","B2","B3","B5","B7","B8","B9","B10"];
-
-// Convert Set to array and sort according to ksbOrder
-Array.from(allKSBs).sort((a,b) => ksbOrder.indexOf(a) - ksbOrder.indexOf(b)).forEach(k => {
-    const o = document.createElement("option");
-    o.value = k;
-    o.textContent = k;
-    select.appendChild(o);
+Array.from(allKSBs).sort().forEach(k => {
+  const o = document.createElement("option");
+  o.value = k;
+  o.textContent = k;
+  select.appendChild(o);
 });
 
   select.value = filterKSB;
