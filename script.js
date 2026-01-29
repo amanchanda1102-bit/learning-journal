@@ -948,90 +948,58 @@ document.querySelectorAll(".entry")[i]?.scrollIntoView({behavior:"smooth"});
   contentsList.appendChild(d);
 });
 
-/* ---------- ALL ENTRIES PAGE ---------- */
+
 /* ---------- ALL ENTRIES PAGE ---------- */
 const allKSBs = new Set();
-
-// Build the set of all KSBs
-Object.values(data).flat().forEach(e => {
-  e.sections?.forEach(sec => {
-    if (sec.heading?.toLowerCase().includes("linked ksb") && sec.content) {
-      sec.content.split(",").forEach(k => allKSBs.add(k.trim()));
+Object.values(data).flat().forEach(e=>{
+  if(e.sections) e.sections.forEach(sec=>{
+    if(sec.heading.toLowerCase().includes("linked ksb") && sec.content){
+      sec.content.split(",").forEach(k=>allKSBs.add(k.trim()));
     }
   });
 });
 
-function openAllEntries(filterKSB = "") {
-  grid.style.display = "none";
-  page.style.display = "block";
-  document.getElementById("heatmapPage").style.display = "none";
+function openAllEntries(filterKSB=""){
+  grid.style.display="none"; page.style.display="block"; title.textContent="All Entries"; entries.innerHTML="";
 
-  title.textContent = "All Entries";
-  entries.innerHTML = "";
-
-  // Filter dropdown
+  // Remove existing filter if any
   let existing = document.getElementById("allEntriesFilter");
-  if (existing) existing.remove();
+  if(existing) existing.remove();
 
+  // Create KSB filter
   const filterDiv = document.createElement("div");
-  filterDiv.id = "allEntriesFilter";
-  filterDiv.style.marginBottom = "16px";
-
-  const labelEl = document.createElement("label");
-  labelEl.htmlFor = "ksbSelect";
-  labelEl.textContent = "Filter by KSB: ";
-
-  const select = document.createElement("select");
-  select.id = "ksbSelect";
-
-  const defaultOption = document.createElement("option");
-  defaultOption.value = "";
-  defaultOption.textContent = "-- All --";
+  filterDiv.id="allEntriesFilter"; filterDiv.style.marginBottom="16px";
+  const label = document.createElement("label"); label.for="ksbSelect"; label.textContent="Filter by KSB: ";
+  const select = document.createElement("select"); select.id="ksbSelect";
+  const defaultOption = document.createElement("option"); defaultOption.value=""; defaultOption.textContent="-- All --";
   select.appendChild(defaultOption);
-
-  Array.from(allKSBs).sort().forEach(k => {
-    const o = document.createElement("option");
-    o.value = k;
-    o.textContent = k;
-    select.appendChild(o);
+  Array.from(allKSBs).sort().forEach(k=>{
+    const o = document.createElement("option"); o.value=k; o.textContent=k; select.appendChild(o);
   });
-
-  select.value = filterKSB;
-  select.onchange = () => openAllEntries(select.value);
-
-  filterDiv.appendChild(labelEl);
-  filterDiv.appendChild(select);
+  select.value=filterKSB;
+  select.addEventListener("change",()=>openAllEntries(select.value));
+  filterDiv.appendChild(label); filterDiv.appendChild(select);
   page.insertBefore(filterDiv, entries);
 
-  // Render all entries (filtered if KSB selected)
-  Object.entries(data).forEach(([month, es]) => {
-    let monthAdded = false;
-
-    es.forEach(e => {
-      // Collect KSBs for this entry
-      const entryKSBs = e.sections
-        .filter(sec => sec.heading?.toLowerCase().includes("linked ksb") && sec.content)
-        .map(sec => sec.content.split(",").map(k => k.trim()))
-        .flat();
-
-      // Skip if filtering and entry doesn't match
-      if (filterKSB && !entryKSBs.includes(filterKSB)) return;
-
-      // Add month header once
-      if (!monthAdded) {
-        entries.innerHTML += `<h3>${month}</h3>`;
-        monthAdded = true;
-      }
-
-      // Render entry
-      const contentHTML = e.sections
-        ? e.sections.map(sec => `<strong>${sec.heading}:</strong><br>${sec.content}<br><br>`).join("")
-        : `<p>${e.content}</p>`;
-
-      entries.innerHTML += `<div class="entry"><strong>${e.title}</strong> — ${e.date}<br>${contentHTML}</div>`;
+  // Render entries
+  Object.entries(data).forEach(([m,es])=>{
+    let monthAdded=false;
+    es.forEach(e=>{
+      let entryKSBs=[];
+      if(e.sections) e.sections.forEach(sec=>{
+        if(sec.heading.toLowerCase().includes("linked ksb") && sec.content){
+          entryKSBs = sec.content.split(",").map(k=>k.trim());
+        }
+      });
+      if(filterKSB && !entryKSBs.includes(filterKSB)) return;
+      if(!monthAdded){ entries.innerHTML+=`<h3>${m}</h3>`; monthAdded=true; }
+      const contentHTML = e.sections ? e.sections.map(sec=>`<strong>${sec.heading}:</strong><br>${sec.content}<br><br>`).join("") : `<p>${e.content}</p>`;
+      entries.innerHTML+=`<div class="entry"><strong>${e.title}</strong> — ${e.date}<br>${contentHTML}</div>`;
     });
   });
+  attachKSBTooltips();
 }
+
 
 
 /* ---------- HEATMAP ---------- */
