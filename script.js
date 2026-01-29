@@ -959,12 +959,11 @@ Object.values(data).flat().forEach(e=>{
   });
 });
 
-function openAllEntries(filterKSB=""){
-
   // Add "View All Entries" button if exists
 document.getElementById("viewAllBtn")?.addEventListener("click", () => openAllEntries(""));
-  
-  grid.style.display="none"; page.style.display="block"; title.textContent="All Entries"; entries.innerHTML="";
+
+function openAllEntries(filterKSB=""){
+    grid.style.display="none"; page.style.display="block"; title.textContent="All Entries"; entries.innerHTML="";
 
   // Remove existing filter if any
   let existing = document.getElementById("allEntriesFilter");
