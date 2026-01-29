@@ -974,12 +974,14 @@ function openAllEntries(filterKSB = "") {
   const select = document.createElement("select");
   select.id = "ksbSelect";
 
+  // Default "All" option
   const defaultOption = document.createElement("option");
   defaultOption.value = "";
   defaultOption.textContent = "-- All --";
   select.appendChild(defaultOption);
 
-  Array.from(allKSBs).sort().forEach(k => {
+  // Populate options from your KSB dictionary
+  Object.keys(LIP_KSB_MONTHS).sort().forEach(k => {
     const o = document.createElement("option");
     o.value = k;
     o.textContent = k;
@@ -998,7 +1000,7 @@ function openAllEntries(filterKSB = "") {
     let monthAdded = false;
 
     es.forEach(e => {
-      // Collect KSBs for this entry (if any)
+      // Collect KSBs for this entry
       let entryKSBs = [];
       e.sections?.forEach(sec => {
         if (sec.heading && sec.heading.toLowerCase().includes("linked ksb") && sec.content) {
@@ -1006,10 +1008,9 @@ function openAllEntries(filterKSB = "") {
         }
       });
 
-      // Only skip if a filter is applied AND the entry has KSBs AND the filter doesn't match
-      if (filterKSB && entryKSBs.length > 0 && !entryKSBs.includes(filterKSB)) return;
+      // Skip if filter is applied and entry doesn't match
+      if (filterKSB && !entryKSBs.includes(filterKSB)) return;
 
-      // Add month header if not already added
       if (!monthAdded) {
         entries.innerHTML += `<h3>${month}</h3>`;
         monthAdded = true;
@@ -1023,6 +1024,8 @@ function openAllEntries(filterKSB = "") {
     });
   });
 }
+
+document.getElementById("viewAllBtn")?.addEventListener("click", () => openAllEntries(""));
 
 /* ---------- HEATMAP ---------- */
 function openHeatmap() {
