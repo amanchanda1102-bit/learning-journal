@@ -950,14 +950,6 @@ document.querySelectorAll(".entry")[i]?.scrollIntoView({behavior:"smooth"});
 
 
 /* ---------- ALL ENTRIES PAGE ---------- */
-const allKSBs = new Set();
-Object.values(data).flat().forEach(e=>{
-  if(e.sections) e.sections.forEach(sec=>{
-    if(sec.heading.toLowerCase().includes("linked ksb") && sec.content){
-      sec.content.split(",").forEach(k=>allKSBs.add(k.trim()));
-    }
-  });
-});
 
   // Add "View All Entries" button if exists
 document.getElementById("viewAllBtn")?.addEventListener("click", () => openAllEntries(""));
