@@ -49,7 +49,7 @@ header h1{margin:0; font-size:1.4rem; color:var(--primary);}
 .contents-overlay{position:fixed; inset:0; background:rgba(0,0,0,.35); display:none; z-index:190;}
 .contents-panel{position:fixed; right:-340px; top:0; width:320px; height:100%; background:#fff; box-shadow:-6px 0 20px rgba(0,0,0,.15); padding:20px; transition:.3s; z-index:200; overflow-y:auto;}
 .contents-panel.open{right:0;}
-.contents-month button{background:none; border:none; font-weight:600; color:var(--primary); cursor:pointer;}
+.contents-month button{background:none; border:none; font-weight:600; text-align: left; color:var(--primary); cursor:pointer;}
 .contents-entry{font-size:.85rem; margin-left:12px; cursor:pointer; color:var(--muted);}
 .contents-footer{border-top:1px solid var(--border); margin-top:20px; padding-top:12px;}
 .contents-footer button{width:100%; margin-bottom:8px; padding:8px;}
