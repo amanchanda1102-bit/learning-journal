@@ -66,7 +66,7 @@ const data = {
         },
         {
           heading: "Analysis",
-          content: "I learnt more about the priorities of the company, the many steps it takes for a course to be developed as well as the shift being pushed within the company in ratios of classroom and practicals. Requiring courses to be more practical based now. I learnt the start of the year is busy for media and scheduling. I think I needed to remember that I was there to learn because I had little knowledge on the roles, I think that would have led me to ask more questions and take notes."
+          content: "I learnt more about the priorities of the company, the many steps it takes for a course to be developed as well as the shift being pushed within the company in ratios of classroom and practical’s. Requiring courses to be more practical based now. I learnt the start of the year is busy for media and scheduling. I learnt how the different delivery channels are used: a mixture of digital self-learning, face to face flipped classroom and on the field, practice are used here. This is because they all have different roles, Self learning reduced time spent in classroom and allows different levels to spend the amount of time they need on a topic. Flipped classroom allows trainers to see understanding of the class, if there’s a section everyone struggled on they will need to cover it in class. field practice is the most important for muscle memory and learning, but it also has the most safety risks and is the most expensive part. That is why building the foundation before sending them out to the field is important for effective safe learning. I think I needed to remember that I was there to learn because I had little knowledge on the roles, I think that would have led me to ask more questions and take notes."
         },
         {
           heading: "Conclusion",
@@ -91,7 +91,7 @@ const data = {
       jobType: "on-job",
       sections: [
         {
-          content: "After the visit with model creators for VBS, I showed an interest in Blender and was told to try the donut tutorial. Currently our workplace has a 3D modeller, however the models have to be converted from the software he uses to Blender and then converted again to create the model in VBS. Learning to create models in Blender will cut a step out and potentially speed up the process as super detailed models are not needed for what is being done."
+          content: "After the visit with model creators for VBS. I showed an interest in blender and was told to try the donut tutorial. Currently our workplace has a 3D modeller, however the models have to be converted from the software he uses to blender and then converted again to create the model in VBS. Learning to create models in blender will cut a step out and potentially speed up the process as super detailed models are not needed for what is being done. However potentially time-consuming"
         },
         {
           heading: "Linked KSBs",
