@@ -1012,7 +1012,6 @@ function openAllEntries(filterKSB = "") {
           entryKSBs = sec.content.split(",").map(k => k.trim());
         }
       });
-;
 
       if (filterKSB && !entryKSBs.includes(filterKSB)) return;
 
@@ -1083,6 +1082,9 @@ function openAppliedLearning() {
   entries.innerHTML = "";
 
    document.getElementById("heatmapPage").style.display = "none";
+
+  const existingFilter = document.getElementById("allEntriesFilter");
+if (existingFilter) existingFilter.remove();
 
   // Optional intro paragraph
   const intro = document.createElement("p");
