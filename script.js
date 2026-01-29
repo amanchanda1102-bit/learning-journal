@@ -949,18 +949,8 @@ document.querySelectorAll(".entry")[i]?.scrollIntoView({behavior:"smooth"});
 });
 
 /* ---------- ALL ENTRIES PAGE ---------- */
-const allKSBs = new Set();
-
-// Build the set of all KSBs
-Object.values(data).flat().forEach(e => {
-  e.sections?.forEach(sec => {
-    if (sec.heading?.toLowerCase().includes("linked ksb") && sec.content) {
-      sec.content.split(",").forEach(k => allKSBs.add(k.trim()));
-    }
-  });
-});
-
 function openAllEntries(filterKSB = "") {
+  // Hide other pages
   grid.style.display = "none";
   page.style.display = "block";
   document.getElementById("heatmapPage").style.display = "none";
@@ -968,10 +958,11 @@ function openAllEntries(filterKSB = "") {
   title.textContent = "All Entries";
   entries.innerHTML = "";
 
-  // Filter dropdown
+  // Remove existing filter if any
   let existing = document.getElementById("allEntriesFilter");
   if (existing) existing.remove();
 
+  // Create filter bar
   const filterDiv = document.createElement("div");
   filterDiv.id = "allEntriesFilter";
   filterDiv.style.marginBottom = "16px";
@@ -1002,27 +993,28 @@ function openAllEntries(filterKSB = "") {
   filterDiv.appendChild(select);
   page.insertBefore(filterDiv, entries);
 
-  // Render all entries (filtered if KSB selected)
+  // Render entries
   Object.entries(data).forEach(([month, es]) => {
     let monthAdded = false;
 
     es.forEach(e => {
-      // Collect KSBs for this entry
-      const entryKSBs = e.sections
-        .filter(sec => sec.heading?.toLowerCase().includes("linked ksb") && sec.content)
-        .map(sec => sec.content.split(",").map(k => k.trim()))
-        .flat();
+      // Collect KSBs for this entry (if any)
+      let entryKSBs = [];
+      e.sections?.forEach(sec => {
+        if (sec.heading && sec.heading.toLowerCase().includes("linked ksb") && sec.content) {
+          entryKSBs = sec.content.split(",").map(k => k.trim());
+        }
+      });
 
-      // Skip if filtering and entry doesn't match
-      if (filterKSB && !entryKSBs.includes(filterKSB)) return;
+      // Only skip if a filter is applied AND the entry has KSBs AND the filter doesn't match
+      if (filterKSB && entryKSBs.length > 0 && !entryKSBs.includes(filterKSB)) return;
 
-      // Add month header once
+      // Add month header if not already added
       if (!monthAdded) {
         entries.innerHTML += `<h3>${month}</h3>`;
         monthAdded = true;
       }
 
-      // Render entry
       const contentHTML = e.sections
         ? e.sections.map(sec => `<strong>${sec.heading}:</strong><br>${sec.content}<br><br>`).join("")
         : `<p>${e.content}</p>`;
