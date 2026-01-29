@@ -1165,6 +1165,8 @@ function openAppliedLearning() {
   title.textContent = "Applied Learning";
   entries.innerHTML = "";
 
+   document.getElementById("heatmapPage").style.display = "none";
+
   // Optional intro paragraph
   const intro = document.createElement("p");
   intro.textContent = "This is the application of the topics learnt in sessions to my specific work and workplace.";
