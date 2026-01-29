@@ -974,11 +974,13 @@ function openAllEntries(filterKSB = "") {
   const select = document.createElement("select");
   select.id = "ksbSelect";
 
+  // Default "All" option
   const defaultOption = document.createElement("option");
   defaultOption.value = "";
   defaultOption.textContent = "-- All --";
   select.appendChild(defaultOption);
 
+  // Populate KSB options
   Array.from(allKSBs).sort().forEach(k => {
     const o = document.createElement("option");
     o.value = k;
@@ -987,18 +989,20 @@ function openAllEntries(filterKSB = "") {
   });
 
   select.value = filterKSB;
+
+  // When user changes selection, rerun function with filter
   select.onchange = () => openAllEntries(select.value);
 
   filterDiv.appendChild(labelEl);
   filterDiv.appendChild(select);
   page.insertBefore(filterDiv, entries);
 
-  // Render entries
+  // Render all entries (filtered if a KSB is selected)
   Object.entries(data).forEach(([month, es]) => {
     let monthAdded = false;
 
     es.forEach(e => {
-      // Collect KSBs for this entry (if any)
+      // Gather KSBs for this entry
       let entryKSBs = [];
       e.sections?.forEach(sec => {
         if (sec.heading && sec.heading.toLowerCase().includes("linked ksb") && sec.content) {
@@ -1006,15 +1010,16 @@ function openAllEntries(filterKSB = "") {
         }
       });
 
-      // Only skip if a filter is applied AND the entry has KSBs AND the filter doesn't match
+      // Skip entry only if a filter is applied AND entry has KSBs AND filter doesn't match
       if (filterKSB && entryKSBs.length > 0 && !entryKSBs.includes(filterKSB)) return;
 
-      // Add month header if not already added
+      // Add month header once
       if (!monthAdded) {
         entries.innerHTML += `<h3>${month}</h3>`;
         monthAdded = true;
       }
 
+      // Render entry content
       const contentHTML = e.sections
         ? e.sections.map(sec => `<strong>${sec.heading}:</strong><br>${sec.content}<br><br>`).join("")
         : `<p>${e.content}</p>`;
@@ -1023,6 +1028,7 @@ function openAllEntries(filterKSB = "") {
     });
   });
 }
+
 
 /* ---------- HEATMAP ---------- */
 function openHeatmap() {
