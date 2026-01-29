@@ -948,8 +948,19 @@ document.querySelectorAll(".entry")[i]?.scrollIntoView({behavior:"smooth"});
   contentsList.appendChild(d);
 });
 
+/* ---------- ALL ENTRIES PAGE ---------- */
+const allKSBs = new Set();
+
+// Build the set of all KSBs
+Object.values(data).flat().forEach(e => {
+  e.sections?.forEach(sec => {
+    if (sec.heading?.toLowerCase().includes("linked ksb") && sec.content) {
+      sec.content.split(",").forEach(k => allKSBs.add(k.trim()));
+    }
+  });
+});
+
 function openAllEntries(filterKSB = "") {
-  // Hide other pages
   grid.style.display = "none";
   page.style.display = "block";
   document.getElementById("heatmapPage").style.display = "none";
@@ -957,11 +968,10 @@ function openAllEntries(filterKSB = "") {
   title.textContent = "All Entries";
   entries.innerHTML = "";
 
-  // Remove existing filter if any
+  // Filter dropdown
   let existing = document.getElementById("allEntriesFilter");
   if (existing) existing.remove();
 
-  // Create filter bar
   const filterDiv = document.createElement("div");
   filterDiv.id = "allEntriesFilter";
   filterDiv.style.marginBottom = "16px";
@@ -992,42 +1002,35 @@ function openAllEntries(filterKSB = "") {
   filterDiv.appendChild(select);
   page.insertBefore(filterDiv, entries);
 
-  // Render entries function
-  function renderEntries() {
-    entries.innerHTML = ""; // clear previous
+  // Render all entries (filtered if KSB selected)
+  Object.entries(data).forEach(([month, es]) => {
+    let monthAdded = false;
 
-    Object.entries(data).forEach(([month, es]) => {
-      let monthAdded = false;
+    es.forEach(e => {
+      // Collect KSBs for this entry
+      const entryKSBs = e.sections
+        .filter(sec => sec.heading?.toLowerCase().includes("linked ksb") && sec.content)
+        .map(sec => sec.content.split(",").map(k => k.trim()))
+        .flat();
 
-      es.forEach(e => {
-        let entryKSBs = [];
-        e.sections?.forEach(sec => {
-          if (sec.heading && sec.heading.toLowerCase().includes("linked ksb") && sec.content) {
-            entryKSBs = sec.content.split(",").map(k => k.trim());
-          }
-        });
+      // Skip if filtering and entry doesn't match
+      if (filterKSB && !entryKSBs.includes(filterKSB)) return;
 
-        // Skip if filtering and KSB not included
-        if (filterKSB && !entryKSBs.includes(filterKSB)) return;
+      // Add month header once
+      if (!monthAdded) {
+        entries.innerHTML += `<h3>${month}</h3>`;
+        monthAdded = true;
+      }
 
-        if (!monthAdded) {
-          entries.innerHTML += `<h3>${month}</h3>`;
-          monthAdded = true;
-        }
+      // Render entry
+      const contentHTML = e.sections
+        ? e.sections.map(sec => `<strong>${sec.heading}:</strong><br>${sec.content}<br><br>`).join("")
+        : `<p>${e.content}</p>`;
 
-        const contentHTML = e.sections
-          ? e.sections.map(sec => `<strong>${sec.heading}:</strong><br>${sec.content}<br><br>`).join("")
-          : `<p>${e.content}</p>`;
-
-        entries.innerHTML += `<div class="entry"><strong>${e.title}</strong> — ${e.date}<br>${contentHTML}</div>`;
-      });
+      entries.innerHTML += `<div class="entry"><strong>${e.title}</strong> — ${e.date}<br>${contentHTML}</div>`;
     });
-  }
-
-  // Initially render all entries
-  renderEntries();
+  });
 }
-
 
 /* ---------- HEATMAP ---------- */
 function openHeatmap() {
