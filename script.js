@@ -1040,6 +1040,15 @@ function openAllEntries() {
                 d.appendChild(img);
               });
             }
+            if (sec.image) {
+              sec.image.forEach(src => {
+                const img = document.createElement("img");
+                img.src = src;
+                img.style.maxWidth = "100%";
+                img.style.margin = "10px 0";
+                d.appendChild(img);
+              });
+            }
             if (sec.pdf) {
               const iframe = document.createElement("iframe");
               iframe.src = sec.pdf;
