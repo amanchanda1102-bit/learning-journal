@@ -316,7 +316,7 @@ And safety`},
         },
         {
           heading: "Linked KSBs",
-          content: "S8, S11"
+          content: " S11"
         }
       ]
     }
@@ -443,7 +443,7 @@ And safety`},
         },
         {
           heading: "Linked KSBs",
-          content: "S11, S16, B2"
+          content: "S11, B2"
         }
       ]
     }
