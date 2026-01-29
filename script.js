@@ -790,6 +790,8 @@ function openMonth(m){
   title.textContent=m;
   entries.innerHTML="";
 
+  document.getElementById("heatmapPage").style.display = "none";
+  
   data[m].forEach(e=>{
 
     const d=document.createElement("div");
