@@ -885,12 +885,10 @@ function backToMonths(){
   grid.style.display="grid";
 }
 
-function goHome(){
-  page.style.display="none";
-  document.getElementById("heatmapPage").style.display="none";
-  grid.style.display="grid";
-  panel.classList.remove("open");
-  overlay.style.display="none";
+function goHome() {
+  document.getElementById("monthsGrid").style.display = "grid";
+  document.getElementById("monthPage").style.display = "none";
+  document.getElementById("heatmapPage").style.display = "none";
 }
 
 
@@ -907,18 +905,11 @@ function updateProgress(){
   });
 }
 
-function resetProgress(){
-  if(confirm("Reset all progress?")){
-    completed=[];
-    localStorage.removeItem("ljCompleted");
-    updateProgress();
-  }
-}
-
-/* ---------- BACK BUTTON ---------- */
-function backToMonths(){
-  page.style.display = "none";
-  grid.style.display = "grid";
+function resetProgress() {
+  completed = [];
+  localStorage.removeItem("ljCompleted");
+  updateProgress();
+  alert("Progress has been reset.");
 }
 
 /* ---------- CONTENTS PANEL ---------- */
@@ -962,6 +953,7 @@ const allKSBs = new Set();
 Object.values(data).flat().forEach(e => {
   e.sections?.forEach(sec => {
 if (sec.heading && sec.heading.toLowerCase().includes("linked ksb") && sec.content)
+
 {
       sec.content.split(",").forEach(k => allKSBs.add(k.trim()));
     }
@@ -1016,10 +1008,11 @@ function openAllEntries(filterKSB = "") {
     es.forEach(e => {
       let entryKSBs = [];
       e.sections?.forEach(sec => {
-        if (sec.heading.toLowerCase().includes("linked ksb") && sec.content) {
+        if (sec.heading && sec.heading.toLowerCase().includes("linked ksb") && sec.content) {
           entryKSBs = sec.content.split(",").map(k => k.trim());
         }
       });
+;
 
       if (filterKSB && !entryKSBs.includes(filterKSB)) return;
 
