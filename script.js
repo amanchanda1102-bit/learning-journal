@@ -723,25 +723,32 @@ Make sure everyone has their stuff, no one has left anything behind. Make sure e
 
 
 const LIP_KSB_MONTHS = {
-  K2: ["Poor","Poor","Poor","Poor","Average","Poor","Average","Good","Good","Good","Good","Good"],
-  K4:["Poor","Poor","Average","Average","Average","Average","Average","Average","Good","Good","Good","Good"],
-  K8: ["Poor","Average","Average","Average","Average","Good","Good","Good","Good","Good","Good","Good"],
-  K9: ["Poor","Poor","Average","Average","Average","Average","Average","Average","Good","Good","Good","Good"],
-  K10:["Poor","Poor","Average","Average","Average","Average","Average","Average","Good","Good","Good","Good"],
-  K12:["Poor","Poor","Average","Average","Average","Average","Average","Good","Good","Good","Good","Good"],
-  K13:["Poor","Poor","Average","Average","Average","Average","Average","Good","Good","Good","Good","Good"],
-  S1: ["Poor","Poor","Poor","Poor","Poor","Poor","Average","Average","Average","Good","Good","Good"],
-  S10:["Poor","Poor","Poor","Poor","Poor","Poor","Average","Average","Good","Good","Good","Good"],
-  S11:["Poor","Poor","Poor","Poor","Poor","Poor","Average","Average","Good","Good","Good","Good"],
-  S12:["Poor","Poor","Poor","Poor","Poor","Poor","Average","Average","Good","Good","Good","Good"],
-  S13:["Poor","Average","Average","Average","Average","Average","Good","Good","Good","Good","Good","Good"],
+  K2: ["Poor","Poor","Poor","Poor","Poor","Poor","Poor","Average","Average","Average","Good","Good","Good","Good"],
+  K4: ["Poor","Poor","Average","Average","Average","Average","Average","Average","Good","Good","Good","Good","Good","Good"],
+  K8: ["Poor","Average","Average","Average","Average","Good","Good","Good","Good","Good","Good","Good","Good","Good"],
+  K9: ["Poor","Poor","Poor","Average","Average","Average","Average","Average","Good","Good","Good","Good","Good","Good"],
+  K10:["Poor","Poor","Average","Average","Average","Average","Average","Average","Average","Average","Good","Good","Good","Good"],
+  K12:["Poor","Poor","Average","Average","Average","Average","Average","Average","Good","Good","Good","Good","Good","Good"],
+  K13:["Poor","Average","Average","Average","Average","Average","Good","Good","Good","Good","Very Good","Very Good","Very Good","Very Good"],
 
-  B1: ["Poor","Average","Good","Good","Good","Good","Good","Good","Good","Good","Very Good","Very Good"],
-  B2: ["Poor","Average","Good","Good","Good","Good","Good","Good","Good","Good","Very Good","Very Good"],
-  B3: ["Poor","Average","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good"],
-  B7: ["Average","Average","Average","Average","Average","Average","Average","Average","Average","Good","Good","Good"],
-  B9: ["Average","Average","Average","Average","Average","Average","Average","Average","Average","Good","Good","Good"]
+  S11:["Poor","Poor","Poor","Poor","Poor","Poor","Poor","Average","Average","Average","Good","Good","Good","Good"],
+  S12:["Poor","Poor","Poor","Poor","Poor","Poor","Poor","Average","Average","Good","Good","Good","Good","Good"],
+  S13:["Poor","Poor","Poor","Poor","Average","Average","Average","Average","Average","Average","Good","Good","Good","Good"],
+  S17:["Very Poor","Very Poor","Very Poor","Very Poor","Very Poor","Very Poor","Very Poor","Poor","Average","Average","Average","Average","Average","Average"],
+  S18:["Poor","Average","Average","Average","Average","Average","Average","Average","Average","Average","Average","Average","Average","Average"],
+  S19:["Average","Average","Average","Average","Average","Average","Average","Good","Good","Good","Good","Good","Good","Good"],
+  S20:["Poor","Poor","Average","Good","Good","Good","Good","Very Good","Very Good","Very Good","Very Good","Very Good","Very Good","Very Good"],
+
+  B1:["Poor","Average","Good","Good","Good","Good","Good","Good","Good","Good","Good","Very Good","Very Good","Very Good"],
+  B2:["Average","Average","Good","Good","Good","Good","Good","Good","Very Good","Very Good","Very Good","Very Good","Very Good","Very Good"],
+  B3:["Poor","Average","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good"],
+  B5:["Poor","Average","Average","Average","Average","Average","Average","Good","Good","Good","Good","Good","Good","Good"],
+  B7:["Average","Average","Average","Average","Average","Average","Average","Average","Average","Average","Average","Good","Good","Good"],
+  B8:["Poor","Poor","Average","Average","Average","Average","Average","Average","Average","Average","Average","Good","Good","Good"],
+  B9:["Average","Average","Average","Average","Average","Average","Average","Average","Average","Average","Average","Good","Good","Good"],
+  B10:["Very Poor","Very Poor","Very Poor","Very Poor","Very Poor","Very Poor","Very Poor","Average","Average","Good","Good","Good","Good","Good"]
 };
+
 
 /* ---------- ELEMENTS ---------- */
 const grid = document.getElementById("monthsGrid");
