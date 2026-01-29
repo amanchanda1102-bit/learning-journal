@@ -338,7 +338,7 @@ And safety`},
         }, 
         {
           heading:"Active experimentation", 
-          content: " I practiced what was learnt in the session that week by coaching my colleague. I used the GROW method to ask questions. We found that she wanted to do more learning, For the what now it was decided she would find an area to develop a skill or a topic to learn more about. I contacted her about blender and model making asking if that would be something she would like. she asked if there was a short intro she could try to see if it was for her. I suggested the donut tutorial I started out with."
+          content: " Active experimentation: I practiced what was learnt in the session that week by coaching my colleague. I used the GROW method to ask questions. We found that she wanted to do more learning, For the what now it was decided she would find an area to develop a skill or a topic to learn more about. I suggested blender and model making as an option. she was interested but after searching up the interface of blender she became hesitant, I know from experience blender and model making can seem daunting so suggested a well-known tutorial on YouTube. Instead of learning blender as a whole, you learn how to do one thing in blender. To break the task down even more we watched and completed the first few steps, just to show her how easy it actually was and clear up any confusion. This helped her build confidence in her abilities to learn blender. By offering a short taster of model making and taking the first steps with her prevented her from becoming overwhelmed and encouraged her to continue the tutorial on her own, allowing her to achieve the initial objective."
         }, 
         {
           heading:"Abstract conceptualization", 
