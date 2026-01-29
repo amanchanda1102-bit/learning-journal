@@ -948,7 +948,15 @@ document.querySelectorAll(".entry")[i]?.scrollIntoView({behavior:"smooth"});
   contentsList.appendChild(d);
 });
 
-
+/* ---------- ALL KSBs ---------- */
+const allKSBs = new Set();
+Object.values(data).flat().forEach(e => {
+  if (e.sections) e.sections.forEach(sec => {
+    if (sec.heading?.toLowerCase().includes("linked ksb") && sec.content) {
+      sec.content.split(",").forEach(k => allKSBs.add(k.trim()));
+    }
+  });
+});
 /* ---------- ALL ENTRIES PAGE ---------- */
 
   // Add "View All Entries" button if exists
