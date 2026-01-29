@@ -1037,9 +1037,15 @@ ksbOrder.forEach(k => {
         monthAdded = true;
       }
 
-      const contentHTML = e.sections
-        ? e.sections.map(sec => `<strong>${sec.heading}:</strong><br>${sec.content}<br><br>`).join("")
-        : `<p>${e.content}</p>`;
+    const contentHTML = e.sections
+      ? e.sections.map(sec => {
+          let html = "";
+          if (sec.heading) html += `<strong>${sec.heading}:</strong><br>`;
+          if (sec.content) html += sec.content + "<br><br>";
+          return html;
+        }).join("")
+      : `<p>${e.content || ""}</p>`;
+
 
       entries.innerHTML += `<div class="entry"><strong>${e.title}</strong> — ${e.date}<br>${contentHTML}</div>`;
     });
