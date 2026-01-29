@@ -857,19 +857,27 @@ Object.entries(data).forEach(([m, es])=>{
   contentsList.appendChild(d);
 });
 
-/* ---------- ALL ENTRIES ---------- */
-function openAllEntries(filterKSB=""){
+/* ---------- ALL ENTRIES PAGE ---------- */
+const allKSBs = new Set();
+Object.values(data).flat().forEach(e => {
+  e.sections?.forEach(sec => {
+    if (sec.heading.toLowerCase().includes("linked ksb") && sec.content) {
+      sec.content.split(",").forEach(k => allKSBs.add(k.trim()));
+    }
+  });
+});
+
+function openAllEntries(filterKSB = "") {
   grid.style.display = "none";
   page.style.display = "block";
-  document.getElementById("heatmapPage")?.style.display = "none";
+  document.getElementById("heatmapPage").style.display = "none";
   title.textContent = "All Entries";
   entries.innerHTML = "";
 
-  // Remove old filter
-  const oldFilter = document.getElementById("allEntriesFilter");
-  if(oldFilter) oldFilter.remove();
+  // Filter dropdown
+  let existing = document.getElementById("allEntriesFilter");
+  if (existing) existing.remove();
 
-  // Create KSB dropdown
   const filterDiv = document.createElement("div");
   filterDiv.id = "allEntriesFilter";
   filterDiv.style.marginBottom = "16px";
@@ -886,7 +894,7 @@ function openAllEntries(filterKSB=""){
   defaultOption.textContent = "-- All --";
   select.appendChild(defaultOption);
 
-  Array.from(allKSBs).sort().forEach(k=>{
+  Array.from(allKSBs).sort().forEach(k => {
     const o = document.createElement("option");
     o.value = k;
     o.textContent = k;
@@ -894,60 +902,62 @@ function openAllEntries(filterKSB=""){
   });
 
   select.value = filterKSB;
-  select.onchange = ()=>openAllEntries(select.value);
+  select.onchange = () => openAllEntries(select.value);
 
   filterDiv.appendChild(labelEl);
   filterDiv.appendChild(select);
   page.insertBefore(filterDiv, entries);
 
-  // Render entries
-  Object.entries(data).forEach(([m, es])=>{
+  // Render filtered entries
+  Object.entries(data).forEach(([m, es]) => {
     let monthAdded = false;
-    es.forEach(e=>{
+    es.forEach(e => {
       let entryKSBs = [];
-      e.sections?.forEach(sec=>{
-        if(sec.heading.toLowerCase().includes("linked ksb") && sec.content){
-          entryKSBs = sec.content.split(",").map(k=>k.trim());
+      e.sections?.forEach(sec => {
+        if (sec.heading.toLowerCase().includes("linked ksb") && sec.content) {
+          entryKSBs = sec.content.split(",").map(k => k.trim());
         }
       });
-      if(filterKSB && !entryKSBs.includes(filterKSB)) return;
 
-      if(!monthAdded){
+      if (filterKSB && !entryKSBs.includes(filterKSB)) return;
+
+      if (!monthAdded) {
         entries.innerHTML += `<h3>${m}</h3>`;
         monthAdded = true;
       }
 
-      const contentHTML = e.sections ? e.sections.map(sec=>`<strong>${sec.heading}:</strong><br>${sec.content}<br><br>`).join("") : `<p>${e.content}</p>`;
+      const contentHTML = e.sections ? e.sections.map(sec => `<strong>${sec.heading}:</strong><br>${sec.content}<br><br>`).join("") : `<p>${e.content}</p>`;
       entries.innerHTML += `<div class="entry"><strong>${e.title}</strong> — ${e.date}<br>${contentHTML}</div>`;
     });
   });
 }
 
 /* ---------- HEATMAP ---------- */
-function openHeatmap(){
+function openHeatmap() {
   grid.style.display = "none";
   page.style.display = "none";
-
   const heatPage = document.getElementById("heatmapPage");
   heatPage.style.display = "block";
-
   buildHeatmap();
 }
 
-function buildHeatmap(){
+function buildHeatmap() {
   const heatGrid = document.getElementById("heatmapGrid");
   heatGrid.innerHTML = "";
-
   const monthsShort = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+  // Header row
   heatGrid.appendChild(makeCell("KSB","header"));
-  monthsShort.forEach(m=>heatGrid.appendChild(makeCell(m,"header")));
+  monthsShort.forEach(m => heatGrid.appendChild(makeCell(m,"header")));
 
-  // Example placeholder data
-  const LIP_KSB_MONTHS = {B1:["Good","Average","Poor","Good","Very Good","Average","Good","Good","Average","Poor","Good","Very Good"]};
+  // Example data
+  const LIP_KSB_MONTHS = {
+    B1: ["Good","Average","Poor","Good","Very Good","Average","Good","Good","Average","Poor","Good","Very Good"]
+  };
 
-  Object.entries(LIP_KSB_MONTHS).forEach(([ksb, vals])=>{
+  Object.entries(LIP_KSB_MONTHS).forEach(([ksb, vals]) => {
     heatGrid.appendChild(makeCell(ksb,"ksb-label"));
-    vals.forEach(v=>{
+    vals.forEach(v => {
       const cell = document.createElement("div");
       cell.className = `heat-cell ${ratingClass(v)}`;
       cell.textContent = v;
@@ -956,7 +966,7 @@ function buildHeatmap(){
   });
 }
 
-function makeCell(text,type){
+function makeCell(text,type) {
   const div = document.createElement("div");
   div.textContent = text;
   div.className = "heat-cell";
@@ -965,7 +975,7 @@ function makeCell(text,type){
   return div;
 }
 
-function ratingClass(v){
+function ratingClass(v) {
   if(v==="Very Poor") return "heat-verypoor";
   if(v==="Poor") return "heat-poor";
   if(v==="Average") return "heat-average";
@@ -976,4 +986,6 @@ function ratingClass(v){
 
 /* ---------- INIT ---------- */
 updateProgress();
+
+// Add "View All Entries" button if exists
 document.getElementById("viewAllBtn")?.addEventListener("click", openAllEntries);
