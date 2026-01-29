@@ -854,7 +854,8 @@ Object.entries(data).forEach(([m, es])=>{
     c.textContent = `${e.date} — ${e.title}`;
     c.onclick = ()=>{
       openMonth(m);
-      setTimeout(()=>document.querySelectorAll(".entry")[i]?.scrollIntoView({behavior:"smooth"}),150);
+document.querySelectorAll(".entry")[i]?.scrollIntoView({behavior:"smooth"});
+
     };
     d.appendChild(c);
   });
@@ -888,7 +889,8 @@ function openAllEntries(filterKSB = "") {
   filterDiv.style.marginBottom = "16px";
 
   const labelEl = document.createElement("label");
-  labelEl.for = "ksbSelect";
+  labelEl.htmlFor = "ksbSelect";
+
   labelEl.textContent = "Filter by KSB: ";
 
   const select = document.createElement("select");
