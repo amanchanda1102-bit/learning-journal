@@ -56,11 +56,21 @@ header h1{margin:0; font-size:1.4rem; color:var(--primary);}
 .contents-month.active > button{background:var(--primary); color:#fff; padding:6px 10px; border-radius:8px;}
 .contents-entry.active{color:var(--primary); font-weight:600;}
 
-#heatmapGrid{
-  display:grid;
+#heatmapPage {
+  display: flex;            /* stack content vertically */
+  flex-direction: column;
+  min-height: 80vh;         /* ensure the page has some height */
+  padding: 32px 24px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+
+#heatmapGrid {
+  margin-top: auto;         /* push heatmap to bottom of its own page */
+  display: grid;
   grid-template-columns: 120px repeat(12, 1fr);
-  gap:6px;
-  margin-top:20px;
+  gap: 6px;
 }
 
 .heat-cell{
