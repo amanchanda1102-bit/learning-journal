@@ -784,7 +784,6 @@ Object.keys(data).forEach(m=>{
 function openMonth(m){
   grid.style.display = "none";
   page.style.display = "block";
-  document.getElementById("heatmapPage")?.style.display = "none"; // hide heatmap if open
   title.textContent = m;
   entries.innerHTML = "";
 
