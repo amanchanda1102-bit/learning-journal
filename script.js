@@ -405,8 +405,7 @@ October: [
         content: "S12, S19, S17"
       }
     ]
-  }
-],
+  },
 
     {
       title: "Modeling Guidance for Co-worker",
