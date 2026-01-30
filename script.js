@@ -983,7 +983,8 @@ Object.values(data).flat().forEach(e => {
 // Attach the "View All Entries" button ONCE, outside of the function
 document.getElementById("viewAllBtn")?.addEventListener("click", () => openAllEntries(""));
 
-function openAllEntries(filterKSB = "") {
+function openAllEntries(filterKSB = "", filterJob = "") {
+
   // Hide other pages
   grid.style.display = "none";
   page.style.display = "block";
@@ -1032,6 +1033,35 @@ function openAllEntries(filterKSB = "") {
   filterDiv.appendChild(select);
   page.insertBefore(filterDiv, entries);
 
+  const jobLabel = document.createElement("label");
+  jobLabel.textContent = " Job Type: ";
+  
+  const jobSelect = document.createElement("select");
+  jobSelect.id = "jobTypeSelect";
+  
+  const jobAll = document.createElement("option");
+  jobAll.value = "";
+  jobAll.textContent = "-- All --";
+  
+  const jobOn = document.createElement("option");
+  jobOn.value = "on-job";
+  jobOn.textContent = "On the Job";
+  
+  const jobOff = document.createElement("option");
+  jobOff.value = "off-job";
+  jobOff.textContent = "Off the Job";
+  
+  jobSelect.append(jobAll, jobOn, jobOff);
+  
+  // reload entries when changed
+  jobSelect.addEventListener("change", () => {
+    openAllEntries(select.value, jobSelect.value);
+  });
+  
+  filterDiv.appendChild(jobLabel);
+  filterDiv.appendChild(jobSelect);
+
+  
   // Render entries
   Object.entries(data).forEach(([month, es]) => {
     let monthAdded = false;
@@ -1044,8 +1074,12 @@ function openAllEntries(filterKSB = "") {
           entryKSBs = sec.content.split(",").map(k => k.trim());
         }
       });
-
-      if (filterKSB && !entryKSBs.includes(filterKSB)) return;
+    
+    // KSB filter
+    if (filterKSB && !entryKSBs.includes(filterKSB)) return;
+    
+    // Job type filter
+    if (filterJob && e.jobType !== filterJob) return;
 
       if (!monthAdded) {
         entries.innerHTML += `<h3>${month}</h3>`;
