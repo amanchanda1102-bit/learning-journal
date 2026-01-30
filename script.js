@@ -198,8 +198,20 @@ March: [
           content: "K10"
         }
       ]
+    },
+    { title: "Media Office Visit",
+      date: "19/04/2025",
+      jobType: "on-job",
+      sections: [
+        {"As I was interested in media specifically interactive courses and models, I was told to visit the Lynham site, as they have the large media centre. They showed me data on the use of their interactuve models using their internal info system. Showing that even on the trainees days off they were viewing the models out of interest. This shows the importance of internal info systems, as with this info they can now put more time resources into interactive models as opposed to diagrams or still images"
+        },
+        {
+          heading: "Linked KSBs",
+          content: "K12, K13, B2"
+              }
+              ]
     }
-  ],
+        ],
 
   May: [
     {
