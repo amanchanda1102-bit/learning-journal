@@ -235,7 +235,7 @@ March: [
       jobType: "on-job",
       sections: [
         {
-          content: "When learning to use vbs I went through the same basic training as the course students will. I had many questions on why things were done certain ways. As well as frustration with how long it was. When asked to go home and play around with VBS, I looked at making a mini version of the training (which I think is what led my mentor to creating a short efficient, easier to understand version of the training,- still in beta currently, but once completed will cut the basic training time by more than half.")
+          content: "When learning to use vbs I went through the same basic training as the course students will. I had many questions on why things were done certain ways. As well as frustration with how long it was. When asked to go home and play around with VBS, I looked at making a mini version of the training (which I think is what led my mentor to creating a short efficient, easier to understand version of the training,- still in beta currently, but once completed will cut the basic training time by more than half."
         },
         {
           heading: "Linked KSBs",
